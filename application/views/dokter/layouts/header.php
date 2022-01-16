@@ -12,6 +12,13 @@
 	<!-- App favicon -->
 	<link rel="shortcut icon" href="<?= base_url('assets_pasien/') ?>images/logo/favicon_medkes.png">
 
+	<!-- third party css -->
+	<link href="<?= base_url('assets_admin/') ?>libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('assets_admin/') ?>libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('assets_admin/') ?>libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('assets_admin/') ?>libs/datatables.net-select-bs5/css//select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+	<!-- third party css end -->
+
 	<!-- App css -->
 	<link href="<?= base_url('assets_admin/') ?>css/config/default/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 	<link href="<?= base_url('assets_admin/') ?>css/config/default/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -43,135 +50,10 @@
 			<div class="container-fluid">
 				<ul class="list-unstyled topnav-menu float-end mb-0">
 
-					<li class="d-none d-lg-block">
-						<form class="app-search">
-							<div class="app-search-box dropdown">
-								<div class="input-group">
-									<input type="search" class="form-control" placeholder="Search..." id="top-search">
-									<button class="btn input-group-text" type="submit">
-										<i class="fe-search"></i>
-									</button>
-								</div>
-								<div class="dropdown-menu dropdown-lg" id="search-dropdown">
-									<!-- item-->
-									<div class="dropdown-header noti-title">
-										<h5 class="text-overflow mb-2">Found 22 results</h5>
-									</div>
-								</div>
-							</div>
-						</form>
-					</li>
-
-					<li class="dropdown d-inline-block d-lg-none">
-						<a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<i class="fe-search noti-icon"></i>
-						</a>
-						<div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
-							<form class="p-3">
-								<input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-							</form>
-						</div>
-					</li>
-
 					<li class="dropdown d-none d-lg-inline-block">
 						<a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
 							<i class="fe-maximize noti-icon"></i>
 						</a>
-					</li>
-
-					<li class="dropdown d-none d-lg-inline-block topbar-dropdown">
-						<a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<i class="fe-grid noti-icon"></i>
-						</a>
-						<div class="dropdown-menu dropdown-lg dropdown-menu-end">
-
-							<div class="p-lg-1">
-								<div class="row g-0">
-									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="<?= base_url('assets_admin/') ?>images/brands/slack.png" alt="slack">
-											<span>Slack</span>
-										</a>
-									</div>
-									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="<?= base_url('assets_admin/') ?>images/brands/github.png" alt="Github">
-											<span>GitHub</span>
-										</a>
-									</div>
-									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="<?= base_url('assets_admin/') ?>images/brands/dribbble.png" alt="dribbble">
-											<span>Dribbble</span>
-										</a>
-									</div>
-								</div>
-
-								<div class="row g-0">
-									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="<?= base_url('assets_admin/') ?>images/brands/bitbucket.png" alt="bitbucket">
-											<span>Bitbucket</span>
-										</a>
-									</div>
-									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="<?= base_url('assets_admin/') ?>images/brands/dropbox.png" alt="dropbox">
-											<span>Dropbox</span>
-										</a>
-									</div>
-									<div class="col">
-										<a class="dropdown-icon-item" href="#">
-											<img src="<?= base_url('assets_admin/') ?>images/brands/g-suite.png" alt="G Suite">
-											<span>G Suite</span>
-										</a>
-									</div>
-
-								</div>
-							</div>
-
-						</div>
-					</li>
-
-					<li class="dropdown notification-list topbar-dropdown">
-						<a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<i class="fe-bell noti-icon"></i>
-							<span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-end dropdown-lg">
-
-							<!-- item-->
-							<div class="dropdown-item noti-title">
-								<h5 class="m-0">
-									<span class="float-end">
-										<a href="" class="text-dark">
-											<small>Clear All</small>
-										</a>
-									</span>Notification
-								</h5>
-							</div>
-
-							<div class="noti-scroll" data-simplebar>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item active">
-									<div class="notify-icon">
-										<img src="<?= base_url('assets_admin/') ?>images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" />
-									</div>
-									<p class="notify-details">Cristina Pride</p>
-									<p class="text-muted mb-0 user-msg">
-										<small>Hi, How are you? What about our next meeting</small>
-									</p>
-								</a>
-							</div>
-
-							<!-- All-->
-							<a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-								View all
-								<i class="fe-arrow-right"></i>
-							</a>
-
-						</div>
 					</li>
 
 					<li class="dropdown notification-list topbar-dropdown">
@@ -192,13 +74,13 @@
 							</div>
 
 							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<a href="<?= base_url('dokter/profile') ?>" class="dropdown-item notify-item">
 								<i class="fe-user"></i>
 								<span>My Account</span>
 							</a>
 
 							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<a href="<?= base_url('dokter/profile') ?>" class="dropdown-item notify-item">
 								<i class="fe-settings"></i>
 								<span>Settings</span>
 							</a>
@@ -282,13 +164,13 @@
 						<div class="dropdown-menu user-pro-dropdown">
 
 							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<a href="<?= base_url('dokter/profile') ?>" class="dropdown-item notify-item">
 								<i class="fe-user me-1"></i>
 								<span>My Account</span>
 							</a>
 
 							<!-- item-->
-							<a href="javascript:void(0);" class="dropdown-item notify-item">
+							<a href="<?= base_url('dokter/profile') ?>" class="dropdown-item notify-item">
 								<i class="fe-settings me-1"></i>
 								<span>Settings</span>
 							</a>
@@ -331,6 +213,15 @@
 							<a href="<?= base_url('dokter/jadwal/konsultasi') ?>">
 								<i data-feather="message-square"></i>
 								<span> Konsultasi </span>
+							</a>
+						</li>
+
+						<li class="menu-title mt-2">Apps</li>
+
+						<li>
+							<a href="<?= base_url('dokter/profile') ?>">
+								<i data-feather="user"></i>
+								<span> Profile </span>
 							</a>
 						</li>
 

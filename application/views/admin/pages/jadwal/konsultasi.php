@@ -2,7 +2,6 @@
 <!-- Start Page Content here -->
 <!-- ============================================================== -->
 
-<link href="<?= base_url('assets/admin/') ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- END GLOBAL MANDATORY STYLES -->
 
 <link href="<?= base_url('assets/admin/') ?>assets/css/components/custom-modal.css" rel="stylesheet" type="text/css" />
@@ -98,16 +97,16 @@
 											<td>
 												<?php switch ($data->status):
 													case "Disetujui": ?>
-														<span class="badge badge-primary"><?= $data->status ?></span>
+														<span class="btn btn-primary"><?= $data->status ?></span>
 													<?php break;
 													case "Ubah jadwal": ?>
-														<span class="badge badge-warning"><?= $data->status ?></span>
+														<span class="btn btn-warning"><?= $data->status ?></span>
 													<?php break;
 													case "Dibatalkan": ?>
-														<span class="badge badge-danger"><?= $data->status ?></span>
+														<span class="btn btn-danger"><?= $data->status ?></span>
 													<?php break;
 													case "Selesai": ?>
-														<span class="badge badge-success"><?= $data->status ?></span>
+														<span class="btn btn-success"><?= $data->status ?></span>
 												<?php break;
 												endswitch; ?>
 											</td>

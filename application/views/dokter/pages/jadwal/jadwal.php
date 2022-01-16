@@ -1,5 +1,9 @@
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/admin/') ?>plugins/table/datatable/datatables.css">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/admin/') ?>plugins/table/datatable/dt-global_style.css">
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<!-- END GLOBAL MANDATORY STYLES -->
+
 <link href="<?= base_url('assets/admin/') ?>assets/css/components/custom-modal.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url('assets/admin/') ?>plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="<?= base_url('assets/admin/') ?>plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
@@ -10,6 +14,139 @@
 		z-index: 1900;
 	}
 </style>
+
+<div class="content-page">
+	<div class="content">
+
+		<!-- Start Content-->
+		<div class="container-fluid">
+
+			<!-- start page title -->
+			<div class="row">
+				<div class="col-12">
+					<div class="page-title-box">
+						<div class="page-title-right">
+							<ol class="breadcrumb m-0">
+								<li class="breadcrumb-item"><a href="<?= base_url('dokter') ?>">Dashboard</a></li>
+								<li class="breadcrumb-item active">Jadwal</li>
+							</ol>
+						</div>
+						<h4 class="page-title">Jadwal</h4>
+					</div>
+				</div>
+			</div>
+			<!-- end page title -->
+
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+
+							<h4 class="header-title">Jadwal <?= $this->session->nama_dokter; ?></h4>
+							<button type="button" class="btn btn-primary mx-3 mt-3" data-toggle="modal" data-target="#exampleModal">Tambah Jadwal
+							</button>
+
+							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Tanggal</th>
+										<th>Jam Operasional</th>
+										<th>Aksi</th>
+									</tr>
+								</thead>
+
+
+								<tbody>
+									<?php $no = 1;
+									foreach ($jadwal as $data) { ?>
+										<tr>
+											<td> <?= $no++ ?></td>
+											<td><?= longdate_indo($data->tanggal) ?></td>
+											<td><?= $data->jam_mulai ?> WIB - <?= $data->jam_berakhir ?> WIB</td>
+											<td class="text-center">
+												<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#jadwal<?= $data->id_jadwal ?>">Edit Jadwal
+												</button>
+											</td>
+											<div class="modal fade" id="jadwal<?= $data->id_jadwal ?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<form action="<?= base_url('dokter/jadwal/proses_update_jadwal/' . $data->id_jadwal) ?>" method="POST">
+															<div class="modal-header">
+																<h5 class="modal-title" id="exampleModalLabel">Sunting Jadwal</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																</button>
+															</div>
+															<div class="modal-body">
+																<div class="row">
+																	<div class="col-md-12 mx-auto">
+																		<div class="row">
+																			<div class="col-md-12">
+																				<div class="form-group">
+																					<label for="email">Tanggal</label>
+																					<input name="tanggal" value="<?= $data->tanggal ?>" class="basicFlatpickr form-control flatpickr flatpickr-input active text-black" type="text" placeholder="Select Date..">
+																				</div>
+																			</div>
+																			<div class="col-md-6">
+																				<div class="form-group">
+																					<label for="website1">Jam Mulai</label>
+																					<input value="<?= $data->jam_mulai ?>" name="jam_mulai" class="form-control flatpickr flatpickr-input active text-black timeFlatpickr12" type="text" placeholder="Select Date..">
+																				</div>
+																			</div>
+																			<div class="col-md-6">
+																				<div class="form-group">
+																					<label for="website2">Jam Berakhir</label>
+																					<input value="<?= $data->jam_berakhir ?>" name="jam_berakhir" class="form-control flatpickr flatpickr-input active text-black timeFlatpickr13" type="text" placeholder="Select Date..">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Close</button>
+																<button type="submit" class="btn btn-primary">Save</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</tr>
+									<?php	} ?>
+								</tbody>
+							</table>
+
+						</div> <!-- end card body-->
+					</div> <!-- end card -->
+				</div><!-- end col-->
+			</div>
+			<!-- end row-->
+
+		</div> <!-- container -->
+
+	</div> <!-- content -->
+	<!-- Footer Start -->
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<script>
+						document.write(new Date().getFullYear())
+					</script> &copy; UBold theme by <a href="">Coderthemes</a>
+				</div>
+				<div class="col-md-6">
+					<div class="text-md-end footer-links d-none d-sm-block">
+						<a href="javascript:void(0);">About Us</a>
+						<a href="javascript:void(0);">Help</a>
+						<a href="javascript:void(0);">Contact Us</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end Footer -->
+
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -56,141 +193,80 @@
 	</div>
 </div>
 
-<!--  BEGIN CONTENT AREA  -->
-<div id="content" class="main-content">
-	<div class="layout-px-spacing">
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
 
-		<div class="row layout-top-spacing">
 
-			<div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
-				<div class="widget-content widget-content-area br-6">
-					<h3 class="mx-3 mt-3"><?= $this->session->nama_dokter; ?></h3>
-					<button type="button" class="btn btn-primary mx-3 mt-3" data-toggle="modal" data-target="#exampleModal">Tambah Jadwal
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-							<line x1="12" y1="5" x2="12" y2="19"></line>
-							<line x1="5" y1="12" x2="19" y2="12"></line>
-						</svg></button>
-					<table id="default-ordering" class="table table-hover" style="width:100%">
-						<thead>
-							<tr>
-								<th>No.</th>
-								<th>Tanggal</th>
-								<th>Jam Operasional</th>
-								<th class="dt-no-sorting text-center">Aksi</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $no = 1;
-							foreach ($jadwal as $data) { ?>
-								<tr>
-									<td> <?= $no++ ?></td>
-									<td><?= longdate_indo($data->tanggal) ?></td>
-									<td><?= $data->jam_mulai ?> WIB - <?= $data->jam_berakhir ?> WIB</td>
-									<td class="text-center">
-										<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#jadwal<?= $data->id_jadwal ?>">Edit Jadwal
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
-												<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-												<path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-											</svg>
-										</button>
-									</td>
-									<div class="modal fade" id="jadwal<?= $data->id_jadwal ?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-dialog-centered" role="document">
-											<div class="modal-content">
-												<form action="<?= base_url('dokter/jadwal/proses_update_jadwal/' . $data->id_jadwal) ?>" method="POST">
-													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Sunting Jadwal</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-														</button>
-													</div>
-													<div class="modal-body">
-														<div class="row">
-															<div class="col-md-12 mx-auto">
-																<div class="row">
-																	<div class="col-md-12">
-																		<div class="form-group">
-																			<label for="email">Tanggal</label>
-																			<input name="tanggal" value="<?= $data->tanggal ?>" class="basicFlatpickr form-control flatpickr flatpickr-input active text-black" type="text" placeholder="Select Date..">
-																		</div>
-																	</div>
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label for="website1">Jam Mulai</label>
-																			<input value="<?= $data->jam_mulai ?>" name="jam_mulai" class="form-control flatpickr flatpickr-input active text-black timeFlatpickr12" type="text" placeholder="Select Date..">
-																		</div>
-																	</div>
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label for="website2">Jam Berakhir</label>
-																			<input value="<?= $data->jam_berakhir ?>" name="jam_berakhir" class="form-control flatpickr flatpickr-input active text-black timeFlatpickr13" type="text" placeholder="Select Date..">
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="modal-footer">
-														<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Close</button>
-														<button type="submit" class="btn btn-primary">Save</button>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
-								</tr>
-							<?php	} ?>
+</div>
+<!-- END wrapper -->
 
-						</tbody>
-						<tfoot>
-							<tr>
-								<th>No.</th>
-								<th>Tanggal</th>
-								<th>Jam Operasional</th>
-								<th class="invisible"></th>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-			</div>
+<script src="<?= base_url('assets/admin/') ?>plugins/flatpickr/flatpickr.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/flatpickr/custom-flatpickr.js"></script>
+<script>
+	var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr'), {
+		enableTime: true,
+		noCalendar: true,
+		dateFormat: "H:i",
+		defaultDate: "09:45"
+	});
+</script>
+<script>
+	var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr2'), {
+		enableTime: true,
+		noCalendar: true,
+		dateFormat: "H:i",
+		defaultDate: "16:45"
+	});
+</script>
+<script>
+	var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr12'), {
+		enableTime: true,
+		noCalendar: true,
+		dateFormat: "H:i",
+	});
+</script>
+<script>
+	var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr13'), {
+		enableTime: true,
+		noCalendar: true,
+		dateFormat: "H:i",
+	});
+</script>
+<script>
+	var f4 = flatpickr(document.getElementsByClassName('basicFlatpickr'), {
+		enableTime: false,
+		noCalendar: false,
+	});
+</script>
 
-		</div>
-
-	</div>
-	<script src="<?= base_url('assets/admin/') ?>plugins/flatpickr/flatpickr.js"></script>
-	<script src="<?= base_url('assets/admin/') ?>plugins/flatpickr/custom-flatpickr.js"></script>
-	<script>
-		var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr'), {
-			enableTime: true,
-			noCalendar: true,
-			dateFormat: "H:i",
-			defaultDate: "09:45"
-		});
-	</script>
-	<script>
-		var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr2'), {
-			enableTime: true,
-			noCalendar: true,
-			dateFormat: "H:i",
-			defaultDate: "16:45"
-		});
-	</script>
-	<script>
-		var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr12'), {
-			enableTime: true,
-			noCalendar: true,
-			dateFormat: "H:i",
-		});
-	</script>
-	<script>
-		var f4 = flatpickr(document.getElementsByClassName('timeFlatpickr13'), {
-			enableTime: true,
-			noCalendar: true,
-			dateFormat: "H:i",
-		});
-	</script>
-	<script>
-		var f4 = flatpickr(document.getElementsByClassName('basicFlatpickr'), {
-			enableTime: false,
-			noCalendar: false,
-		});
-	</script>
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+<script src="<?= base_url('assets/admin/') ?>assets/js/libs/jquery-3.1.1.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>bootstrap/js/bootstrap.min.js"></script>
+<script>
+	$('#default-ordering').DataTable({
+		"dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+			"<'table-responsive'tr>" +
+			"<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
+		"oLanguage": {
+			"oPaginate": {
+				"sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>',
+				"sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
+			},
+			"sInfo": "Tampilkan Halaman _PAGE_ dari _PAGES_",
+			"sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+			"sSearchPlaceholder": "Cari...",
+			"sLengthMenu": "Jumlah :  _MENU_",
+		},
+		// "ordering": false,
+		"order": [
+			[0, "desc"]
+		],
+		"stripeClasses": [],
+		"lengthMenu": [10, 20, 50],
+		"pageLength": 10,
+		drawCallback: function() {
+			$('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered');
+		}
+	});
+</script>

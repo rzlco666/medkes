@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jan 2022 pada 09.49
+-- Waktu pembuatan: 16 Jan 2022 pada 12.37
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 8.0.9
 
@@ -120,9 +120,9 @@ CREATE TABLE `dokter` (
 
 INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `email`, `username`, `password`, `alamat`, `no_telp`, `STR`, `keahlian`, `foto`, `pengalaman_kerja`, `harga`, `status`) VALUES
 ('DR-001', 'Dr Elmuru', 'elmuru@mail.com', 'elmuru', '$2y$10$3BE/ncxbG9M.QlbUilSLkuQ4eKtprdCPJjlmLp/v1/fp3tlvfxj56', NULL, '081233127318', '2121423', 'Spesialis Mata', 'example.jpg', '13 Tahun pengalaman', 70000, 'Aktif'),
-('DR-002', 'Hanif', NULL, 'hanif', '$2y$10$rrTv0G0S17sV8dj3zYVdgOnlxeEb8dLjk7TVMfis6.R/pJqDkXQMS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif'),
+('DR-002', 'Hanif', NULL, 'hanif', '$2y$10$rrTv0G0S17sV8dj3zYVdgOnlxeEb8dLjk7TVMfis6.R/pJqDkXQMS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tidak aktif'),
 ('DR-003', 'Rizal', NULL, 'rizal', '$2y$10$uGE4vzEHtIdSo4o2jSDjbuCHNVWCwiHQiC3Vm/H4/JNb9fEUtgDDO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif'),
-('DR-004', 'Testing', NULL, 'testdokter', '$2y$10$aeV0udwteoQoQHOp7jaHF.VwozfrR8Zp8VyrOL4M43Mynze33m9OS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif'),
+('DR-004', 'Testing', 'tesdokter@gmail.com', 'testdokter', '$2y$10$aeV0udwteoQoQHOp7jaHF.VwozfrR8Zp8VyrOL4M43Mynze33m9OS', NULL, '0812342134', '123333435', 'Spesialis Jantung', '01.jpg', '12 Tahun Pengalaman Kerja', NULL, 'Aktif'),
 ('DR-005', 'Test Dokter 2', NULL, 'testdokter2', '$2y$10$SMIVjdFORPrUHUJaG.99.eJPmPB/VJLhPWbtFwbADwzhsavNO/1/O', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif');
 
 -- --------------------------------------------------------
@@ -144,7 +144,7 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `tanggal`, `jam_mulai`, `jam_berakhir`, `id_dokter`) VALUES
-('JDW-001', '2022-01-03', '10:45', '16:45', 'DR-001'),
+('JDW-001', '2022-01-03', '09:45', '16:45', 'DR-001'),
 ('JDW-002', '2022-02-03', '08:45', '16:45', 'DR-001'),
 ('JDW-003', '2022-03-03', '09:45', '16:45', 'DR-001'),
 ('JDW-004', '2022-04-03', '09:45', '16:45', 'DR-001'),
@@ -153,9 +153,10 @@ INSERT INTO `jadwal` (`id_jadwal`, `tanggal`, `jam_mulai`, `jam_berakhir`, `id_d
 ('JDW-007', '2022-07-03', '16:45', '20:45', 'DR-001'),
 ('JDW-008', '2022-08-03', '16:45', '20:45', 'DR-001'),
 ('JDW-009', '2022-09-03', '09:45', '16:45', 'DR-001'),
-('JDW-010', '2022-01-04', '09:45', '16:45', 'DR-002'),
+('JDW-010', '2022-01-04', '10:45', '16:45', 'DR-002'),
 ('JDW-011', '2022-01-15', '09:45', '16:45', 'DR-003'),
-('JDW-012', '2022-01-14', '09:45', '16:45', 'DR-003');
+('JDW-012', '2022-01-14', '09:45', '16:45', 'DR-003'),
+('JDW-013', '2022-01-20', '11:45', '16:45', 'DR-004');
 
 -- --------------------------------------------------------
 
@@ -207,8 +208,8 @@ INSERT INTO `pasien` (`id_pasien`, `nama_pasien`, `email`, `username`, `password
 ('PSN-001', 'stephen', 'stephen@mail.com', 'stephen', '$2y$10$kXamKnIGSc/x8IAse5rYnuwAvl54oC.8e.XG.yy33/4fWGGvk2NBi', 'Laki-laki', 'Komplek PBB 01', '32146893456712395', 'user-3.jpg', '08132212988', '-', '2000-06-21', '2022-01-03'),
 ('PSN-002', 'charles', 'charles@mail.com', 'charles', '$2y$10$9.fr76DsvdXE8iPZB1ITgeiPllzYLlyoBbU417T.KdhQMx0bNHde2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-03'),
 ('PSN-003', 'carlos', 'carlos@gmail.com', 'carlos', '$2y$10$zQmIUzXLhYi5S/P7//v.juPdLikmrav2z1Cuot18aPvPiZ5ghm9i2', 'Laki-laki', 'Komplek Pbb 1', '1234567890123456', 'Screenshot_(166).jpg', '081322127897', '-', '2000-02-25', '2022-01-03'),
-('PSN-004', 'yuda', 'yuda@gmail.com', 'yuda', '$2y$10$Q0GDBWG5uQ0wklE4tpn9C.AK3y1lxu4PKoCqTxsWkFQAy/xW.y0my', 'Laki-laki', 'boyolali\r\n', '123123124134324', 'pentagramimage.png', '082118324234', '0938204234234', '2000-06-14', NULL),
-('PSN-005', 'supeno', 'supeno@gmail.com', 'supeno', '$2y$10$ejLgzdaYXwbcU8S/ymfJ4uCL./GSFGumYbCgLoT0c.tv.avdf3T/y', 'Laki-laki', 'tegal rejo, rt 02/01\r\nkuwiran', '324234242342', 'ktp.JPG', '082118638580', '082118638580', '2000-10-26', NULL),
+('PSN-004', 'yuda', 'yuda@gmail.com', 'yuda', '$2y$10$Q0GDBWG5uQ0wklE4tpn9C.AK3y1lxu4PKoCqTxsWkFQAy/xW.y0my', 'Laki-laki', 'boyolali\r\n', '123123124134324', 'pentagramimage.png', '082118324234', '0938204234234', '2000-06-14', '2022-01-03'),
+('PSN-005', 'supeno', 'supeno@gmail.com', 'supeno', '$2y$10$ejLgzdaYXwbcU8S/ymfJ4uCL./GSFGumYbCgLoT0c.tv.avdf3T/y', 'Laki-laki', 'tegal rejo, rt 02/01\r\nkuwiran', '324234242342', 'ktp.JPG', '082118638580', '082118638580', '2000-10-26', '2022-01-03'),
 ('PSN-006', 'muhidin', 'muhidin@mail.com', 'muhidin', '$2y$10$9gpMxCnW807gt4o6SajUwupJK53gyqZ4Jz5YTKRBELQiSWU.8uPDK', 'Laki-laki', 'tegal rejo, rt 02/01\r\nkuwiran', '4234234234', 'foto_alvin.png', '082118638580', '-', '2000-03-01', '2022-01-03'),
 ('PSN-007', 'hadi', 'hadi@gmail.com', 'hadi', '$2y$10$8ba8XRRkcvtK2nydDWgqkO5QMxjiw261Wdt0zl9m3QNKBHeLz5gdq', 'Laki-laki', 'hgfjhsdgfjhs', '264876458345', 'sacai3_1.png', '234624234234', '18834624234', '2021-07-14', '2022-01-03'),
 ('PSN-008', 'sayoko', 'sayoko@gmail.com', 'sayoko', '$2y$10$EYj9iAh8CjUmVMjk3gYYW.mjPHMrCaDJ6/olMrNoXATm3yKdKso6q', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-03'),
@@ -216,7 +217,7 @@ INSERT INTO `pasien` (`id_pasien`, `nama_pasien`, `email`, `username`, `password
 ('PSN-010', 'Rizal', 'syahrizalhanif@gmail.com', 'rizal', '$2y$10$FjSmdFOTDOr/PbEvhIy0tePptAjFkuoaesC7qmVQ0wmb00tyvAqbu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-03'),
 ('PSN-011', 'Syahrizal Hanif', 'rzlco20@gmail.com', 'rzlco', '$2y$10$R9Xh.bdeuGOgX7pxnxreeeAQMGSVT5ghmrBpNxWrD8vxcd4340UDu', 'Laki-laki', 'Perum Griya Pertiwi Indah B6 Widorosari RT.4 RW.7 Pucangan Kartasura', '1234567891012131', '1.jpg', '08123834718', '-', '2000-03-14', '2022-01-13'),
 ('PSN-012', 'Testing', 'test@mail.com', 'testing', '$2y$10$XmFr4Oyca9KuQ60i.twWdOLAF8dFsWK9cgLBOgLBGPCjJpxqNrAxW', 'Laki-laki', 'ABCDFDFDFDFDFW', '1234567891012131', '5.jpg', '0812321412412', '-', '1999-04-20', '2022-01-15'),
-('PSN-013', 'Test Pasien', 'test@mail.comm', 'testpasien', '$2y$10$JYJ9RHKB4bMSeh6fYT7YPOVYNG56AurT46Mx/raYwH70Jl68GdBke', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-15');
+('PSN-013', 'Test Pasienn', 'test@mail.comm', 'testpasien', '$2y$10$JYJ9RHKB4bMSeh6fYT7YPOVYNG56AurT46Mx/raYwH70Jl68GdBke', 'Laki-laki', 'ABCD', '1234567891012131', '3.jpg', '08123834718', '-', '2000-04-20', '2022-01-15');
 
 -- --------------------------------------------------------
 
