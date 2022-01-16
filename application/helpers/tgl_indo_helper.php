@@ -198,6 +198,6 @@ if (!function_exists('longdate_indo')) {
 		} else if ($nama == "Saturday") {
 			$nama_hari = "Sabtu";
 		}
-		return $nama_hari . ',' . $tgl . ' ' . $bulan . ' ' . $thn;
+		return $nama_hari . ', ' . $tgl . ' ' . $bulan . ' ' . $thn;
 	}
 }
