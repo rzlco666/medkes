@@ -131,20 +131,6 @@
     							<span>Medicine &amp; Instruments</span>
     						</div>
     					</div>
-    					<div class="about-founder d-flex align-items-center">
-    						<div class="founder-detals d-flex align-items-center">
-    							<div class="thumb">
-    								<img src="<?= base_url('assets_pasien/') ?>images/about/authore.png" alt="">
-    							</div>
-    							<div class="content">
-    								<h4 class="name">Jemilin D. William</h4>
-    								<span class="designation">Founder</span>
-    							</div>
-    						</div>
-    						<div class="founder-signature">
-    							<img src="<?= base_url('assets_pasien/') ?>images/about/signature.png" alt="">
-    						</div>
-    					</div>
     				</div>
     			</div>
     		</div>
@@ -225,7 +211,7 @@
     							</div>
     						</div>
     						<div class="col-xl-3 col-lg-6 my-auto text-right">
-    							<a href="contact.html" class="site-btn">Make Appointment</a>
+    							<a href="<?= base_url('pasien/dokter/') ?>" class="site-btn">Make Appointment</a>
     						</div>
     					</div>
     					<div class="appointment-ilustration">
@@ -237,120 +223,6 @@
     	</div>
     </section>
     <!-- department area end -->
-
-    <!-- our-expert area start -->
-    <section class="our-expert-area bg-2 pb-110">
-    	<div class="container">
-    		<div class="row justify-content-center">
-    			<div class="col-lg-6 col-md-8 text-center">
-    				<div class="section-heading mb-70">
-    					<h2 class="section-title shape">Our Exparts</h2>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp
-    						or incididunt ut labore et dolore magna aliqua.</p>
-    				</div>
-    			</div>
-    		</div>
-    		<div class="row no-gutters expert-box-wrap">
-    			<div class="col-xl-6 col-lg-12">
-    				<div class="single-expert-box">
-    					<div class="expert-box-left">
-    						<div class="thumb">
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/team-1.jpg" alt="">
-    							<span class="icon"><img src="<?= base_url('assets_pasien/') ?>images/icons/icon-tablate.png" alt=""></span>
-    						</div>
-    						<div class="content">
-    							<h5 class="name">Rosalina Will.</h5>
-    							<span class="designation">Founder</span>
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/signature.png" alt="" class="signature">
-    						</div>
-    					</div>
-    					<div class="expert-box-right">
-    						<div class="content">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ at. Duis aute irure dolor in reprehenderit in volutate velit esse cillum dolore.</p>
-    							<div class="expert-box-buttons">
-    								<a href="contact.html" class="site-btn white">Contact Now</a>
-    								<span class="comments-btn"><i class="fal fa-comments"></i></span>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-xl-6 col-lg-12">
-    				<div class="single-expert-box">
-    					<div class="expert-box-left">
-    						<div class="thumb">
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/team-2.jpg" alt="">
-    							<span class="icon"><img src="<?= base_url('assets_pasien/') ?>images/icons/icon-tablate.png" alt=""></span>
-    						</div>
-    						<div class="content">
-    							<h5 class="name">Dambul Ph.</h5>
-    							<span class="designation">Dentist</span>
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/signature.png" alt="" class="signature">
-    						</div>
-    					</div>
-    					<div class="expert-box-right">
-    						<div class="content">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ at. Duis aute irure dolor in reprehenderit in volutate velit esse cillum dolore.</p>
-    							<div class="expert-box-buttons">
-    								<a href="contact.html" class="site-btn white">Contact Now</a>
-    								<span class="comments-btn"><i class="fal fa-comments"></i></span>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-xl-6 col-lg-12">
-    				<div class="single-expert-box">
-    					<div class="expert-box-left">
-    						<div class="thumb">
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/team-3.jpg" alt="">
-    							<span class="icon"><img src="<?= base_url('assets_pasien/') ?>images/icons/icon-tablate.png" alt=""></span>
-    						</div>
-    						<div class="content">
-    							<h5 class="name">Rosalina Will..</h5>
-    							<span class="designation">Founder</span>
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/signature.png" alt="" class="signature">
-    						</div>
-    					</div>
-    					<div class="expert-box-right">
-    						<div class="content">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ at. Duis aute irure dolor in reprehenderit in volutate velit esse cillum dolore.</p>
-    							<div class="expert-box-buttons">
-    								<a href="contact.html" class="site-btn white">Contact Now</a>
-    								<span class="comments-btn"><i class="fal fa-comments"></i></span>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-xl-6 col-lg-12">
-    				<div class="single-expert-box">
-    					<div class="expert-box-left">
-    						<div class="thumb">
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/team-4.jpg" alt="">
-    							<span class="icon"><img src="<?= base_url('assets_pasien/') ?>images/icons/icon-tablate.png" alt=""></span>
-    						</div>
-    						<div class="content">
-    							<h5 class="name">Rosalina Will.</h5>
-    							<span class="designation">Founder</span>
-    							<img src="<?= base_url('assets_pasien/') ?>images/team/signature.png" alt="" class="signature">
-    						</div>
-    					</div>
-    					<div class="expert-box-right">
-    						<div class="content">
-    							<p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ at. Duis aute irure dolor in reprehenderit in volutate velit esse cillum dolore.</p>
-    							<div class="expert-box-buttons">
-    								<a href="contact.html" class="site-btn white">Contact Now</a>
-    								<span class="comments-btn"><i class="fal fa-comments"></i></span>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-    <!-- our-expert area end -->
 
     <!-- core feature area start -->
     <section class="core-feature-area pt-110 pb-110">
@@ -422,7 +294,7 @@
     <!-- core feature area end -->
 
     <!-- contact area start -->
-    <div class="contact-area pt-110 pb-110 bg_img" data-overlay="94" data-background="<?= base_url('assets_pasien/') ?>images/bg/contact-bg-1.jpg">
+    <!-- <div class="contact-area pt-110 pb-110 bg_img" data-overlay="94" data-background="<?= base_url('assets_pasien/') ?>images/bg/contact-bg-1.jpg">
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-12">
@@ -607,7 +479,7 @@
     			</div>
     		</div>
     	</div>
-    </div>
+    </div> -->
     <!-- contact area end -->
 
     <!-- video section start -->
