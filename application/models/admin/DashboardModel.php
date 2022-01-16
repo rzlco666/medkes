@@ -12,6 +12,14 @@ class DashboardModel extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
+	public function get_dokter()
+	{
+		$this->db->select('*');
+		$this->db->from('dokter');
+		$this->db->group_by('id_dokter');
+		$query = $this->db->get();
+		return $query;
+	}
 	public function get_selesai_konsultasi()
 	{
 		$this->db->select('*');

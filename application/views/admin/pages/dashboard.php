@@ -14,12 +14,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                                            <li class="breadcrumb-item active">Dashboard 3</li>
+                                            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Dashboard 3</h4>
+                                    <h4 class="page-title">Dashboard</h4>
                                 </div>
                             </div>
                         </div>
@@ -31,9 +30,8 @@
                                 <div class="card" id="tooltip-container">
                                     <div class="card-body">
                                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                                        <h4 class="mt-0 font-16">Income Status</h4>
-                                        <h2 class="text-primary my-3 text-center">$<span data-plugin="counterup">31,570</span></h2>
-                                        <p class="text-muted mb-0">Total income: $22506 <span class="float-end"><i class="fa fa-caret-up text-success me-1"></i>10.25%</span></p>
+                                        <h4 class="mt-0 font-16">Total Pasien Terdaftar</h4>
+                                        <h2 class="text-primary my-3 text-center"><span data-plugin="counterup"><?= $pasien ?></span> Pasien</h2>
                                     </div>
                                 </div>
                             </div>
@@ -42,9 +40,8 @@
                                 <div class="card" id="tooltip-container1">
                                     <div class="card-body">
                                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                                        <h4 class="mt-0 font-16">Sales Status</h4>
-                                        <h2 class="text-primary my-3 text-center"><span data-plugin="counterup">683</span></h2>
-                                        <p class="text-muted mb-0">Total sales: 2398 <span class="float-end"><i class="fa fa-caret-down text-danger me-1"></i>7.85%</span></p>
+                                        <h4 class="mt-0 font-16">Sedang Konsultasi</h4>
+                                        <h2 class="text-primary my-3 text-center"><span data-plugin="counterup"><?= $proses_konsultasi ?></span> Konsultasi</h2>
                                     </div>
                                 </div>
                             </div>
@@ -53,9 +50,8 @@
                                 <div class="card" id="tooltip-container2">
                                     <div class="card-body">
                                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                                        <h4 class="mt-0 font-16">Recent Users</h4>
-                                        <h2 class="text-primary my-3 text-center"><span data-plugin="counterup">3.2</span>M</h2>
-                                        <p class="text-muted mb-0">Total users: 121 M <span class="float-end"><i class="fa fa-caret-up text-success me-1"></i>3.64%</span></p>
+                                        <h4 class="mt-0 font-16">Selesai Konsultasi</h4>
+                                        <h2 class="text-primary my-3 text-center"><span data-plugin="counterup"><?= $selesai_konsultasi ?></span> Konsultasi</h2>
                                     </div>
                                 </div>
                             </div>
@@ -64,9 +60,8 @@
                                 <div class="card" id="tooltip-container3">
                                     <div class="card-body">
                                         <i class="fa fa-info-circle text-muted float-end" data-bs-container="#tooltip-container3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="More Info"></i>
-                                        <h4 class="mt-0 font-16">Total Revenue</h4>
-                                        <h2 class="text-primary my-3 text-center">$<span data-plugin="counterup">68,541</span></h2>
-                                        <p class="text-muted mb-0">Total revenue: $1.2 M <span class="float-end"><i class="fa fa-caret-up text-success me-1"></i>17.48%</span></p>
+                                        <h4 class="mt-0 font-16">Total Dokter Terdaftar</h4>
+                                        <h2 class="text-primary my-3 text-center"><span data-plugin="counterup"><?= $dokter ?></span> Dokter</h2>
                                     </div>
                                 </div>
                             </div>

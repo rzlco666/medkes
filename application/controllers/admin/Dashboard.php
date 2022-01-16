@@ -16,6 +16,7 @@ class Dashboard extends CI_Controller
 	public function index()
 	{
 		$data['pasien'] = $this->DashboardModel->get_pasien()->num_rows();
+		$data['dokter'] = $this->DashboardModel->get_dokter()->num_rows();
 		$data['selesai_konsultasi'] = $this->DashboardModel->get_selesai_konsultasi()->num_rows();
 		$data['proses_konsultasi'] = $this->DashboardModel->get_proses_konsultasi()->num_rows();
 		$data['belum_pembayaran'] = $this->DashboardModel->get_belum_pembayaran()->num_rows();
