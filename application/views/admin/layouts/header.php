@@ -217,6 +217,13 @@
 						</li>
 
 						<li>
+							<a href="<?= base_url('admin/kelola/pembayaran') ?>">
+								<i data-feather="dollar-sign"></i>
+								<span> Pembayaran </span>
+							</a>
+						</li>
+
+						<li>
 							<a href="<?= base_url('admin/jadwal/konsultasi') ?>">
 								<i data-feather="message-square"></i>
 								<span> Konsultasi </span>
