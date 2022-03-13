@@ -29,6 +29,7 @@
 	<link rel="stylesheet" href="<?= base_url('assets_pasien/') ?>css/default.css">
 	<link rel="stylesheet" href="<?= base_url('assets_pasien/') ?>css/style.css">
 	<link rel="stylesheet" href="<?= base_url('assets_pasien/') ?>css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/pasien/') ?>dropify/css/dropify.min.css ">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
 </head>

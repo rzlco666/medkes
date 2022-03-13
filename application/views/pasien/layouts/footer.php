@@ -93,9 +93,10 @@
     <!-- footer end -->
 
     <!--========= JS Here =========-->
-    <script src="<?= base_url('assets_pasien/') ?>js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="<?= base_url('assets/pasien/') ?>js/jquery-3.5.1.min.js"></script>
     <script src="<?= base_url('assets_pasien/') ?>js/bootstrap.min.js"></script>
     <script src="<?= base_url('assets_pasien/') ?>js/counterup.min.js"></script>
+	<script type="text/javascript" src="<?= base_url('assets/pasien/') ?>dropify/js/dropify.min.js"></script>
     <script src="<?= base_url('assets_pasien/') ?>js/datepicker.min.js"></script>
     <script src="<?= base_url('assets_pasien/') ?>js/datepicker.en.js"></script>
     <script src="<?= base_url('assets_pasien/') ?>js/jquery-ui.min.js"></script>
@@ -112,6 +113,22 @@
 	<!-- Select2 JS -->
 <script src="<?= base_url('assets/pasien/') ?>js/select2.min.js"></script>
 <script src="<?= base_url('assets/pasien/') ?>js/moment.min.js"></script>
+
+	<script src="<?= base_url('assets/pasien/') ?>time/js/mobiscroll.javascript.min.js"></script>
+	<script type="text/javascript">
+		$("#tangl").on('change', function() {
+			var jam_mulai = $(this).find(':selected').data('id')
+			const myArr = jam_mulai.split(",");
+			mobiscroll.datepicker('#demo-24h', {
+				themeVariant: 'light',
+				controls: ['time'],
+				timeFormat: 'HH:mm',
+				touchUi: true,
+				min: myArr[0],
+				max: myArr[1]
+			});
+		})
+	</script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
