@@ -28,7 +28,7 @@
 						<div class="page-title-right">
 							<ol class="breadcrumb m-0">
 								<li class="breadcrumb-item"><a href="<?= base_url('dokter') ?>">Dashboard</a></li>
-								<li class="breadcrumb-item active">Jadwal</li>
+								<li class="breadcrumb-item active">Jadwal <?= $this->session->nama_dokter; ?></li>
 							</ol>
 						</div>
 						<h4 class="page-title">Jadwal</h4>
@@ -42,8 +42,9 @@
 					<div class="card">
 						<div class="card-body">
 
-							<h4 class="header-title">Jadwal <?= $this->session->nama_dokter; ?></h4>
-							<button type="button" class="btn btn-primary mx-3 mt-3" data-toggle="modal" data-target="#exampleModal">Tambah Jadwal
+							<button type="button" class="btn btn-xs width-xs btn-primary waves-effect waves-light mb-2" data-toggle="modal"
+									data-target="#exampleModal">
+								<span class="btn-label"><i class="mdi mdi-plus-circle-outline"></i></span>Tambah Jadwal
 							</button>
 
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
@@ -65,7 +66,9 @@
 											<td><?= longdate_indo($data->tanggal) ?></td>
 											<td><?= $data->jam_mulai ?> WIB - <?= $data->jam_berakhir ?> WIB</td>
 											<td class="text-center">
-												<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#jadwal<?= $data->id_jadwal ?>">Edit Jadwal
+												<button type="button" class="btn btn-xs width-xs btn-warning waves-effect waves-light mb-2" data-toggle="modal"
+														data-target="#jadwal<?= $data->id_jadwal ?>">
+													<span class="btn-label"><i class="mdi mdi-circle-edit-outline"></i></span>Edit Jadwal
 												</button>
 											</td>
 											<div class="modal fade" id="jadwal<?= $data->id_jadwal ?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,8 +77,8 @@
 														<form action="<?= base_url('dokter/jadwal/proses_update_jadwal/' . $data->id_jadwal) ?>" method="POST">
 															<div class="modal-header">
 																<h5 class="modal-title" id="exampleModalLabel">Sunting Jadwal</h5>
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																</button>
+																<button type="button" class="btn-close"
+																		data-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div class="modal-body">
 																<div class="row">
@@ -155,8 +158,8 @@
 			<form action="<?= base_url('dokter/jadwal/proses_tambah_jadwal') ?>" method="POST">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Tambah Jadwal</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					</button>
+					<button type="button" class="btn-close"
+							data-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<div class="row">
