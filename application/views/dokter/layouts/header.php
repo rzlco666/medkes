@@ -216,6 +216,13 @@
 							</a>
 						</li>
 
+						<li>
+							<a href="<?= base_url('dokter/diagnosa') ?>">
+								<i data-feather="file-text"></i>
+								<span> Rekam Medis </span>
+							</a>
+						</li>
+
 						<li class="menu-title mt-2">Apps</li>
 
 						<li>
