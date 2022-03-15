@@ -107,9 +107,11 @@
 
 							<h4 class="header-title mb-2">Input Resep Obat</h4>
 							<button type="button"
-									class="btn btn-primary waves-effect waves-light mb-2"
+									class="btn btn-xs width-xs btn-primary waves-effect waves-light mb-2"
 									data-bs-toggle="modal"
-									data-bs-target="#resep">Tambah Resep</button>
+									data-bs-target="#resep">
+								<span class="btn-label"><i class="mdi mdi-plus-circle-outline"></i></span>Tambah Resep
+							</button>
 
 							<!-- Modal -->
 							<div id="resep" class="modal fade"
