@@ -66,7 +66,11 @@
 										<td><?= longdate_indo($data->tanggal) ?></td>
 										<td><?= $data->jam ?> WIB</td>
 										<td class="text-center">
-											<button type="button" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#fotoKeluhan<?= $data->id_konsultasi ?>"><i class="mdi mdi-eye"></i></button>
+											<button type="button"
+													class="btn btn-sm btn-outline-info waves-effect waves-light"
+													data-bs-toggle="modal"
+													data-bs-target="#fotoKeluhan<?= $data->id_konsultasi ?>"><i
+														class="mdi mdi-eye"></i></button>
 										</td>
 										<!-- Modal -->
 										<div id="fotoKeluhan<?= $data->id_konsultasi ?>" class="modal fade"
@@ -119,9 +123,12 @@
 										<td class="text-center">
 											<?php switch ($data->status):
 												case "Disetujui": ?>
-													<button type="button" class="btn btn-xs width-xs btn-primary waves-effect waves-light" data-toggle="modal"
+													<button type="button"
+															class="btn btn-xs width-xs btn-primary waves-effect waves-light"
+															data-toggle="modal"
 															data-target="#detailKonsultasi<?= $data->id_konsultasi ?>">
-														<span class="btn-label"><i class="mdi mdi-link"></i></span>Link Konsultasi
+														<span class="btn-label"><i class="mdi mdi-link"></i></span>Link
+														Konsultasi
 													</button>
 
 													<!-- Modal Lihat Link-->
@@ -134,7 +141,9 @@
 																<div class="modal-header">
 																	<h5 class="modal-title" id="exampleModalLongTitle">
 																		Detail Konsultasi</h5>
-																	<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+																	<button type="button" class="btn-close"
+																			data-dismiss="modal"
+																			aria-label="Close"></button>
 																</div>
 																<div class="modal-body">
 																	<div class="container">
@@ -244,19 +253,49 @@
 													<!-- END Modal Lihat Link-->
 													<?php break;
 												case "Ubah jadwal": ?>
-													<button type="button" class="btn btn-xs width-xs btn-warning waves-effect waves-light disabled text-white">
-														<span class="btn-label"><i class="mdi mdi-clock-outline"></i></span>Dalam Persetujuan
+													<button type="button"
+															class="btn btn-xs width-xs btn-warning waves-effect waves-light disabled text-white">
+														<span class="btn-label"><i
+																	class="mdi mdi-clock-outline"></i></span>Dalam
+														Persetujuan
 													</button>
 													<?php break;
 												case "Dibatalkan": ?>
-													<button type="button" class="btn btn-xs width-xs btn-danger waves-effect waves-light disabled">
-														<span class="btn-label"><i class="mdi mdi-close-circle-outline"></i></span>Dibatalkan
+													<button type="button"
+															class="btn btn-xs width-xs btn-danger waves-effect waves-light disabled">
+														<span class="btn-label"><i
+																	class="mdi mdi-close-circle-outline"></i></span>Dibatalkan
 													</button>
 													<?php break;
 												case "Selesai": ?>
-													<button type="button" class="btn btn-xs width-xs btn-success waves-effect waves-light disabled">
-														<span class="btn-label"><i class="mdi mdi-check-circle-outline"></i></span>Konsultasi Selesai
+													<button type="button"
+															class="btn btn-xs width-xs btn-success waves-effect waves-light disabled">
+														<span class="btn-label"><i
+																	class="mdi mdi-check-circle-outline"></i></span>Selesai
 													</button>
+													<br>
+
+													<?php
+													$temp = "'$data->id_konsultasi'";
+													$check = $this->db->query("SELECT * FROM rekam_medis WHERE id_konsultasi = $temp");
+													if ($check->num_rows() > 0) {
+														?>
+														<button type="button"
+																class="btn btn-xs width-xs btn-primary waves-effect waves-light disabled mt-2">
+															<span class="btn-label"><i
+																		class="mdi mdi-check-circle-outline"></i></span>Sudah
+															Diagnosa
+														</button>
+														<?php
+													} else {
+														?>
+														<a href="<?= base_url('dokter/diagnosa/input_diagnosa/' . $data->id_konsultasi . '/' . $data->id_dokter . '/' . $data->id_pasien) ?>"
+														   class="btn btn-xs width-xs btn-primary waves-effect waves-light mt-2">
+															<span class="btn-label"><i class="mdi mdi-stethoscope"></i></span>Diagnosa
+														</a>
+														<?php
+													}
+													?>
 													<?php break;
 											endswitch; ?>
 										</td>

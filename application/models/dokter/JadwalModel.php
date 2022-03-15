@@ -66,7 +66,7 @@ class JadwalModel extends CI_Model
 	public function get_konsultasi()
 	{
 		$id_dokter = $this->session->id_dokter;
-		$this->db->select('nama_pasien, meet, pendaftaran_konsultasi.id_konsultasi, keluhan, foto_keluhan, tanggal, jam, pendaftaran_konsultasi.status,');
+		$this->db->select('nama_pasien, meet, pendaftaran_konsultasi.id_konsultasi, keluhan, foto_keluhan, tanggal, jam, pendaftaran_konsultasi.status, pendaftaran_konsultasi.id_dokter, pendaftaran_konsultasi.id_pasien,');
 		$this->db->from('pendaftaran_konsultasi');
 		$this->db->join('pasien', 'pasien.id_pasien = pendaftaran_konsultasi.id_pasien');
 		$this->db->where('pendaftaran_konsultasi.id_dokter', $id_dokter);
