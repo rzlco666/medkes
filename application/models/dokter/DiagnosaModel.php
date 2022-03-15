@@ -48,7 +48,7 @@ class DiagnosaModel extends CI_Model
 	public function daftar_diagnosa($id_pasien)
 	{
 		$id_dokter = $this->session->id_dokter;
-		$this->db->select('nama_pasien, pendaftaran_konsultasi.id_konsultasi, no_record, rekam_medis.tanggal, foto_pemeriksaan');
+		$this->db->select('nama_pasien, pendaftaran_konsultasi.id_konsultasi, no_record, rekam_medis.tanggal, foto_pemeriksaan, rekam_medis.id_dokter, rekam_medis.id_pasien');
 		$this->db->from('rekam_medis');
 		$this->db->join('pasien', 'pasien.id_pasien = rekam_medis.id_pasien');
 		$this->db->join('pendaftaran_konsultasi', 'pendaftaran_konsultasi.id_konsultasi = rekam_medis.id_konsultasi');

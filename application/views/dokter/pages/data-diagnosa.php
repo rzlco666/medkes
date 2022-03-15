@@ -74,7 +74,7 @@
 										</td>
 										<td class="text-center">
 											<?php if ($date === "Belum input tanggal") { ?>
-												<a href="<?= base_url('dokter/diagnosa/input_diagnosa/' . $row->id_konsultasi) ?>">
+												<a href="<?= base_url('dokter/diagnosa/input_diagnosa/' . $row->id_konsultasi . '/' . $row->id_dokter . '/' . $row->id_pasien) ?>">
 													<button type="button"
 															class="btn btn-xs width-xs btn-primary waves-effect waves-light">
 															<span class="btn-label"><i
