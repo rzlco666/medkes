@@ -94,7 +94,18 @@
 											<div class="col-sm-6">
 												<div class="form-group">
 													<label for="profession">Tarif Konsultasi</label>
+													<?php
+													//check if null
+													if($profile->harga === NULL) :
+													?>
+													<input type="text" readonly name="harga" class="form-control mb-4" placeholder="Harga">
+													<?php
+													else :
+													?>
 													<input type="text" readonly name="harga" class="form-control mb-4" placeholder="Harga" value="<?= "Rp " . number_format($profile->harga, 2, ",", ".") ?>">
+													<?php
+													endif;
+													?>
 												</div>
 											</div>
 											<div class="col-sm-6">

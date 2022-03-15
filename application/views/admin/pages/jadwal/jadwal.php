@@ -42,7 +42,7 @@
 					<div class="card">
 						<div class="card-body">
 
-							<h4 class="header-title">Jadwal</h4>
+							<h4 class="header-title mb-2">Jadwal</h4>
 
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
 								<thead>
@@ -65,7 +65,9 @@
 											<td><?= longdate_indo($data->tanggal) ?></td>
 											<td><?= $data->jam_mulai ?> WIB - <?= $data->jam_berakhir ?> WIB</td>
 											<td>
-												<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#jadwal<?= $data->id_jadwal ?>">Edit Jadwal
+												<button type="button" class="btn btn-xs width-xs btn-warning waves-effect waves-light mb-2" data-toggle="modal"
+														data-target="#jadwal<?= $data->id_jadwal ?>">
+													<span class="btn-label"><i class="mdi mdi-circle-edit-outline"></i></span>Edit Jadwal
 												</button>
 												<div class="modal fade" id="jadwal<?= $data->id_jadwal ?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered" role="document">
@@ -73,8 +75,8 @@
 															<form action="<?= base_url('admin/jadwal/proses_update_jadwal/' . $data->id_jadwal) ?>" method="POST">
 																<div class="modal-header">
 																	<h5 class="modal-title" id="exampleModalLabel">Sunting Jadwal</h5>
-																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	</button>
+																	<button type="button" class="btn-close"
+																			data-dismiss="modal" aria-label="Close"></button>
 																</div>
 																<div class="modal-body">
 																	<div class="row">

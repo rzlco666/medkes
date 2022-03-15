@@ -41,7 +41,7 @@
 					<div class="card">
 						<div class="card-body">
 
-							<h4 class="header-title">Kelola Pasien</h4>
+							<h4 class="header-title mb-2">Kelola Dokter</h4>
 
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
 								<thead>
@@ -65,18 +65,16 @@
 											<td><?= $row->email ?> </td>
 											<td><?= $row->keahlian ?></td>
 											<?php if ($row->status == "Aktif") { ?>
-												<td class="text-text-center"><span class="badge badge-success"> <?= $row->status ?> </span></td>
+												<td class="text-text-center"><span class="badge bg-success"> <?= $row->status ?> </span></td>
 											<?php	} else { ?>
-												<td class="text-text-center"><span class="badge badge-warning"> <?= $row->status ?> </span></td>
+												<td class="text-text-center"><span class="badge bg-danger"> <?= $row->status ?> </span></td>
 											<?php	} ?>
 											<td class="text-center">
 												<a href="<?= base_url('admin/kelola/detail_dokter/' . $row->id_dokter) ?>">
-													<button class="btn btn-primary btn-sm">Info Dokter
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
-															<circle cx="12" cy="12" r="10"></circle>
-															<line x1="12" y1="16" x2="12" y2="12"></line>
-															<line x1="12" y1="8" x2="12.01" y2="8"></line>
-														</svg>
+													<button type="button"
+															class="btn btn-xs width-xs btn-primary waves-effect waves-light text-white">
+														<span class="btn-label"><i
+																	class="mdi mdi-information-outline"></i></span>Info Dokter
 													</button>
 												</a>
 											</td>

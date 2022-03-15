@@ -52,7 +52,6 @@
 										<th>Tanggal</th>
 										<th>Jam</th>
 										<th>Keluhan</th>
-										<th>Foto Keluhan</th>
 										<th>Status</th>
 										<th>Aksi</th>
 									</tr>
@@ -66,83 +65,89 @@
 											<td><?= $data->nama_pasien ?></td>
 											<td><?= longdate_indo($data->tanggal) ?></td>
 											<td><?= $data->jam ?> WIB</td>
-											<td><?= $data->keluhan ?></td>
-											<td>
-												<a href="javascript:void(0);" data-toggle="modal" data-target="#fotoKeluhan<?= $data->id_konsultasi ?>">
-													Lihat Foto
-												</a>
-												<!-- Modal -->
-												<div class="modal fade" id="fotoKeluhan<?= $data->id_konsultasi ?>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-													<div class="modal-dialog modal-dialog-centered" role="document">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="exampleModalLabel">Foto Keluhan</h5>
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																</button>
-															</div>
-															<div class="modal-body">
-																<div class="row">
-																	<div class="col-md-12 mx-auto">
-																		<img class="img-thumbnail" src="<?= base_url('uploads/keluhan/' . $data->foto_keluhan) ?>" alt="">
-																	</div>
+											<td class="text-center">
+												<button type="button"
+														class="btn btn-sm btn-outline-info waves-effect waves-light"
+														data-bs-toggle="modal"
+														data-bs-target="#fotoKeluhan<?= $data->id_konsultasi ?>"><i
+															class="mdi mdi-eye"></i></button>
+											</td>
+											<!-- Modal -->
+											<div id="fotoKeluhan<?= $data->id_konsultasi ?>" class="modal fade"
+												 tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel"
+												 aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h4 class="modal-title" id="standard-modalLabel">Detail
+																Keluhan</h4>
+															<button type="button" class="btn-close"
+																	data-bs-dismiss="modal" aria-label="Close"></button>
+														</div>
+														<div class="modal-body">
+															<div class="row">
+																<div class="col-md-12 mx-auto">
+																	<h6>Keterangan keluhan :</h6>
+																	<p><?= $data->keluhan ?></p>
+																	<h6>Foto keluhan :</h6>
+																	<img class="img-thumbnail"
+																		 src="<?= base_url('uploads/keluhan/' . $data->foto_keluhan) ?>"
+																		 alt="">
 																</div>
 															</div>
-															<div class="modal-footer">
-																<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i>Tutup</button>
-															</div>
 														</div>
-													</div>
-												</div>
-											</td>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-light"
+																	data-bs-dismiss="modal">Close
+															</button>
+														</div>
+													</div><!-- /.modal-content -->
+												</div><!-- /.modal-dialog -->
+											</div><!-- /.modal -->
 											<td>
 												<?php switch ($data->status):
 													case "Disetujui": ?>
-														<span class="btn btn-primary"><?= $data->status ?></span>
-													<?php break;
+														<span class="badge bg-primary text-white"> <?= $data->status ?> </span>
+														<?php break;
 													case "Ubah jadwal": ?>
-														<span class="btn btn-warning"><?= $data->status ?></span>
-													<?php break;
+														<span class="badge bg-warning text-white"> <?= $data->status ?> </span>
+														<?php break;
 													case "Dibatalkan": ?>
-														<span class="btn btn-danger"><?= $data->status ?></span>
-													<?php break;
+														<span class="badge bg-danger text-white"> <?= $data->status ?> </span>
+														<?php break;
 													case "Selesai": ?>
-														<span class="btn btn-success"><?= $data->status ?></span>
-												<?php break;
+														<span class="badge bg-success text-white"> <?= $data->status ?> </span>
+														<?php break;
 												endswitch; ?>
 											</td>
 											<td class="text-center">
 												<?php switch ($data->status):
 													case "Disetujui": ?>
-														<button style="cursor: not-allowed !important;" disabled class="btn btn-primary btn-sm">Menunggu Selesai
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
-																<polyline points="20 6 9 17 4 12"></polyline>
-															</svg>
+														<button style="cursor: not-allowed !important;" type="button"
+																class="btn btn-xs width-xs btn-primary waves-effect waves-light text-white">
+														<span class="btn-label"><i
+																	class="mdi mdi-check-circle-outline"></i></span>Menunggu Selesai
 														</button>
 													<?php break;
 													case "Ubah jadwal": ?>
-														<button class="btn btn-warning btn-sm">Dalam Persetujuan
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
-																<circle cx="12" cy="12" r="10"></circle>
-																<polyline points="12 6 12 12 16 14"></polyline>
-															</svg>
+														<button style="cursor: not-allowed !important;" type="button"
+																class="btn btn-xs width-xs btn-warning waves-effect waves-light text-white">
+														<span class="btn-label"><i
+																	class="mdi mdi-clock-outline"></i></span>Dalam Persetujuan
 														</button>
 													<?php break;
 													case "Dibatalkan": ?>
-														<button class="btn btn-danger btn-sm">Dibatalkan
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
-																<circle cx="12" cy="12" r="10"></circle>
-																<line x1="15" y1="9" x2="9" y2="15"></line>
-																<line x1="9" y1="9" x2="15" y2="15"></line>
-															</svg>
+														<button style="cursor: not-allowed !important;" type="button"
+																class="btn btn-xs width-xs btn-danger waves-effect waves-light text-white">
+														<span class="btn-label"><i
+																	class="mdi mdi-close-circle-outline"></i></span>Dibatalkan
 														</button>
 													<?php break;
 													case "Selesai": ?>
-														<button class="btn btn-success btn-sm">Info Diagnosa
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
-																<circle cx="12" cy="12" r="10"></circle>
-																<line x1="12" y1="16" x2="12" y2="12"></line>
-																<line x1="12" y1="8" x2="12.01" y2="8"></line>
-															</svg>
+														<button style="cursor: not-allowed !important;" type="button"
+																class="btn btn-xs width-xs btn-success waves-effect waves-light">
+														<span class="btn-label"><i
+																	class="mdi mdi-check-circle-outline"></i></span>Selesai
 														</button>
 												<?php break;
 												endswitch; ?>
