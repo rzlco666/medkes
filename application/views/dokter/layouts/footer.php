@@ -159,6 +159,7 @@
 
 <!-- Datatables init -->
 <script src="<?= base_url('assets_admin/') ?>js/pages/datatables.init.js"></script>
+<script type="text/javascript" src="<?= base_url('assets/pasien/') ?>dropify/js/dropify.min.js"></script>
 
 <!-- Chart JS -->
 <script src="<?= base_url('assets_admin/') ?>libs/chart.js/Chart.bundle.min.js"></script>
@@ -184,6 +185,19 @@
 
 <!-- App js-->
 <script src="<?= base_url('assets_admin/') ?>js/app.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.dropify').dropify({
+			messages: {
+				default: ' ',
+				replace: 'Ganti',
+				remove: 'Hapus',
+				error: 'error'
+			}
+		});
+	});
+</script>
 
 </body>
 
