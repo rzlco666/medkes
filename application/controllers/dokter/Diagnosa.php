@@ -32,12 +32,14 @@ class Diagnosa extends CI_Controller
 		$this->load->view('dokter/layouts/footer');
 	}
 
-	public function input_diagnosa($id_konsultasi)
+	public function input_diagnosa($id_konsultasi, $id_dokter, $id_pasien)
 	{
 		$data['diagnosa'] = $this->DiagnosaModel->get_diagnosa($id_konsultasi)->row();
 		$data['obat'] = $this->DiagnosaModel->get_obat()->result();
 		$data['konsultasi'] = $this->DiagnosaModel->get_resep_konsultasi($id_konsultasi)->result();
 		$data['id_konsultasi'] = $id_konsultasi;
+		$data['id_dokter'] = $id_dokter;
+		$data['id_pasien'] = $id_pasien;
 		$this->load->view('dokter/layouts/header');
 		$this->load->view('dokter/pages/diagnosa', $data);
 		$this->load->view('dokter/layouts/footer');
@@ -65,7 +67,7 @@ class Diagnosa extends CI_Controller
 		$this->load->view('dokter/layouts/footer');
 	}
 
-	public function proses_tambah_diagnosa($id_konsultasi)
+	public function proses_tambah_diagnosa($id_konsultasi, $id_dokter, $id_pasien)
 	{
 		$this->form_validation->set_rules('no_rekam_medis', 'Nomor Rekam Medis', 'required');
 		$this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
@@ -91,19 +93,27 @@ class Diagnosa extends CI_Controller
 					redirect(base_url('dokter/diagnosa/input_diagnosa/' . $id_konsultasi));
 				}
 			}
+			$no_record 			= $this->DiagnosaModel->id_rekam_medis();
+
 			$no_rekam_medis 	= $this->input->post('no_rekam_medis');
+
 			$diagnosa    		= $this->input->post('diagnosa');
 			$tanggal      		= $this->input->post('tanggal');
 			$jam 	  			= $this->input->post('jam');
 			$foto_pemeriksaan 	= $this->upload->data('file_name');
 			$data = [
+				'no_record'			=> $no_record,
 				'no_rekam_medis' 	=> $no_rekam_medis,
 				'diagnosa' 		 	=> $diagnosa,
 				'tanggal' 		 	=> $tanggal,
 				'jam'			 	=> $jam,
-				'foto_pemeriksaan'	=> $foto_pemeriksaan
+				'foto_pemeriksaan'	=> $foto_pemeriksaan,
+				'id_dokter'			=> $id_dokter,
+				'id_pasien'			=> $id_pasien,
+				'id_konsultasi'		=> $id_konsultasi,
 			];
-			$this->DiagnosaModel->update_diagnosa($id_konsultasi, $data);
+			//$this->DiagnosaModel->update_diagnosa($id_konsultasi, $data);
+			$this->db->insert('rekam_medis', $data);
 			$this->session->set_flashdata('flash', 'Berhasil Di Update');
 			redirect(base_url('dokter/diagnosa/edit_diagnosa/' . $id_konsultasi));
 		}

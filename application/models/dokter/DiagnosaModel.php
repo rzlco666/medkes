@@ -65,6 +65,11 @@ class DiagnosaModel extends CI_Model
 		return $this->db->get_where('rekam_medis', ['id_konsultasi' => $id_konsultasi]);
 	}
 
+	public function get_norekam($id_konsultasi)
+	{
+		return $this->db->get_where('rekam_medis', ['id_konsultasi' => $id_konsultasi]);
+	}
+
 	public function get_resep_id($id_konsultasi)
 	{
 		return $this->db->get_where('resep', ['id_konsultasi' => $id_konsultasi]);
