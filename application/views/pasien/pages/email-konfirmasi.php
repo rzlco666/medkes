@@ -92,7 +92,7 @@
 		}
 
 		a {
-			color: #1a82e2;
+			color: #1ae277;
 		}
 
 		img {

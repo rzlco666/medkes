@@ -91,7 +91,11 @@ class Konsultasi extends CI_Controller
 
 				$id_pembayaran = $this->PembayaranModel->id_pembayaran();
 				$kode_bayar    = 8888 . random_string('numeric', 8);
-				$nominal 	   = $this->input->post('nominal');
+				if (null == $this->input->post('nominal')) {
+					$nominal = 0;
+				} else {
+					$nominal = $this->input->post('nominal');
+				}
 				$data_pembayaran = [
 					'id_pembayaran' => $id_pembayaran,
 					'kode_bayar'    => $kode_bayar,

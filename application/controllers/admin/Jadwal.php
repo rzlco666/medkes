@@ -54,8 +54,8 @@ class Jadwal extends CI_Controller
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
 			'smtp_port' => 465,
-			'smtp_user' => 'helpdoctorcare@gmail.com',
-			'smtp_pass' => 'hagaibnuhakam12',
+			'smtp_user' => 'helpmedkes@gmail.com',
+			'smtp_pass' => 'medkes2022',
 			'mailtype' => 'html',
 			'charset'  => 'utf-8',
 			'priority' => '1'
@@ -63,7 +63,7 @@ class Jadwal extends CI_Controller
 		$this->email->initialize($config);
 		$this->email->set_newline("\r\n");
 
-		$this->email->from('helpdoctorcare@gmail.com', 'Media Kesehatan');
+		$this->email->from('helpmedkes@gmail.com', 'Media Kesehatan');
 
 		$this->email->to($data_konsultasi['konsultasi']->email);  // replace it with receiver mail id
 		$this->email->subject('Link Meet Konsultasi'); // replace it with relevant subject 
