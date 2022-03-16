@@ -191,8 +191,6 @@
 
 					<ul id="side-menu">
 
-						<li class="menu-title">Navigation</li>
-
 						<li>
 							<a href="<?= base_url('admin') ?>">
 								<i data-feather="airplay"></i>
@@ -200,19 +198,12 @@
 							</a>
 						</li>
 
-						<li class="menu-title mt-2">Apps</li>
+						<li class="menu-title mt-2">Konsultasi</li>
 
 						<li>
-							<a href="<?= base_url('admin/kelola/daftar_pasien') ?>">
-								<i data-feather="list"></i>
-								<span> Daftar Pasien </span>
-							</a>
-						</li>
-
-						<li>
-							<a href="<?= base_url('admin/jadwal') ?>">
-								<i data-feather="calendar"></i>
-								<span> Jadwal </span>
+							<a href="<?= base_url('admin/jadwal/konsultasi') ?>">
+								<i data-feather="message-square"></i>
+								<span> Konsultasi </span>
 							</a>
 						</li>
 
@@ -223,10 +214,28 @@
 							</a>
 						</li>
 
+						<li class="menu-title mt-2">Dokter</li>
+
 						<li>
-							<a href="<?= base_url('admin/jadwal/konsultasi') ?>">
-								<i data-feather="message-square"></i>
-								<span> Konsultasi </span>
+							<a href="<?= base_url('admin/kelola/dokter') ?>">
+								<i data-feather="users"></i>
+								<span> Kelola Dokter </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('admin/jadwal') ?>">
+								<i data-feather="calendar"></i>
+								<span> Jadwal Dokter </span>
+							</a>
+						</li>
+
+						<li class="menu-title mt-2">Pasien</li>
+
+						<li>
+							<a href="<?= base_url('admin/kelola/daftar_pasien') ?>">
+								<i data-feather="list"></i>
+								<span> Daftar Pasien </span>
 							</a>
 						</li>
 
@@ -237,10 +246,12 @@
 							</a>
 						</li>
 
+						<li class="menu-title mt-2">Obat</li>
+
 						<li>
-							<a href="<?= base_url('admin/kelola/dokter') ?>">
-								<i data-feather="user"></i>
-								<span> Kelola Dokter </span>
+							<a href="<?= base_url('admin/obat') ?>">
+								<i data-feather="archive"></i>
+								<span> Kelola Obat </span>
 							</a>
 						</li>
 
