@@ -84,9 +84,11 @@
 											<a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter<?= $data->kode_bayar ?>">
 												<h6 class="text-warning">Bayar Sekarang</h6>
 											</a>
+											<?php if ($data->foto_pembayaran == NULL) { ?>
 											<a href="javascript:void(0)" data-toggle="modal" data-target="#cancel<?= $data->id_konsultasi ?>">
 												<h6 class="text-danger">Batalkan</h6>
 											</a>
+											<?php	}  ?>
 											<!-- Modal Bayar Sekarang-->
 											<div class="modal fade" id="exampleModalCenter<?= $data->kode_bayar ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 												<div class="modal-dialog modal-dialog-centered" role="document">
