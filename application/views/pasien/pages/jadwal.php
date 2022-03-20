@@ -82,7 +82,10 @@
 									<?php switch ($data->status):
 										case "Menunggu": ?>
 											<a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter<?= $data->kode_bayar ?>">
-												<h6 class="text-warning">Bayar Sekarang <i class="bi bi-caret-right-fill"></i></h6>
+												<h6 class="text-warning">Bayar Sekarang</h6>
+											</a>
+											<a href="javascript:void(0)" data-toggle="modal" data-target="#cancel<?= $data->id_konsultasi ?>">
+												<h6 class="text-danger">Batalkan</h6>
 											</a>
 											<!-- Modal Bayar Sekarang-->
 											<div class="modal fade" id="exampleModalCenter<?= $data->kode_bayar ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -110,7 +113,7 @@
 																<?php if ($data->foto_pembayaran != NULL) { ?>
 																	<img style="width: 300px; height: 300px;" src="<?= base_url('uploads/pembayaran/') . $data->foto_pembayaran ?>" alt="">
 																<?php	} else { ?>
-																	<input type="file" name="foto_pembayaran" class="dropify" data-height="200">
+																	<input type="file" name="foto_pembayaran" class="dropify" data-height="80">
 																<?php	} ?>
 															</div>
 														</div>
@@ -125,6 +128,32 @@
 												</div>
 											</div>
 											<!-- END Modal Bayar Sekarang-->
+											<!-- Modal Cancel -->
+											<div class="modal fade" id="cancel<?= $data->id_konsultasi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<?= form_open_multipart('pasien/konsultasi/batal_konsultasi/'.$data->id_konsultasi, array('method' => 'POST')) ?>
+														<input type="hidden" name="id_pembayaran" value="<?= $data->id_konsultasi ?>">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLongTitle">Batalkan Booking Konsultasi</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<div class="form-group text-left">
+																<p>Apakah anda yakin untuk membatalkan booking konsultasi?</p>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+															<button type="submit" class="btn btn-primary">Batalkan Sekarang</button>
+														</div>
+														<?= form_close() ?>
+													</div>
+												</div>
+											</div>
+											<!-- END Modal Cancel -->
 											<?php break;
 										case "Disetujui": ?>
 											<a href="javascript:void(0)" data-toggle="modal" data-target="#detailKonsultasi<?= $data->id_konsultasi ?>">
@@ -184,7 +213,7 @@
 											<?php break;
 										case "Ubah jadwal": ?>
 											<a href="javascript:void(0)" data-toggle="modal" data-target="#ubahJadwal<?= $data->id_konsultasi ?>">
-												<h6 class="text-warning">Ubah Jadwal <i class="bi bi-caret-right-fill"></i></h6>
+												<h6 class="text-warning">Ubah Jadwal</h6>
 											</a>
 											<!-- Modal Ubah Jadwal -->
 											<div class="modal fade" id="ubahJadwal<?= $data->id_konsultasi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -236,7 +265,7 @@
 											<?php break;
 										case "Selesai": ?>
 											<a href="<?= base_url('pasien/konsultasi/diagnosa/' . $data->id_konsultasi) ?>">
-												<h6 class="text-success">Hasil Diagnosa <i class="bi bi-caret-right-fill"></i></h6>
+												<h6 class="text-success">Hasil Diagnosa</h6>
 											</a>
 											<a href="<?= base_url('pasien/konsultasi/cetak_invoice/' . $data->id_konsultasi) ?>" target="_blank" class="text-info">Invoice</a>
 											<?php break;

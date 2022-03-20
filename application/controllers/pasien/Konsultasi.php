@@ -145,6 +145,17 @@ class Konsultasi extends CI_Controller
 		}
 	}
 
+	public function batal_konsultasi($id_konsultasi)
+	{
+		$data = [
+			'status' 	  => 'Dibatalkan',
+		];
+
+		$this->db->where('id_konsultasi', $id_konsultasi);
+		$this->db->update('pendaftaran_konsultasi', $data);
+		redirect(base_url('pasien/konsultasi/jadwal'));
+	}
+
 	public function ubah_jadwal_cancel($id_konsultasi)
 	{
 		$data = [
