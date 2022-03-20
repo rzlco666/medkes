@@ -26,7 +26,13 @@
 				<div class="doctor-details-wrap">
 					<div class="authore-box">
 						<div class="thumb">
-							<img src="<?= base_url('uploads/profile/' . $dokter->foto) ?>" alt="">
+							<?php
+							if ($dokter->foto == null) {
+								echo '<img style="object-fit: cover; width: 300px; height: 370px;" src="https://citilab.org.pk/wp-content/uploads/2018/07/Doctor-placeholder-male-e1597046960477.jpg" alt="">';
+							} else {
+								echo '<img style="object-fit: cover; width: 300px; height: 370px;" src="' . base_url('uploads/profile/') . $dokter->foto . '" alt="">';
+							}
+							?>
 						</div>
 						<div class="content">
 							<span><i class="fal fa-map-marker-alt"></i> <?= $dokter->alamat ?></span>

@@ -96,17 +96,17 @@
 					<div class="mainmenu">
 						<nav id="mobile-menu">
 							<ul>
-								<li><a href="<?= base_url('pasien/') ?>">Home</a>
-								</li>
-								<li><a href="<?= base_url('pasien/konsultasi/jadwal') ?>">Riwayat</a>
-								</li>
-								<li><a href="<?= base_url('pasien/dokter') ?>">Dokter</a>
-								</li>
-
-								<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
-								</li>
 
 								<?php if ($this->session->id_pasien) { ?>
+									<li><a href="<?= base_url('pasien/') ?>">Home</a>
+									</li>
+									<li><a href="<?= base_url('pasien/konsultasi/jadwal') ?>">Riwayat</a>
+									</li>
+									<li><a href="<?= base_url('pasien/dokter') ?>">Dokter</a>
+									</li>
+									<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
+									</li>
+
 									<li><a href="#0">Hai, <?= $this->session->userdata('nama_pasien') ?> +</a>
 										<ul class="sub-menu">
 											<li><a href="<?= base_url('pasien/profile') ?>">Profile</a></li>
@@ -114,6 +114,13 @@
 										</ul>
 									</li>
 								<?php	} else { ?>
+									<li><a href="<?= base_url('pasien/') ?>">Home</a>
+									</li>
+									<li><a href="<?= base_url('pasien/dokter') ?>">Dokter</a>
+									</li>
+									<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
+									</li>
+
 									<li><a href="#0">Akun +</a>
 										<ul class="sub-menu">
 											<li><a href="<?= base_url('pasien/auth/') ?>">Login</a></li>

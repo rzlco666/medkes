@@ -34,7 +34,13 @@
 				<div class="col-xl-4 col-lg-6 col-sm-12 mt-30">
 					<div class="single-carousel-item">
 						<div class="thumb">
-							<img src="<?= base_url('uploads/profile/' . $data->foto) ?>" alt="">
+							<?php
+								if ($data->foto == null) {
+									echo '<img style="object-fit: cover; width: 219px; height: 219px;" src="https://citilab.org.pk/wp-content/uploads/2018/07/Doctor-placeholder-male-e1597046960477.jpg" alt="">';
+								} else {
+									echo '<img style="object-fit: cover; width: 219px; height: 219px;" src="' . base_url('uploads/profile/') . $data->foto . '" alt="">';
+								}
+							?>
 							<span class="icon">
 								<img src="<?= base_url('assets_pasien/') ?>images/icons/heart-icon.png" alt="">
 							</span>
