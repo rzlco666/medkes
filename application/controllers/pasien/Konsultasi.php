@@ -193,7 +193,8 @@ class Konsultasi extends CI_Controller
 	{
 		$data['title'] = 'Diagnosa';
 		$data['resep'] = $this->KonsultasiModel->get_resep_konsultasi($id_konsultasi)->result();
-		$data['apotek'] = $this->KonsultasiModel->get_apotek()->result();
+		$data['idkonsultasi'] = $id_konsultasi;
+		/*$data['apotek'] = $this->KonsultasiModel->get_apotek()->result();*/
 		if (!count($data['resep'])) {
 			$this->session->set_flashdata('validasiDiagnosa', 'Diagnosa');
 			redirect(base_url('pasien/konsultasi/jadwal'));

@@ -9,7 +9,7 @@
 	<title>
 		Resep Media Kesehatan
 	</title>
-	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/admin/') ?>assets/img/doctor-care.png" />
+	<link rel="shortcut icon" href="<?= base_url('assets_pasien/') ?>images/logo/favicon_medkes.png" type="images/x-icon" />
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet" />
 	<link href="<?= base_url('assets/admin/') ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -42,24 +42,19 @@
 															<div class="row">
 																<div class="col-sm-6 col-12 mr-auto">
 																	<div class="d-flex">
-																		<img class="company-logo" src="<?= base_url('assets/admin/') ?>assets/img/doctor-care.png" alt="company" />
-																		<h3 class="in-heading align-self-center">
-																			Doktor Care
-																		</h3>
+																		<img src="<?= base_url('assets_pasien/') ?>images/logo/logo_medkes2.png" alt="company" />
 																	</div>
 																</div>
 
-
-
-																<div class="col-sm-6 align-self-center mt-3">
+																<div class="col-sm-6" style="text-align: right">
 																	<p class="inv-street-addr">
-																		Doktor Care
+																		Media Kesehatan
 																	</p>
 																	<p class="inv-email-address">
-																		doktor_care@mail.com
+																		helpmedkes@gmail.com
 																	</p>
 																	<p class="inv-email-address">
-																		0855 1212 1921
+																		0812 3456 7891
 																	</p>
 																</div>
 															</div>
@@ -93,6 +88,20 @@
 																		<?php	} ?>
 																	</tbody>
 																</table>
+															</div>
+														</div>
+														<div class="inv--total-amounts">
+															<div class="row mt-4">
+																<div class="col-sm-5 col-12 order-sm-0 order-1"></div>
+																<div class="col-sm-7 col-12 order-sm-1 order-0">
+																	<div class="text-sm-right">
+																		<div class="row">
+																			<div class="col-12 grand-total-title">
+																				<p>Dicetak pada <?= longdate_indo(date("Y-m-d")).' '.date("h:i:s") ?> </p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
 															</div>
 														</div>
 													</div>

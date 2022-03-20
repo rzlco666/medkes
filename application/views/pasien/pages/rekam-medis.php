@@ -1,118 +1,118 @@
-<!-- Content -->
-<div class="account-content">
-	<!-- Page Header -->
-
-	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('updateResep'); ?>"></div>
-	<?php unset($_SESSION['updateResep']); ?>
-
-
-	<div class="modal fade" id="tebus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<?= form_open_multipart('pasien/konsultasi/tebus/' . $diagnosa->id_konsultasi, array('method' => 'POST')) ?>
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Penebusan Pada Apotek</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+<!-- breadcrumb area start -->
+<section class="breadcrumb-area bg_img pb-160" data-background="<?= base_url('assets_pasien/') ?>images/banner/01.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div class="breadcrumb-content">
+					<h2 class="title" style="color: #003242;">Rekam Medis <?= $idkonsultasi ?></h2>
+					<ul style="color: #003242;">
+						<li><a style="color: #003242;" href="<?= base_url('pasien/') ?>">Home</a></li>
+						<li>|</li>
+						<li>Rekam Medis</li>
+					</ul>
+					<h1 class="back-title">Rekam Medis</h1>
 				</div>
-				<div class="modal-body">
-					<div class="form-group text-left">
-						<label>Daftar Apotek</label>
-						<select name="id_admin_apotek" class="form-control">
-							<?php foreach ($apotek as $row) { ?>
-								<option value="<?= $row->id_admin_apotek ?>"><?= $row->nama_admin ?></option>
-							<?php	} ?>
-						</select>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- breadcrumb area end -->
+
+<!-- checkout-area start -->
+<section class="checkout-area pt-120 pb-120">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="checkbox-form">
+						<h3>Resep Obat</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table table-striped">
+									<thead>
+									<tr>
+										<th scope="col">No</th>
+										<th scope="col">Nama Obat</th>
+										<th scope="col">Cara Pakai</th>
+										<th scope="col">Dosis</th>
+									</tr>
+									</thead>
+									<tbody>
+									<?php $no = 1; ?>
+									<?php foreach ($resep as $data) { ?>
+										<tr>
+											<th scope="row"><?= $no++ ?></th>
+											<td><?= $data->nama_obat ?></td>
+											<td><?= $data->cara_pakai ?></td>
+											<td><?= $data->dosis ?></td>
+										</tr>
+									<?php	} ?>
+									</tbody>
+								</table>
+								<a class="site-btn" target="_blank" href="<?= base_url('pasien/konsultasi/cetak_resep/' . $idkonsultasi) ?>">Cetak Resep Obat</a>
+							</div>
+						</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="your-order mb-30 ">
+					<h3>Rekam Medis</h3>
+					<div class="mt-30" id="clinic-consultation">
+						<?= form_open_multipart('pasien/konsultasi/tambah_janji', array('method' => 'POST')) ?>
+						<div class="col-md-12">
+							<div class="checkout-form-list">
+								<label>No Rekam Medis</label>
+								<input type="text" readonly value="<?= $diagnosa->no_rekam_medis ?>">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="checkout-form-list">
+								<label>Tanggal</label>
+								<input type="text" readonly value="<?= longdate_indo($diagnosa->tanggal) ?> : <?= $diagnosa->jam ?>">
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="checkout-form-list">
+								<label>Diagnosa Penyakit</label>
+								<textarea name="keluhan" class="form-control" disabled><?= $diagnosa->diagnosa ?></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="checkout-form-list">
+								<label>Foto Pemeriksaan</label>
+								<a href="javascript:void(0)" data-toggle="modal" data-target="#foto<?= $idkonsultasi ?>">
+									<h4 class="text-info">Lihat</h4>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="order-button-payment mt-20">
+						<a class="site-btn" href="<?= base_url('pasien/konsultasi/download_diagnosa/' . $diagnosa->no_record) ?>">Download Foto</a>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-					<button type="submit" class="btn btn-primary">Tebus</button>
-				</div>
-				<?= form_close() ?>
 			</div>
 		</div>
-	</div>
+</section>
+<!-- checkout-area end -->
 
-	<div class="container pt-4">
-		<h2 class="text-center">Riwayat Resep Konsultasi</h2>
-		<div class="line mb-4"></div>
-		<!-- Heading Row-->
-		<div class="row gx-4 gx-lg-5 align-items-center my-5">
-			<div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="<?= base_url('uploads/diagnosa/' . $diagnosa->foto_pemeriksaan) ?>" alt="..." /></div>
-			<div class="col-lg-5">
-				<h1 class="font-weight-light">Rekam Medis</h1>
-				<p>No Rekam Medis : <?= $diagnosa->no_rekam_medis ?></p>
-				<p>Tanggal : <?= longdate_indo($diagnosa->tanggal) ?> : <?= $diagnosa->jam ?></p>
-				<p>Diagnosa Penyakit : <?= $diagnosa->diagnosa ?>.</p>
-				<a class="btn btn-primary" href="<?= base_url('pasien/konsultasi/download_diagnosa/' . $diagnosa->no_record) ?>">Download Foto</a>
+<!-- Modal Foto -->
+<div class="modal fade" id="foto<?= $idkonsultasi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Foto Pemeriksaan &mdash; <?= $idkonsultasi ?></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group text-left">
+					<img class="img-fluid rounded mb-4 mb-lg-0" src="<?= base_url('uploads/diagnosa/' . $diagnosa->foto_pemeriksaan) ?>" alt="..." />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
 			</div>
 		</div>
-
-		<div class="row mt-5">
-			<?php if ($validasi->validasi_pasien === "Belum ditebus") { ?>
-				<div class="book-appointment mb-3">
-					<a href="javascript:void(0)" data-toggle="modal" data-target="#tebus">Tebus Resep</a>
-				</div>
-			<?php 	} ?>
-			<table class="table table-striped table-hover ">
-				<caption>List Resep Obat</caption>
-				<thead>
-					<tr>
-						<th scope="col">No.</th>
-						<th scope="col">Nama Obat</th>
-						<th scope="col">Cara Pakai</th>
-						<th scope="col">Dosis</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php $no = 1; ?>
-					<?php foreach ($resep as $data) { ?>
-						<tr>
-							<th scope="row"><?= $no++ ?></th>
-							<td><?= $data->nama_obat ?></td>
-							<td><?= $data->cara_pakai ?></td>
-							<td><?= $data->dosis ?></td>
-						</tr>
-					<?php	} ?>
-				</tbody>
-			</table>
-		</div>
-
-
 	</div>
 </div>
-
-<!-- Content /-->
-<script src="<?= base_url('assets/pasien/') ?>js/jquery-3.5.1.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-	$('.tebus').on('click', function(e) {
-		e.preventDefault();
-		const href = $(this).attr('href');
-		Swal.fire({
-			title: 'Anda yakin ingin resep ditebus?',
-			// text: "Setelah resep ditebus, !",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Ya, Tebus!'
-		}).then((result) => {
-			if (result.isConfirmed) {
-				document.location.href = href;
-			}
-		});
-	});
-</script>
-<script>
-	const flashData = $('.flash-data').data('flashdata');
-	if (flashData) {
-		Swal.fire({
-			icon: 'success',
-			title: 'Resep',
-			text: flashData
-		});
-	}
-</script>
+<!-- END Modal Cancel -->
