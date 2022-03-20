@@ -128,9 +128,9 @@
 											<?php break;
 										case "Disetujui": ?>
 											<a href="javascript:void(0)" data-toggle="modal" data-target="#detailKonsultasi<?= $data->id_konsultasi ?>">
-												<h6 class="text-primary">Link Konsultasi <i class="bi bi-caret-right-fill"></i></h6>
+												<h6 class="text-primary">Link Konsultasi</h6>
 											</a>
-											<a href="<?= base_url('pasien/konsultasi/cetak_invoice/' . $data->id_konsultasi) ?>" class="text-info">Lihat Invoice</a>
+											<a href="<?= base_url('pasien/konsultasi/cetak_invoice/' . $data->id_konsultasi) ?>" target="_blank" class="text-info">Invoice</a>
 											<!-- Modal Link Konsultasi -->
 											<div class="modal fade" id="detailKonsultasi<?= $data->id_konsultasi ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 												<div class="modal-dialog modal-dialog-centered" role="document">
@@ -159,13 +159,13 @@
 																	</div>
 																	<div class="card-footer bg-white px-0 ">
 																		<div class="row">
-																			<div class="col-md-auto">
-																				<a href="<?= $data->meet ?>" target="_blank" class="btn-outlined btn-black text-muted text-center">
+																			<div class="col-md-auto justify-content-center">
+																				<a href="<?= $data->meet ?>" target="_blank" class="btn-outlined btn-black text-muted text-center justify-content-center">
 																					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#007bff" class="bi bi-link" viewBox="0 0 16 16">
 																						<path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
 																						<path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
 																					</svg>
-																					<small class="text-primary font-weight-light h6 mt-1">Link untuk Konsultasi</small>
+																					<small class="text-primary font-weight-light h6 mt-1">Link Konsultasi</small>
 																				</a>
 																			</div>
 																		</div>
@@ -238,7 +238,7 @@
 											<a href="<?= base_url('pasien/konsultasi/diagnosa/' . $data->id_konsultasi) ?>">
 												<h6 class="text-success">Hasil Diagnosa <i class="bi bi-caret-right-fill"></i></h6>
 											</a>
-											<a href="<?= base_url('pasien/konsultasi/cetak_invoice/' . $data->id_konsultasi) ?>" class="text-info">Lihat Invoice</a>
+											<a href="<?= base_url('pasien/konsultasi/cetak_invoice/' . $data->id_konsultasi) ?>" target="_blank" class="text-info">Invoice</a>
 											<?php break;
 									endswitch; ?>
 								</td>

@@ -7,9 +7,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
 	<title>
-		Invoice Media Kesehatan
+		MEDKES &mdash; Invoice
 	</title>
-	<link rel="icon" type="image/x-icon" href="<?= base_url('assets/admin/') ?>assets/img/doctor-care.png" />
+	<link rel="shortcut icon" href="<?= base_url('assets_pasien/') ?>images/logo/favicon_medkes.png" type="images/x-icon" />
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet" />
 	<link href="<?= base_url('assets/admin/') ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -42,16 +42,13 @@
 															<div class="row">
 																<div class="col-sm-6 col-12 mr-auto">
 																	<div class="d-flex">
-																		<img class="company-logo" src="<?= base_url('assets/admin/') ?>assets/img/doctor-care.png" alt="company" />
-																		<h3 class="in-heading align-self-center">
-																			Media Kesehatan
-																		</h3>
+																		<img src="<?= base_url('assets_pasien/') ?>images/logo/logo_medkes2.png" alt="company" />
 																	</div>
 																</div>
 
 																<div class="col-sm-6 text-sm-right">
 																	<p class="inv-list-number">
-																		<span class="inv-title">Kode Bayar : </span>
+																		<span class="inv-title">Transaksi : </span>
 																		<span class="inv-number">#<?= $invoice->kode_bayar ?></span>
 																	</p>
 																</div>
@@ -61,15 +58,15 @@
 																		Media Kesehatan
 																	</p>
 																	<p class="inv-email-address">
-																		medkes@mail.com
+																		helpmedkes@gmail.com
 																	</p>
 																	<p class="inv-email-address">
-																		0855 1212 1921
+																		0812 3456 7891
 																	</p>
 																</div>
 																<div class="col-sm-6 align-self-center mt-3 text-sm-right">
 																	<p class="inv-created-date">
-																		<span class="inv-title">Tanggal Invoice :
+																		<span class="inv-title">Tanggal :
 																		</span>
 																		<span class="inv-date"><?= longdate_indo($invoice->tanggal) ?></span>
 																	</p>
@@ -104,7 +101,7 @@
 																<table class="table">
 																	<thead class="">
 																		<tr>
-																			<th scope="col">Nama Dokter</th>
+																			<th scope="col">Dokter</th>
 																			<th scope="col">Keluhan</th>
 																			<th class="text-right" scope="col">
 																				Link Konsultasi
@@ -118,7 +115,7 @@
 																		<tr>
 																			<td><?= $invoice->nama_dokter ?></td>
 																			<td><?= $invoice->keluhan ?></td>
-																			<td class="text-right"><?= $invoice->meet ?></td>
+																			<td class="text-right"><a href="<?= $invoice->meet ?>" target="_blank"><?= $invoice->meet ?></a></td>
 																			<td class="text-right">Rp. <?= $invoice->nominal ?></td>
 																		</tr>
 																	</tbody>
@@ -136,7 +133,7 @@
 																				<h4 class="">Status Pembayaran :</h4>
 																			</div>
 																			<div class="col-sm-4 col-5 grand-total-amount">
-																				<h4 class="">Lunas</h4>
+																				<h4 class=""><span class="text-success"><b>Lunas</b></span></h4>
 																			</div>
 																		</div>
 																	</div>
