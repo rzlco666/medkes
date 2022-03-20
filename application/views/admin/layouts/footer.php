@@ -157,8 +157,15 @@
 <script src="<?= base_url('assets_admin/') ?>libs/pdfmake/build/vfs_fonts.js"></script>
 <!-- third party js ends -->
 
+<!-- Plugins js -->
+<script src="<?= base_url('assets_admin/') ?>libs/quill/quill.min.js"></script>
+
+<!-- Init js-->
+<script src="<?= base_url('assets_admin/') ?>js/pages/form-quilljs.init.js"></script>
+
 <!-- Datatables init -->
 <script src="<?= base_url('assets_admin/') ?>js/pages/datatables.init.js"></script>
+<script type="text/javascript" src="<?= base_url('assets/pasien/') ?>dropify/js/dropify.min.js"></script>
 
 <!-- Chart JS -->
 <script src="<?= base_url('assets_admin/') ?>libs/chart.js/Chart.bundle.min.js"></script>
@@ -177,6 +184,19 @@
 
 <!-- App js-->
 <script src="<?= base_url('assets_admin/') ?>js/app.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.dropify').dropify({
+			messages: {
+				default: ' ',
+				replace: 'Ganti',
+				remove: 'Hapus',
+				error: 'error'
+			}
+		});
+	});
+</script>
 
 </body>
 

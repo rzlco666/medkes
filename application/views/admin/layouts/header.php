@@ -17,6 +17,10 @@
 	<link href="<?= base_url('assets_admin/') ?>libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 	<link href="<?= base_url('assets_admin/') ?>libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 	<link href="<?= base_url('assets_admin/') ?>libs/datatables.net-select-bs5/css//select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+
+	<link href="<?= base_url('assets_admin/') ?>libs/quill/quill.core.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('assets_admin/') ?>libs/quill/quill.bubble.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('assets_admin/') ?>libs/quill/quill.snow.css" rel="stylesheet" type="text/css" />
 	<!-- third party css end -->
 
 	<!-- App css -->
@@ -252,6 +256,15 @@
 							<a href="<?= base_url('admin/obat') ?>">
 								<i data-feather="archive"></i>
 								<span> Kelola Obat </span>
+							</a>
+						</li>
+
+						<li class="menu-title mt-2">Feed</li>
+
+						<li>
+							<a href="<?= base_url('admin/feed') ?>">
+								<i data-feather="coffee"></i>
+								<span> Kelola Feed </span>
 							</a>
 						</li>
 

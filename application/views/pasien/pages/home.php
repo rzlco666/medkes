@@ -150,75 +150,34 @@
 				</div>
 			</div>
 			<div class="row justify-content-center mt-none-30">
+				<?php $no = 1;
+					foreach ($feed as $data){
+				?>
 				<div class="col-xl-4 col-lg-6 col-sm-12 mt-30">
 					<div class="single-news-box">
 						<div class="thumb">
-							<img style="object-fit: cover; width: 370px; height: 280px;" src="https://blog-frontend.envato.com/cdn-cgi/image/width=1200,quality=85,format=auto/uploads/2021/06/CON178%E2%80%93JuneBlog%E2%80%933D.jpg" alt="">
+							<img style="object-fit: cover; width: 370px; height: 280px;" src="<?= base_url('uploads/feed/' . $data->foto) ?>" alt="">
 						</div>
 						<div class="content">
 							<div class="news-meta-date">
-								<span>23</span>
-								Mar
+								<span><?= mediumdate_indo1($data->tanggal) ?></span>
+								<?= mediumdate_indo2($data->tanggal) ?>
 							</div>
 							<div class="news-meta">
 								<ul>
-									<li><a href="#0"><i class="fal fa-user"></i> Rosali D.</a></li>
-									<li><a href="#0"><i class="fal fa-calendar-alt"></i> 24th Feb 2020</a></li>
+									<li><a href="#0"><i class="fal fa-user"></i> Admin MedKes</a></li>
+									<li><a href="#0"><i class="fal fa-calendar-alt"></i> <?= mediumdate_indoo($data->tanggal) ?></a></li>
 								</ul>
 							</div>
-							<h4 class="title"><a href="blog-details.html">The Medical Department Is
-									Comprised Of Medical.</a></h4>
-							<a href="blog-details.html" class="inline-btn">Read More</a>
-							<span class="count">01</span>
+							<h4 class="title"><a href="<?= base_url('pasien/feed/feed/'.$data->id_feed) ?>"><?= $data->judul ?></a></h4>
+							<a href="<?= base_url('pasien/feed/feed/'.$data->id_feed) ?>" class="inline-btn">Selengkapnya</a>
+							<span class="count"><?= $no++ ?></span>
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-4 col-lg-6 col-sm-12 mt-30">
-					<div class="single-news-box">
-						<div class="thumb">
-							<img src="<?= base_url('assets_pasien/') ?>images/blog/02.jpg" alt="">
-						</div>
-						<div class="content">
-							<div class="news-meta-date">
-								<span>10</span>
-								Feb
-							</div>
-							<div class="news-meta">
-								<ul>
-									<li><a href="#0"><i class="fal fa-user"></i> Rosali D.</a></li>
-									<li><a href="#0"><i class="fal fa-calendar-alt"></i> 24th Feb 2020</a></li>
-								</ul>
-							</div>
-							<h4 class="title"><a href="blog-details.html">With In-depth Experience In
-									Broad Range Of Disease.</a></h4>
-							<a href="blog-details.html" class="inline-btn">Read More</a>
-							<span class="count">02</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-sm-12 mt-30">
-					<div class="single-news-box">
-						<div class="thumb">
-							<img src="<?= base_url('assets_pasien/') ?>images/blog/03.jpg" alt="">
-						</div>
-						<div class="content">
-							<div class="news-meta-date">
-								<span>04</span>
-								Mar
-							</div>
-							<div class="news-meta">
-								<ul>
-									<li><a href="#0"><i class="fal fa-user"></i> Rosali D.</a></li>
-									<li><a href="#0"><i class="fal fa-calendar-alt"></i> 24th Feb 2020</a></li>
-								</ul>
-							</div>
-							<h4 class="title"><a href="blog-details.html">Experience In A Broad Range
-									of disease states.</a></h4>
-							<a href="blog-details.html" class="inline-btn">Read More</a>
-							<span class="count">03</span>
-						</div>
-					</div>
-				</div>
+				<?php
+					}
+				?>
 			</div>
 		</div>
 	</section>

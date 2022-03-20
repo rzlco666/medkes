@@ -106,6 +106,8 @@
 									</li>
 									<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
 									</li>
+									<li><a href="<?= base_url('pasien/feed/all') ?>">Feeds</a>
+									</li>
 
 									<li><a href="#0">Hai, <?= $this->session->userdata('nama_pasien') ?> +</a>
 										<ul class="sub-menu">
@@ -119,6 +121,8 @@
 									<li><a href="<?= base_url('pasien/dokter') ?>">Dokter</a>
 									</li>
 									<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
+									</li>
+									<li><a href="<?= base_url('pasien/feed/all') ?>">Feeds</a>
 									</li>
 
 									<li><a href="#0">Akun +</a>

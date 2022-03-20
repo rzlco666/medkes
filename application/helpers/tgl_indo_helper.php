@@ -126,6 +126,42 @@ if (!function_exists('mediumdate_indo')) {
 	}
 }
 
+if (!function_exists('mediumdate_indoo')) {
+	function mediumdate_indoo($tgl)
+	{
+		$ubah = gmdate($tgl, time() + 60 * 60 * 8);
+		$pecah = explode("-", $ubah);
+		$tanggal = $pecah[2];
+		$bulan = medium_bulan($pecah[1]);
+		$tahun = $pecah[0];
+		return $tanggal . ' ' . $bulan . ' ' . $tahun;
+	}
+}
+
+if (!function_exists('mediumdate_indo1')) {
+	function mediumdate_indo1($tgl)
+	{
+		$ubah = gmdate($tgl, time() + 60 * 60 * 8);
+		$pecah = explode("-", $ubah);
+		$tanggal = $pecah[2];
+		$bulan = medium_bulan($pecah[1]);
+		$tahun = $pecah[0];
+		return $tanggal;
+	}
+}
+
+if (!function_exists('mediumdate_indo2')) {
+	function mediumdate_indo2($tgl)
+	{
+		$ubah = gmdate($tgl, time() + 60 * 60 * 8);
+		$pecah = explode("-", $ubah);
+		$tanggal = $pecah[2];
+		$bulan = medium_bulan($pecah[1]);
+		$tahun = $pecah[0];
+		return $bulan;
+	}
+}
+
 if (!function_exists('medium_bulan')) {
 	function medium_bulan($bln)
 	{
