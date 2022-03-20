@@ -277,7 +277,7 @@
 
 													<?php
 													$temp = "'$data->id_konsultasi'";
-													$check = $this->db->query("SELECT * FROM rekam_medis WHERE id_konsultasi = $temp");
+													$check = $this->db->query("SELECT * FROM rekam_medis WHERE id_konsultasi = $temp AND tanggal IS NOT NULL");
 													if ($check->num_rows() > 0) {
 														?>
 														<button type="button"
@@ -289,7 +289,11 @@
 														<?php
 													} else {
 														?>
-														<a href="<?= base_url('dokter/diagnosa/input_diagnosa/' . $data->id_konsultasi . '/' . $data->id_dokter . '/' . $data->id_pasien) ?>"
+														<!--<a href="<?/*= base_url('dokter/diagnosa/input_diagnosa/' . $data->id_konsultasi . '/' . $data->id_dokter . '/' . $data->id_pasien) */?>"
+														   class="btn btn-xs width-xs btn-primary waves-effect waves-light mt-2">
+															<span class="btn-label"><i class="mdi mdi-stethoscope"></i></span>Diagnosa
+														</a>-->
+														<a href="<?= base_url('dokter/diagnosa/edit_diagnosa/' . $data->id_konsultasi) ?>"
 														   class="btn btn-xs width-xs btn-primary waves-effect waves-light mt-2">
 															<span class="btn-label"><i class="mdi mdi-stethoscope"></i></span>Diagnosa
 														</a>
