@@ -40,7 +40,7 @@
 
 							<div class="text-center w-75 m-auto">
 								<div class="auth-logo">
-									<a href="<?= base_url('admin/') ?>" class="logo logo-dark text-center">
+									<a href="<?= base_url('dokter/') ?>" class="logo logo-dark text-center">
 										<span class="logo-lg">
 											<img src="<?= base_url('assets_admin/') ?>images/logo-dark_medkes.png" alt="" height="22">
 										</span>
