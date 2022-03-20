@@ -7,8 +7,8 @@
                         <div class="col-lg-5">
                             <div class="footer-widget">
                                 <h4 class="widget-title">About Us</h4>
-                                <p>Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+								<p>Media Kesehatan &copy;</p>
+								<p>Untuk pelayanan kesehatan yang lebih baik</p>
                                 <div class="social-links">
                                     <a href="#0"><i class="fab fa-facebook-f"></i></a>
                                     <a href="#0"><i class="fab fa-twitter"></i></a>
@@ -17,72 +17,49 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 col-sm-7">
+                        <div class="col-md-12 col-lg-7 col-sm-12">
                             <div class="footer-widget">
                                 <h4 class="widget-title">Links</h4>
                                 <div class="row">
-                                    <div class="col-5 pr-10">
+                                    <div class="col-12">
                                         <ul>
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="gallery.html">Portfolio</a></li>
-                                            <li><a href="#0">Pricing</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-7 pl-10">
-                                        <ul>
-                                            <li><a href="blog.html">News</a></li>
-                                            <li><a href="#0">Press Release</a></li>
-                                            <li><a href="case-service.html">Case Study</a></li>
-                                            <li><a href="#0">Insigts</a></li>
-                                            <li><a href="#0">Terms</a></li>
+											<li><a href="<?= base_url('pasien/') ?>">Home</a>
+											</li>
+											<li><a href="<?= base_url('pasien/konsultasi/jadwal') ?>">Riwayat</a>
+											</li>
+											<li><a href="<?= base_url('pasien/dokter') ?>">Dokter</a>
+											</li>
+
+											<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
+											</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-5 col-lg-3">
-                            <div class="footer-widget department">
-                                <h4 class="widget-title">Department</h4>
-                                <ul>
-                                    <li><a href="service-details.html">Body Sergery</a></li>
-                                    <li><a href="service-details.html">Major Operation</a></li>
-                                    <li><a href="service-details.html">Child Care</a></li>
-                                    <li><a href="service-details.html">Heart Operation</a></li>
-                                    <li><a href="service-details.html">Instant Karma</a></li>
-                                    <li><a href="service-details.html">PGO Theraphy</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="copyright-text">
-                                <p>Copyright By@<span>Example</span> - 2020</p>
+                                <p>Copyright &copy; <span>Media Kesehatan</span> - <?= date("Y") ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-12 pl-0 pr-10">
-                    <div class="opening-hour-box bg_img ml-none-10" data-overlay="94" data-background="<?= base_url('assets_pasien/') ?>images/bg/open-hour-bg.jpg">
+                    <div class="opening-hour-box bg_img ml-none-10" data-overlay="94">
                         <div class="opening-hour-top">
                             <div class="icon">
                                 <img src="<?= base_url('assets_pasien/') ?>images/icons/clock-icon-white.png" alt="">
                             </div>
                             <div class="content">
-                                <h5 class="title">Opening Hours</h5>
-                                <p>It’s a fake timing. Actually we
-                                are available 24/7.</p>
+                                <h5 class="title">Jam Buka</h5>
+                                <p>Pada dasarnya kami buka 24/7.</p>
                             </div>
                         </div>
                         <div class="opening-hour-list">
                             <ul>
-                                <li>Monday - Friday<span>8:00 - 16:00</span></li>
-                                <li>Saturday<span>8:00 - 12:00</span></li>
-                                <li>Sunday<span><strong>Closed</strong></span></li>
-                                <li>Lunch Break<span>9:15 - 22:45</span></li>
+                                <li>Waktu Istirahat<span>12:00 - 13:00</span></li>
                             </ul>
                         </div>
                     </div>
