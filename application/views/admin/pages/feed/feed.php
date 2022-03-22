@@ -184,7 +184,7 @@
 				<div class="col-md-6">
 					<script>
 						document.write(new Date().getFullYear())
-					</script> &copy; UBold theme by <a href="">Coderthemes</a>
+					</script> &copy; Media Kesehatan
 				</div>
 				<div class="col-md-6">
 					<div class="text-md-end footer-links d-none d-sm-block">
