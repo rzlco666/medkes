@@ -217,6 +217,13 @@
 						</li>
 
 						<li>
+							<a href="<?= base_url('dokter/jadwal/rating') ?>">
+								<i data-feather="star"></i>
+								<span> Rating </span>
+							</a>
+						</li>
+
+						<li>
 							<a href="<?= base_url('dokter/diagnosa') ?>">
 								<i data-feather="file-text"></i>
 								<span> Rekam Medis </span>

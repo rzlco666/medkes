@@ -86,6 +86,21 @@ class Jadwal extends CI_Controller
 		$this->load->view('dokter/layouts/footer');
 	}
 
+	public function rating()
+	{
+		$this->db->select('r.id_rating, r.rating, r.feedback, r.id_konsultasi, k.id_pasien, p.nama_pasien, k.id_dokter, d.nama_dokter');
+		$this->db->from('rating r');
+		$this->db->join('pendaftaran_konsultasi k', 'r.id_konsultasi = k.id_konsultasi');
+		$this->db->join('pasien p', 'k.id_pasien = p.id_pasien');
+		$this->db->join('dokter d', 'k.id_dokter = d.id_dokter');
+		$this->db->where('k.id_dokter', $this->session->id_dokter);
+		$query = $this->db->get();
+		$data['rating'] = $query->result();
+		$this->load->view('dokter/layouts/header');
+		$this->load->view('dokter/pages/jadwal/rating', $data);
+		$this->load->view('dokter/layouts/footer');
+	}
+
 	public function konsultasi_selesai($id_konsultasi)
 	{
 		$id_resep = $this->DiagnosaModel->id_resep();

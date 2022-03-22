@@ -198,7 +198,7 @@
 						<li>
 							<a href="<?= base_url('admin') ?>">
 								<i data-feather="airplay"></i>
-								<span> Dashboards </span>
+								<span> Dashboard </span>
 							</a>
 						</li>
 
@@ -215,6 +215,13 @@
 							<a href="<?= base_url('admin/kelola/pembayaran') ?>">
 								<i data-feather="dollar-sign"></i>
 								<span> Pembayaran </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('admin/kelola/rating') ?>">
+								<i data-feather="star"></i>
+								<span> Rating </span>
 							</a>
 						</li>
 
