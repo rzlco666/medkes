@@ -225,4 +225,33 @@ class Konsultasi extends CI_Controller
 		$file = 'uploads/diagnosa/' . $fileinfo->foto_pemeriksaan;
 		force_download($file, NULL);
 	}
+
+	//add rating
+	public function tambah_rating()
+	{
+		$id_konsultasi	= $this->input->post('id_konsultasi');
+		$rating      	= $this->input->post('rating');
+		$feedback 	  	= $this->input->post('feedback');
+
+		$data = [
+			'id_konsultasi' 	=> $id_konsultasi,
+			'rating' 			=> $rating,
+			'feedback' 			=> $feedback,
+		];
+		$this->db->insert('rating', $data);
+		redirect(base_url('pasien/konsultasi/jadwal'));
+	}
+
+	//update rating
+	public function update_rating($id)
+	{
+		$data = [
+			'rating' => $this->input->post('rating'),
+			'feedback' => $this->input->post('feedback'),
+		];
+		$this->db->where('id_rating', $id);
+		$this->db->update('rating', $data);
+		redirect(base_url('pasien/konsultasi/jadwal'));
+	}
+
 }
