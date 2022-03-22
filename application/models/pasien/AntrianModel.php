@@ -34,6 +34,23 @@ class AntrianModel extends CI_Model
 		return $query;
 	}
 
+	public function get_antrian_all()
+	{
+		$this->db->select('a.id_antrian, a.tanggal, a.id_poli, p.nama_poli, a.status, a.id_pasien, pa.nama_pasien');
+		$this->db->from('antrian a');
+		$this->db->join('poli p', 'a.id_poli = p.id_poli');
+		$this->db->join('pasien pa', 'a.id_pasien = pa.id_pasien');
+		$query = $this->db->get();
+		return $query;
+	}
+
+	//update status antrian
+	public function update_antrian($id_antrian, $data)
+	{
+		$this->db->where('id_antrian', $id_antrian);
+		return $this->db->update('antrian', $data);
+	}
+
 	public function invoice($id_antrian)
 	{
 		$this->db->select('a.id_antrian, a.tanggal, a.id_poli, p.nama_poli, a.status, a.id_pasien, pa.nama_pasien');

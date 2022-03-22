@@ -21,6 +21,9 @@
 	<link href="<?= base_url('assets_admin/') ?>libs/quill/quill.core.css" rel="stylesheet" type="text/css" />
 	<link href="<?= base_url('assets_admin/') ?>libs/quill/quill.bubble.css" rel="stylesheet" type="text/css" />
 	<link href="<?= base_url('assets_admin/') ?>libs/quill/quill.snow.css" rel="stylesheet" type="text/css" />
+
+	<link href="<?= base_url('assets_admin/') ?>libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('assets_admin/') ?>libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
 	<!-- third party css end -->
 
 	<!-- App css -->

@@ -162,6 +162,8 @@
 
 <!-- Init js-->
 <script src="<?= base_url('assets_admin/') ?>js/pages/form-quilljs.init.js"></script>
+<script src="<?= base_url('assets_admin/') ?>libs/selectize/js/standalone/selectize.min.js"></script>
+<script src="<?= base_url('assets_admin/') ?>libs/select2/js/select2.min.js"></script>
 
 <!-- Datatables init -->
 <script src="<?= base_url('assets_admin/') ?>js/pages/datatables.init.js"></script>
@@ -181,6 +183,7 @@
 
 <!-- Dashboard init JS -->
 <script src="<?= base_url('assets_admin/') ?>js/pages/dashboard-3.init.js"></script>
+<script src="<?= base_url('assets_admin/') ?>js/pages/form-advanced.init.js"></script>
 
 <!-- App js-->
 <script src="<?= base_url('assets_admin/') ?>js/app.min.js"></script>

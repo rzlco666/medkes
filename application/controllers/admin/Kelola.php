@@ -12,6 +12,7 @@ class Kelola extends CI_Controller
 		}
 		date_default_timezone_set('Asia/Jakarta');
 		$this->load->model('admin/KelolaModel', 'KelolaModel');
+		$this->load->model('pasien/AntrianModel', 'AntrianModel');
 	}
 
 	public function daftar_pasien()
@@ -78,6 +79,21 @@ class Kelola extends CI_Controller
 		$this->load->view('admin/layouts/header');
 		$this->load->view('admin/pages/kelola/rating', $data);
 		$this->load->view('admin/layouts/footer');
+	}
+
+	public function antrian(){
+		$data['antrian'] = $this->AntrianModel->get_antrian_all()->result();
+		$this->load->view('admin/layouts/header');
+		$this->load->view('admin/pages/kelola/antrian', $data);
+		$this->load->view('admin/layouts/footer');
+	}
+
+	public function update_antrian($id_antrian){
+		$data = [
+			'status' => $this->input->post('status'),
+		];
+		$this->AntrianModel->update_antrian($id_antrian, $data);
+		redirect(base_url('admin/kelola/antrian'));
 	}
 
 	public function aktif($id_dokter)
