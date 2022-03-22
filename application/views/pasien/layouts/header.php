@@ -92,7 +92,7 @@
 					</a>
 					<div class="mobile-menu"></div>
 				</div>
-				<div class="col-xl-6 col-lg-9 my-auto">
+				<div class="col-xl-9 col-lg-9 my-auto">
 					<div class="mainmenu">
 						<nav id="mobile-menu">
 							<ul>
@@ -100,11 +100,19 @@
 								<?php if ($this->session->id_pasien) { ?>
 									<li><a href="<?= base_url('pasien/') ?>">Home</a>
 									</li>
-									<li><a href="<?= base_url('pasien/konsultasi/jadwal') ?>">Riwayat</a>
+									<li><a href="#0">Riwayat +</a>
+										<ul class="sub-menu">
+											<li><a href="<?= base_url('pasien/konsultasi/jadwal') ?>">Konsultasi</a></li>
+											<li><a href="<?= base_url('pasien/antrian/jadwal') ?>">Antrian</a></li>
+										</ul>
 									</li>
 									<li><a href="<?= base_url('pasien/dokter') ?>">Dokter</a>
 									</li>
-									<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
+									<li><a href="#0">Buat Janji +</a>
+										<ul class="sub-menu">
+											<li><a href="<?= base_url('pasien/dokter') ?>">Konsultasi</a></li>
+											<li><a href="<?= base_url('pasien/antrian') ?>">Antrian</a></li>
+										</ul>
 									</li>
 									<li><a href="<?= base_url('pasien/feed/all') ?>">Feeds</a>
 									</li>
@@ -120,7 +128,11 @@
 									</li>
 									<li><a href="<?= base_url('pasien/dokter') ?>">Dokter</a>
 									</li>
-									<li><a href="<?= base_url('pasien/dokter') ?>">Buat Janji</a>
+									<li><a href="#0">Buat Janji +</a>
+										<ul class="sub-menu">
+											<li><a href="<?= base_url('pasien/dokter') ?>">Konsultasi</a></li>
+											<li><a href="<?= base_url('pasien/antrian') ?>">Antrian</a></li>
+										</ul>
 									</li>
 									<li><a href="<?= base_url('pasien/feed/all') ?>">Feeds</a>
 									</li>

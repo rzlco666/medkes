@@ -33,10 +33,10 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#007bff" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
 						<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
 					</svg>
-					<h1 class="h2 mt-5">Anda belum mempunyai riwayat konsultasi</h1>
-					<p>Sebelum pergi kehalaman riwayat konsultasi, silahkan pergi kehalaman penjadwalan atau daftar konsultasi pada bagian konsultasi atau klik tombol dibawah ini.</p>
+					<h1 class="h2 mt-5">Anda belum mempunyai riwayat antrian</h1>
+					<p>Sebelum pergi kehalaman riwayat antrian, silahkan pergi kehalaman antrian atau klik tombol dibawah ini.</p>
 				</div>
-				<a class="btn btn-primary btn-wide" href="<?= base_url('pasien/dokter') ?>">Buat Jadwal</a>
+				<a class="btn btn-primary btn-wide" href="<?= base_url('pasien/antrian') ?>">Buat Antrian</a>
 			</div>
 		</div>
 	</div>

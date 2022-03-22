@@ -12,7 +12,7 @@
     					<p>Konsultasi dan ambil antrian serta dapatkan penanganan dokter professional kami.</p>
     					<div class="hero-buttons">
     						<a href="<?= base_url('pasien/dokter') ?>" class="site-btn">Cek Dokter</a>
-    						<a href="about.html" class="site-btn red">Learn More</a>
+    						<a href="#pelayanan" class="site-btn red">Learn More</a>
     					</div>
     				</div>
     			</div>
@@ -25,7 +25,7 @@
     <!-- Hero area end -->
 
     <!-- feature area start -->
-    <section class="feature-area pb-120">
+    <section class="feature-area pb-120" id="pelayanan">
     	<div class="container feature-container">
     		<div class="row justify-content-center">
     			<div class="col-lg-6 col-md-8 col-sm-10 text-center">
