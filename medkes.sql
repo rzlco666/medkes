@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jan 2022 pada 12.37
--- Versi server: 10.4.20-MariaDB
--- Versi PHP: 8.0.9
+-- Generation Time: Mar 28, 2022 at 03:15 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`) VALUES
@@ -45,27 +45,30 @@ INSERT INTO `admin` (`id_admin`, `nama_admin`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `apoteker`
+-- Table structure for table `antrian`
 --
 
-CREATE TABLE `apoteker` (
-  `id_admin_apotek` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_admin` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `antrian` (
+  `id_antrian` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal` date NOT NULL,
+  `id_poli` int(11) NOT NULL,
+  `status` enum('Menunggu','Disetujui','Diproses','Selesai','Dibatalkan') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Menunggu',
+  `id_pasien` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `apoteker`
+-- Dumping data for table `antrian`
 --
 
-INSERT INTO `apoteker` (`id_admin_apotek`, `nama_admin`, `username`, `password`) VALUES
-('ADMP-001', 'apotek', 'apotek', '$2y$10$QWJvESrhVYgqY8U0DJ1cqua7WGXcix/Idhgc5N6Y1jJlnMIAwBZjG');
+INSERT INTO `antrian` (`id_antrian`, `tanggal`, `id_poli`, `status`, `id_pasien`) VALUES
+('ANT-001', '2022-03-22', 4, 'Diproses', 'PSN-014'),
+('ANT-002', '2022-03-27', 2, 'Dibatalkan', 'PSN-014'),
+('ANT-003', '2022-03-28', 4, 'Menunggu', 'PSN-014');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_resep`
+-- Table structure for table `detail_resep`
 --
 
 CREATE TABLE `detail_resep` (
@@ -80,22 +83,22 @@ CREATE TABLE `detail_resep` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `detail_resep`
+-- Dumping data for table `detail_resep`
 --
 
 INSERT INTO `detail_resep` (`id_detail_resep`, `cara_pakai`, `dosis`, `no_record`, `id_obat`, `id_resep`, `id_konsultasi`, `id_pasien`) VALUES
-(1, 'Sehabis Makan', '3 x 1', '134412', 'OBT-002', 'RSP-001', 'KST-002', 'PSN-001'),
-(2, 'Sehabis Makan', '1 x 1', '1344122', 'OBT-003', 'RSP-001', 'KST-002', 'PSN-001'),
-(3, 'Sehabis Makan', '3 x 1', '134412', 'OBT-001', 'RSP-003', 'KST-006', 'PSN-003'),
-(4, 'Sehabis Makan', '3 x 1', '1344122', 'OBT-002', 'RSP-003', 'KST-006', 'PSN-003'),
 (5, 'Di oles', '1 Oles', '131324234', 'OBT-002', 'RSP-004', 'KST-007', 'PSN-004'),
 (6, 'Di oles', '012', '3242343543', 'OBT-002', 'RSP-005', 'KST-011', 'PSN-007'),
-(7, 'Di oles', '012', '3242343543', 'OBT-001', 'RSP-005', 'KST-011', 'PSN-007');
+(8, 'A', 'V', '1', 'OBT-001', 'RSP-005', 'KST-011', 'PSN-007'),
+(9, 'AD', '1', '2', 'OBT-001', 'RSP-005', 'KST-011', 'PSN-007'),
+(11, 'Usap', '1 X', '1', 'OBT-002', 'RSP-007', 'KST-017', 'PSN-014'),
+(13, 'A', 'C', 'D', 'OBT-002', 'RSP-008', 'KST-019', 'PSN-014'),
+(15, 'Dioles', '1xsehari', '123', 'OBT-001', 'RSP-009', 'KST-020', 'PSN-014');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dokter`
+-- Table structure for table `dokter`
 --
 
 CREATE TABLE `dokter` (
@@ -115,11 +118,11 @@ CREATE TABLE `dokter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `dokter`
+-- Dumping data for table `dokter`
 --
 
 INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `email`, `username`, `password`, `alamat`, `no_telp`, `STR`, `keahlian`, `foto`, `pengalaman_kerja`, `harga`, `status`) VALUES
-('DR-001', 'Dr Elmuru', 'elmuru@mail.com', 'elmuru', '$2y$10$3BE/ncxbG9M.QlbUilSLkuQ4eKtprdCPJjlmLp/v1/fp3tlvfxj56', NULL, '081233127318', '2121423', 'Spesialis Mata', 'example.jpg', '13 Tahun pengalaman', 70000, 'Aktif'),
+('DR-001', 'Dr Elmuru Megan', 'elmuru@mail.com', 'elmuru', '$2y$10$aeV0udwteoQoQHOp7jaHF.VwozfrR8Zp8VyrOL4M43Mynze33m9OS', NULL, '081233127318', '2121423', 'Spesialis Mata', 'example.jpg', '13 Tahun pengalaman', NULL, 'Aktif'),
 ('DR-002', 'Hanif', NULL, 'hanif', '$2y$10$rrTv0G0S17sV8dj3zYVdgOnlxeEb8dLjk7TVMfis6.R/pJqDkXQMS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tidak aktif'),
 ('DR-003', 'Rizal', NULL, 'rizal', '$2y$10$uGE4vzEHtIdSo4o2jSDjbuCHNVWCwiHQiC3Vm/H4/JNb9fEUtgDDO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif'),
 ('DR-004', 'Testing', 'tesdokter@gmail.com', 'testdokter', '$2y$10$aeV0udwteoQoQHOp7jaHF.VwozfrR8Zp8VyrOL4M43Mynze33m9OS', NULL, '0812342134', '123333435', 'Spesialis Jantung', '01.jpg', '12 Tahun Pengalaman Kerja', NULL, 'Aktif'),
@@ -128,7 +131,33 @@ INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `email`, `username`, `password
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwal`
+-- Table structure for table `feed`
+--
+
+CREATE TABLE `feed` (
+  `id_feed` int(11) NOT NULL,
+  `judul` text NOT NULL,
+  `isi` text NOT NULL,
+  `foto` text NOT NULL,
+  `tanggal` date NOT NULL DEFAULT current_timestamp(),
+  `id_admin` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feed`
+--
+
+INSERT INTO `feed` (`id_feed`, `judul`, `isi`, `foto`, `tanggal`, `id_admin`) VALUES
+(2, 'Enthusiastically implement top-line growth strategies.', 'Globally repurpose cross-unit synergy before client-focused niches. Efficiently fabricate interactive outsourcing rather than transparent quality vectors. Interactively redefine diverse quality vectors vis-a-vis maintainable expertise. Appropriately develop intermandated interfaces through efficient opportunities. Assertively engage interactive sources vis-a-vis alternative interfaces.\r\n\r\nAuthoritatively synthesize future-proof niche markets via competitive relationships. Objectively parallel task quality value after diverse functionalities. Enthusiastically cultivate B2C deliverables for multifunctional innovation. Quickly generate next-generation results through holistic human capital. Seamlessly deliver plug-and-play outsourcing and cross functional leadership skills.\r\n\r\nEnergistically revolutionize state of the art bandwidth through maintainable innovation. Enthusiastically scale virtual value through clicks-and-mortar web-readiness. Energistically brand interdependent ideas via high standards in products. Seamlessly cultivate economically sound results via efficient partnerships. Seamlessly initiate functionalized e-business without goal-oriented applications.\r\n\r\nCredibly strategize robust markets through equity invested sources. Distinctively coordinate holistic e-tailers after top-line platforms. Collaboratively myocardinate.', 'feed-220320-7b49be5fd6.jpg', '2022-03-20', 'ADM-001'),
+(3, 'Efficiently leverage existing.', 'Conveniently unleash an expanded array of value rather than corporate products. Conveniently deliver client-based web services via cooperative metrics. Assertively negotiate impactful functionalities with innovative data. Phosfluorescently whiteboard functional deliverables rather than extensible e-services. Seamlessly foster parallel synergy without transparent deliverables.\r\n\r\nEnthusiastically grow interdependent functionalities through interactive innovation. Interactively supply wireless e-tailers and pandemic services. Proactively formulate high standards in testing procedures via enabled data. Proactively engage wireless channels after scalable architectures. Collaboratively morph accurate expertise with world-class applications.\r\n\r\nQuickly e-enable superior manufactured products and B2B growth strategies. Appropriately maintain global metrics whereas economically sound initiatives. Proactively revolutionize B2B core competencies with collaborative materials. Continually syndicate resource maximizing technologies whereas go forward catalysts for change. Intrinsicly innovate sticky relationships for inexpensive portals.\r\n\r\nAssertively engineer timely materials for cross-platform benefits. Completely parallel task world-class collaboration and idea-sharing whereas customized resources. Competently whiteboard interoperable interfaces after granular convergence. Intrinsicly foster superior internal or \"organic\" sources before granular services. Appropriately recaptiualize resource sucking interfaces after enabled best practices.\r\n\r\nCredibly fabricate efficient information through team building networks. Monotonectally generate revolutionary total linkage through intuitive e-services. Efficiently actualize client-centric niche markets without empowered sources. Credibly recaptiualize resource maximizing ROI through multifunctional innovation. Synergistically enhance leading-edge testing procedures before enterprise methods of empowerment.\r\n\r\nQuickly customize frictionless potentialities via emerging content. Quickly incentivize go forward outsourcing via sticky web-readiness. Holisticly orchestrate business catalysts for change before team driven internal or \"organic\" sources. Distinctively scale interactive e-tailers for team building leadership skills. Monotonectally innovate excellent metrics and scalable processes.\r\n\r\nGlobally foster team building results with viral mindshare. Competently maintain intermandated interfaces through customized leadership skills. Energistically negotiate timely communities via real-time solutions. Proactively create wireless e-tailers via cross functional opportunities. Authoritatively matrix bleeding-edge ROI for accurate information.\r\n\r\nPhosfluorescently underwhelm distributed e-tailers and web-enabled portals. Credibly supply principle-centered catalysts for change via inexpensive mindshare. Collaboratively whiteboard bricks-and-clicks manufactured products whereas user-centric web-readiness. Uniquely extend bricks-and-clicks content with backward-compatible supply chains. Efficiently deploy intuitive processes after ethical outsourcing.\r\n\r\nAuthoritatively streamline high-payoff collaboration and idea-sharing via collaborative human capital. Quickly syndicate transparent web services with exceptional solutions. Distinctively actualize next-generation leadership with maintainable information. Efficiently deliver one-to-one networks and 24/365 e-tailers. Energistically conceptualize out-of-the-box imperatives and global deliverables.\r\n\r\nEnergistically reconceptualize open-source technology before standards compliant users. Quickly formulate bricks-and-clicks sources without integrated results. Authoritatively grow integrated interfaces before compelling systems. Progressively network progressive quality vectors for efficient e-markets. Assertively myocardinate open-source action items and interoperable initiatives.\r\n\r\nIntrinsicly formulate progressive e-markets via transparent functionalities. Monotonectally reintermediate stand-alone process improvements via next-generation information. Objectively seize superior niche markets before collaborative methods of empowerment. Enthusiastically brand customized core competencies and holistic technology. Completely promote resource sucking channels rather than integrated resources.\r\n\r\nAssertively supply strategic ideas with just in time internal or \"organic\" sources. Professionally aggregate low-risk high-yield core competencies and integrated technology. Credibly synthesize plug-and-play web services without customized schemas. Rapidiously parallel task standards compliant metrics with multifunctional technologies. Seamlessly benchmark alternative functionalities through magnetic e-services.\r\n\r\nCollaboratively communicate e-business alignments before flexible leadership. Dynamically.', 'feed-220320-86b932a0b6.png', '2022-03-20', 'ADM-001'),
+(4, 'Assertively incubate world-class leadership skills.', 'Interactively fashion principle-centered growth strategies for end-to-end applications. Distinctively target team driven metrics with resource sucking best practices. Completely leverage existing resource-leveling intellectual capital after performance based leadership. Uniquely administrate economically sound e-services whereas competitive functionalities. Quickly plagiarize bleeding-edge bandwidth vis-a-vis diverse resources.\r\n\r\nGlobally architect superior leadership skills rather than timely architectures. Collaboratively predominate orthogonal technologies rather than sticky architectures. Proactively harness top-line total linkage through optimal channels. Efficiently syndicate functionalized intellectual capital without revolutionary functionalities. Rapidiously expedite market positioning benefits after viral meta-services.\r\n\r\nProfessionally evolve turnkey infomediaries via long-term high-impact leadership skills. Assertively pontificate intuitive convergence before wireless applications. Objectively evisculate end-to-end e-services and impactful supply chains. Seamlessly pontificate multidisciplinary portals before frictionless markets. Assertively syndicate holistic supply chains without professional meta-services.\r\n\r\nAssertively embrace distributed partnerships for interdependent technology. Efficiently pontificate 24/365 e-markets via leading-edge outsourcing. Holisticly grow value-added information after quality paradigms. Assertively drive timely materials without technically sound mindshare. Quickly visualize efficient initiatives rather than covalent meta-services.\r\n\r\nHolisticly restore principle-centered services whereas superior \"outside the box\" thinking. Professionally pontificate just in time internal or \"organic\" sources without user-centric initiatives. Continually leverage other\'s cross-unit products and client-centered infomediaries. Authoritatively network error-free processes through state of the art sources. Rapidiously facilitate flexible users before high-quality systems.\r\n\r\nEfficiently morph top-line platforms whereas orthogonal interfaces. Seamlessly orchestrate ubiquitous mindshare through interdependent platforms. Enthusiastically morph interoperable benefits through strategic best practices. Efficiently streamline empowered information without equity invested expertise. Energistically target maintainable core competencies and backend relationships.\r\n\r\nEnergistically maximize web-enabled systems whereas synergistic niche markets. Uniquely customize fully tested functionalities vis-a-vis wireless platforms. Authoritatively visualize global intellectual capital without turnkey \"outside the box\" thinking. Objectively benchmark optimal models whereas strategic quality vectors. Intrinsicly syndicate client-centric e-services via alternative applications.\r\n\r\nQuickly productivate intermandated products for viral manufactured products. Proactively administrate front-end methods of empowerment vis-a-vis economically sound paradigms. Assertively procrastinate value-added interfaces without performance based models. Synergistically coordinate just in time testing procedures whereas bricks-and-clicks quality vectors. Progressively enhance 2.0 human capital vis-a-vis multidisciplinary products.\r\n\r\nCredibly orchestrate functional potentialities rather than worldwide action items. Conveniently supply multidisciplinary innovation rather than go forward deliverables. Uniquely reintermediate focused customer service without market positioning models. Uniquely plagiarize sticky outsourcing via best-of-breed quality vectors. Interactively foster standardized opportunities and orthogonal imperatives.\r\n\r\nCompetently maximize optimal partnerships with collaborative interfaces. Rapidiously utilize premier best practices and tactical process improvements. Dramatically grow superior technologies without enterprise-wide synergy. Seamlessly procrastinate alternative functionalities for end-to-end best practices. Proactively restore web-enabled scenarios and maintainable mindshare.\r\n\r\nDistinctively foster 24/365 supply chains via functionalized web services. Dynamically actualize best-of-breed relationships without strategic sources. Uniquely leverage existing web-enabled internal or \"organic\" sources via visionary synergy. Conveniently implement emerging total linkage after wireless deliverables. Seamlessly morph low-risk high-yield outsourcing vis-a-vis user friendly e-markets.\r\n\r\nRapidiously architect intermandated platforms and cross-unit markets. Collaboratively maximize professional relationships after turnkey catalysts for change. Dynamically conceptualize viral manufactured products vis-a-vis multifunctional platforms. Proactively monetize economically sound internal or \"organic\" sources rather than focused technologies. Monotonectally formulate interoperable quality vectors without value-added platforms.', 'feed-220320-a2234da596.png', '2022-03-20', 'ADM-001'),
+(5, 'Seamlessly monetize competitive.', 'Credibly incentivize customized internal or \"organic\" sources through sustainable opportunities. Authoritatively conceptualize superior growth strategies for timely results. Progressively integrate go forward leadership whereas backend intellectual capital. Competently redefine cost effective results without e-business experiences. Intrinsicly maximize client-centered niches via seamless strategic theme areas.\r\n\r\nContinually utilize fully researched expertise after prospective paradigms. Synergistically engage end-to-end ROI and integrated meta-services. Efficiently architect just in time methods of empowerment rather than enterprise infrastructures. Proactively myocardinate progressive e-commerce rather than premium mindshare. Interactively reintermediate parallel interfaces after worldwide customer service.\r\n\r\nAppropriately transform real-time ROI whereas world-class human capital. Continually optimize client-centered partnerships and revolutionary information. Collaboratively monetize team building products for ethical niches. Continually repurpose unique materials for future-proof experiences. Holisticly target best-of-breed infrastructures through impactful catalysts for change.\r\n\r\nHolisticly envisioneer fully tested leadership skills and bricks-and-clicks manufactured products. Dynamically expedite customized leadership before alternative ideas. Authoritatively expedite adaptive niches with timely synergy. Authoritatively enhance long-term high-impact models after enterprise-wide leadership. Rapidiously re-engineer e-business applications whereas economically sound systems.\r\n\r\nCollaboratively extend extensible users after high-quality niche markets. Progressively leverage other\'s multifunctional users rather than interactive process improvements. Professionally procrastinate competitive relationships through wireless convergence. Objectively fabricate focused web-readiness vis-a-vis extensive partnerships. Dramatically drive principle-centered information whereas maintainable potentialities.\r\n\r\nPhosfluorescently grow cooperative content and stand-alone outsourcing. Compellingly embrace viral relationships with holistic human capital. Holisticly synergize holistic leadership whereas inexpensive outsourcing. Completely embrace cross functional niche markets and end-to-end applications. Competently productivate extensible e-services whereas standardized models.\r\n\r\nConveniently pontificate resource-leveling models whereas standardized e-markets. Globally fabricate plug-and-play customer service whereas team driven information. Assertively architect quality ROI through one-to-one technology. Monotonectally redefine vertical initiatives without high-payoff manufactured products. Dynamically monetize end-to-end benefits vis-a-vis empowered partnerships.\r\n\r\nHolisticly underwhelm leveraged internal or \"organic\" sources without client-centric metrics. Compellingly disintermediate pandemic ideas through strategic value. Rapidiously redefine parallel web services for integrated convergence. Dynamically drive alternative value and vertical functionalities. Energistically monetize unique initiatives rather than unique resources.\r\n\r\nDynamically network competitive innovation before stand-alone systems. Competently unleash compelling outsourcing with granular vortals. Energistically maintain excellent relationships rather than transparent systems. Energistically maximize out-of-the-box products through flexible portals. Distinctively incubate interactive technology via transparent meta-services.\r\n\r\nCompetently simplify state of the art systems after 24/7 initiatives. Enthusiastically productivate bricks-and-clicks action items rather than reliable interfaces. Dynamically leverage existing mission-critical intellectual capital rather than leading-edge models. Progressively aggregate customer directed functionalities for interactive benefits. Collaboratively matrix parallel users whereas emerging supply chains.\r\n\r\nSeamlessly deliver cross-unit synergy whereas ethical testing procedures. Holisticly reintermediate goal-oriented e-business with backward-compatible manufactured products. Assertively provide access to viral e-markets through professional networks. Uniquely deploy functional expertise vis-a-vis out-of-the-box collaboration and idea-sharing. Continually reinvent maintainable opportunities and bricks-and-clicks portals.\r\n\r\nCompletely negotiate interactive \"outside the box\" thinking via enabled convergence. Professionally leverage other\'s cross-media innovation before reliable platforms. Quickly supply world-class experiences before leveraged collaboration and idea-sharing. Intrinsicly iterate superior networks with cutting-edge leadership skills. Interactively restore seamless action items via functional meta-services.\r\n\r\nEnthusiastically pontificate adaptive expertise rather than team building results. Intrinsicly iterate virtual bandwidth before.', 'feed-220320-3251d5f48b.png', '2022-03-20', 'ADM-001'),
+(6, 'Compellingly impact pandemic functionalities vis-a-vis highly.', 'Efficiently target 24/7 platforms via top-line vortals. Interactively recaptiualize magnetic products before unique e-business. Progressively synergize cross-unit leadership skills without leading-edge innovation. Completely communicate sustainable catalysts for change via prospective ROI. Intrinsicly fabricate real-time manufactured products rather than progressive partnerships.\r\n\r\nCompetently brand accurate innovation before go forward web-readiness. Professionally reconceptualize competitive methods of empowerment and sticky systems. Uniquely revolutionize process-centric action items whereas magnetic collaboration and idea-sharing. Completely utilize economically sound supply chains after covalent value. Dynamically actualize holistic initiatives without leading-edge web-readiness.\r\n\r\nPhosfluorescently expedite optimal alignments and backward-compatible process improvements. Synergistically impact customer directed quality vectors via quality functionalities. Seamlessly pontificate holistic users before just in time catalysts for change. Collaboratively reintermediate sticky technologies through enterprise-wide best practices. Appropriately whiteboard cross-platform growth strategies rather than turnkey solutions.\r\n\r\nAssertively generate bleeding-edge platforms and team driven core competencies. Synergistically visualize market positioning technologies after team building services. Uniquely facilitate installed base portals rather than covalent growth strategies. Monotonectally drive equity invested infomediaries vis-a-vis standards compliant web services. Holisticly redefine fully tested materials through premier testing procedures.\r\n\r\nCompletely restore real-time \"outside the box\" thinking rather than optimal alignments. Uniquely maximize team driven methods of empowerment and ubiquitous human capital. Phosfluorescently empower next-generation leadership skills and enterprise processes. Uniquely evisculate 24/365 web services vis-a-vis backend solutions. Continually negotiate inexpensive e-tailers without technically sound materials.\r\n\r\nQuickly actualize team building collaboration and idea-sharing through optimal content. Rapidiously enable end-to-end process improvements rather than go forward e-commerce. Seamlessly plagiarize long-term high-impact paradigms with user friendly networks. Compellingly disintermediate top-line benefits through long-term high-impact alignments. Distinctively pontificate clicks-and-mortar benefits without next-generation portals.\r\n\r\nAuthoritatively promote competitive e-services and viral opportunities. Phosfluorescently recaptiualize web-enabled outsourcing through front-end leadership skills. Interactively parallel task future-proof strategic theme areas through inexpensive resources. Authoritatively harness multimedia based e-business rather than viral best practices. Seamlessly morph inexpensive e-services before holistic relationships.\r\n\r\nDynamically aggregate cross-media niche markets through cross-platform architectures. Dynamically enable just in time manufactured products with prospective platforms. Completely exploit multidisciplinary growth strategies whereas technically sound ideas. Enthusiastically engage one-to-one process improvements and low-risk high-yield methods of empowerment. Efficiently repurpose ubiquitous sources whereas covalent action items.\r\n\r\nDistinctively empower 24/365 materials whereas open-source paradigms. Synergistically cultivate pandemic metrics rather than exceptional value. Holisticly enhance diverse applications vis-a-vis client-based ROI. Monotonectally administrate technically sound e-services whereas backend bandwidth. Uniquely recaptiualize timely process improvements without timely bandwidth.\r\n\r\nQuickly evolve interdependent experiences for web-enabled sources. Quickly customize end-to-end strategic theme areas rather than B2C users. Intrinsicly grow extensible supply chains with backend collaboration and idea-sharing. Holisticly generate empowered ideas whereas end-to-end results. Professionally benchmark cross-unit paradigms through global ideas.\r\n\r\nHolisticly envisioneer worldwide markets without client-centric paradigms. Competently extend high-payoff innovation without virtual channels. Seamlessly monetize market positioning e-tailers via performance based leadership skills. Progressively actualize long-term high-impact channels without world-class vortals. Rapidiously exploit bricks-and-clicks best practices vis-a-vis cross functional information.\r\n\r\nCompetently generate real-time niches before end-to-end content. Proactively scale timely relationships for next-generation leadership. Credibly leverage other\'s front-end markets without impactful models. Conveniently redefine optimal vortals via.', 'feed-220320-8d2cccae4b.png', '2022-03-20', 'ADM-001');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jadwal`
 --
 
 CREATE TABLE `jadwal` (
@@ -140,7 +169,7 @@ CREATE TABLE `jadwal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `jadwal`
+-- Dumping data for table `jadwal`
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `tanggal`, `jam_mulai`, `jam_berakhir`, `id_dokter`) VALUES
@@ -151,17 +180,18 @@ INSERT INTO `jadwal` (`id_jadwal`, `tanggal`, `jam_mulai`, `jam_berakhir`, `id_d
 ('JDW-005', '2022-05-03', '12:45', '16:45', 'DR-001'),
 ('JDW-006', '2022-06-03', '09:45', '16:45', 'DR-001'),
 ('JDW-007', '2022-07-03', '16:45', '20:45', 'DR-001'),
-('JDW-008', '2022-08-03', '16:45', '20:45', 'DR-001'),
+('JDW-008', '2022-08-03', '16:45', '21:45', 'DR-001'),
 ('JDW-009', '2022-09-03', '09:45', '16:45', 'DR-001'),
 ('JDW-010', '2022-01-04', '10:45', '16:45', 'DR-002'),
 ('JDW-011', '2022-01-15', '09:45', '16:45', 'DR-003'),
 ('JDW-012', '2022-01-14', '09:45', '16:45', 'DR-003'),
-('JDW-013', '2022-01-20', '11:45', '16:45', 'DR-004');
+('JDW-013', '2022-01-20', '11:45', '16:45', 'DR-004'),
+('JDW-014', '2022-03-29', '09:45', '16:45', 'DR-001');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `obat`
+-- Table structure for table `obat`
 --
 
 CREATE TABLE `obat` (
@@ -170,18 +200,17 @@ CREATE TABLE `obat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `obat`
+-- Dumping data for table `obat`
 --
 
 INSERT INTO `obat` (`id_obat`, `nama_obat`) VALUES
 ('OBT-001', 'Malveius Obat Mata'),
-('OBT-002', 'Etriksin Obat Kulit'),
-('OBT-003', 'Nobieus Obat Hidung');
+('OBT-002', 'Etriksin Obat Kulit');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pasien`
+-- Table structure for table `pasien`
 --
 
 CREATE TABLE `pasien` (
@@ -201,7 +230,7 @@ CREATE TABLE `pasien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `pasien`
+-- Dumping data for table `pasien`
 --
 
 INSERT INTO `pasien` (`id_pasien`, `nama_pasien`, `email`, `username`, `password`, `jenis_kelamin`, `alamat`, `no_ktp`, `foto`, `no_hp`, `no_telepon_rumah`, `tgl_lahir`, `tgl_buat`) VALUES
@@ -217,12 +246,13 @@ INSERT INTO `pasien` (`id_pasien`, `nama_pasien`, `email`, `username`, `password
 ('PSN-010', 'Rizal', 'syahrizalhanif@gmail.com', 'rizal', '$2y$10$FjSmdFOTDOr/PbEvhIy0tePptAjFkuoaesC7qmVQ0wmb00tyvAqbu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-03'),
 ('PSN-011', 'Syahrizal Hanif', 'rzlco20@gmail.com', 'rzlco', '$2y$10$R9Xh.bdeuGOgX7pxnxreeeAQMGSVT5ghmrBpNxWrD8vxcd4340UDu', 'Laki-laki', 'Perum Griya Pertiwi Indah B6 Widorosari RT.4 RW.7 Pucangan Kartasura', '1234567891012131', '1.jpg', '08123834718', '-', '2000-03-14', '2022-01-13'),
 ('PSN-012', 'Testing', 'test@mail.com', 'testing', '$2y$10$XmFr4Oyca9KuQ60i.twWdOLAF8dFsWK9cgLBOgLBGPCjJpxqNrAxW', 'Laki-laki', 'ABCDFDFDFDFDFW', '1234567891012131', '5.jpg', '0812321412412', '-', '1999-04-20', '2022-01-15'),
-('PSN-013', 'Test Pasienn', 'test@mail.comm', 'testpasien', '$2y$10$JYJ9RHKB4bMSeh6fYT7YPOVYNG56AurT46Mx/raYwH70Jl68GdBke', 'Laki-laki', 'ABCD', '1234567891012131', '3.jpg', '08123834718', '-', '2000-04-20', '2022-01-15');
+('PSN-013', 'Test Pasienn', 'test@mail.comm', 'testpasien', '$2y$10$JYJ9RHKB4bMSeh6fYT7YPOVYNG56AurT46Mx/raYwH70Jl68GdBke', 'Laki-laki', 'ABCD', '1234567891012131', '3.jpg', '08123834718', '-', '2000-04-20', '2022-01-15'),
+('PSN-014', 'Syahrizal Hanif', 'syahrizalhanif@gmail.com', 'rzlco666', '$2y$10$m.2rV9tsdNegAm4h2FbzyuuTt59Xoi468OohkYurgVr.fEABaiwfe', 'Laki-laki', 'Blitar', '1234567891011121', '20048676-99047303161_2-s5-v1_(1).png', '08817819040', '-', '2000-04-20', '2022-03-16');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembayaran`
+-- Table structure for table `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -239,7 +269,7 @@ CREATE TABLE `pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `pembayaran`
+-- Dumping data for table `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `kode_bayar`, `nominal`, `foto_pembayaran`, `status_bayar`, `tgl_pembayaran`, `tgl_validasi`, `jam_validasi`, `id_admin`, `id_konsultasi`) VALUES
@@ -253,12 +283,20 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `kode_bayar`, `nominal`, `foto_pembay
 ('PMB-008', '888849360257', 70000, 'pentagramimage1.png', 'Terbayar', NULL, NULL, '03:26', 'ADM-001', 'KST-009'),
 ('PMB-009', '888805891276', 70000, NULL, 'Belum dibayar', NULL, NULL, NULL, NULL, 'KST-010'),
 ('PMB-010', '888813658274', 70000, 'sacai3_11.png', 'Terbayar', NULL, NULL, '08:11', 'ADM-001', 'KST-011'),
-('PMB-011', '888841028653', 70000, 'H.png', 'Terbayar', NULL, NULL, '10:23', 'ADM-001', 'KST-012');
+('PMB-011', '888841028653', 70000, 'H.png', 'Terbayar', NULL, NULL, '10:23', 'ADM-001', 'KST-012'),
+('PMB-012', '888873206495', 70000, 'undraw_Teaching_re_g7e3.png', 'Terbayar', '2022-03-10', '2022-03-13', '01:35', 'ADM-001', 'KST-013'),
+('PMB-013', '888816784905', 70000, 'logo-white.png', 'Terbayar', '2022-03-13', '2022-03-16', '09:28', 'ADM-001', 'KST-014'),
+('PMB-014', '888818347259', 70000, NULL, 'Belum dibayar', NULL, NULL, NULL, NULL, 'KST-015'),
+('PMB-015', '888894058237', 70000, NULL, 'Belum dibayar', NULL, NULL, NULL, NULL, 'KST-016'),
+('PMB-016', '888826840913', 0, 'cta-bg.png', 'Terbayar', '2022-03-16', '2022-03-16', '09:40', 'ADM-001', 'KST-017'),
+('PMB-017', '888857839104', 0, NULL, 'Belum dibayar', NULL, NULL, NULL, NULL, 'KST-018'),
+('PMB-018', '888868351420', 0, 'Branding_Its.png', 'Terbayar', '2022-03-20', '2022-03-20', '04:50', 'ADM-001', 'KST-019'),
+('PMB-019', '888890385417', 0, '83ee787d8ff8aea6c4b2fe11aea7c7e4.png', 'Terbayar', '2022-03-27', '2022-03-27', '11:04', 'ADM-001', 'KST-020');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pendaftaran_konsultasi`
+-- Table structure for table `pendaftaran_konsultasi`
 --
 
 CREATE TABLE `pendaftaran_konsultasi` (
@@ -274,12 +312,12 @@ CREATE TABLE `pendaftaran_konsultasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `pendaftaran_konsultasi`
+-- Dumping data for table `pendaftaran_konsultasi`
 --
 
 INSERT INTO `pendaftaran_konsultasi` (`id_konsultasi`, `tanggal`, `jam`, `keluhan`, `foto_keluhan`, `meet`, `status`, `id_pasien`, `id_dokter`) VALUES
 ('KST-002', '2021-07-18', '13:00', 'Sakit kulit bawah mata', '1_41.jpg', 'https://meet.google.com/', 'Selesai', 'PSN-001', 'DR-001'),
-('KST-003', '2021-07-21', '13:45', 'Cape', 'Screenshot_2020-11-10_092332.jpg', 'https://meet.google.com/', 'Disetujui', 'PSN-001', 'DR-001'),
+('KST-003', '2021-07-21', '13:45', 'Cape', 'Screenshot_2020-11-10_092332.jpg', 'https://meet.google.com/', 'Selesai', 'PSN-001', 'DR-001'),
 ('KST-004', '2021-07-24', '09:45', 'Sakit telinga', 'download.jpg', 'https://meet.google.com/', 'Selesai', 'PSN-001', 'DR-001'),
 ('KST-005', '2021-07-28', '11:00', 'Ada jerawat', 'Screenshot_(166).jpg', 'https://meet.google.com/', 'Dibatalkan', 'PSN-003', 'DR-001'),
 ('KST-006', '2021-07-31', '13:00', 'Sakit jerawat', 'Screenshot_(166)1.jpg', 'https://meet.google.com/', 'Selesai', 'PSN-003', 'DR-001'),
@@ -288,12 +326,66 @@ INSERT INTO `pendaftaran_konsultasi` (`id_konsultasi`, `tanggal`, `jam`, `keluha
 ('KST-009', '2021-07-29', '11:00', 'jerawat', 'pentagramimage2.png', 'https://www.youtube.com/watch?v=NbvW5yPuA8k', 'Ubah jadwal', 'PSN-004', 'DR-001'),
 ('KST-010', '2021-07-28', '11:00', 'jerawat', 'foto_jerawat.jpg', 'https://meet.google.com/vvg-oobq-mcy', 'Menunggu', 'PSN-006', 'DR-001'),
 ('KST-011', '2021-07-31', '11:00', 'jerawat', 'sacai3_1.png', 'https://www.youtube.com/watch?v=NbvW5yPuA8k', 'Selesai', 'PSN-007', 'DR-001'),
-('KST-012', '2021-08-30', '16:45', 'jerawat', 'Ha.png', 'google.meet', 'Dibatalkan', 'PSN-009', 'DR-001');
+('KST-012', '2021-08-30', '16:45', 'jerawat', 'Ha.png', 'google.meet', 'Dibatalkan', 'PSN-009', 'DR-001'),
+('KST-013', '2022-04-03', '16:45', 'A', 'Square-Polaroid-Frame-PNG.png', '', 'Ubah jadwal', 'PSN-013', 'DR-001'),
+('KST-014', '2022-05-03', '15:45', 'AAA', 'undraw_Teaching_re_g7e3.png', 'https://meet.google.com/uso-stuy-gye', 'Disetujui', 'PSN-013', 'DR-001'),
+('KST-015', '2022-05-03', '16:45', 'AC', 'logo-white.png', 'https://meet.google.com/who-mrsq-qep', 'Menunggu', 'PSN-013', 'DR-001'),
+('KST-016', '2022-05-03', '16:44', 'AVSC', 'undraw_Teaching_re_g7e3.png', 'https://meet.google.com/koo-lldv-uki', 'Menunggu', 'PSN-013', 'DR-001'),
+('KST-017', '2022-05-03', '14:45', 'AC', 'phone2_-_Copy2.png', 'https://meet.google.com/uso-stuy-gye', 'Selesai', 'PSN-014', 'DR-001'),
+('KST-018', '2022-05-03', '16:43', 'X', 'Alur_Aplikasi_SITASI.jpg', 'https://meet.google.com/kpj-pbgo-bof', 'Dibatalkan', 'PSN-014', 'DR-001'),
+('KST-019', '2022-08-03', '20:45', 'Cek', 'Alur_Aplikasi_SITASI_2.jpg', 'Test 123', 'Selesai', 'PSN-014', 'DR-001'),
+('KST-020', '2022-05-03', '12:45', 'ABC', '2d406c101084519_5f170c2bc293d.png', 'https://meet.google.com/cds-moxj-shy', 'Selesai', 'PSN-014', 'DR-001');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rekam_medis`
+-- Table structure for table `poli`
+--
+
+CREATE TABLE `poli` (
+  `id_poli` int(11) NOT NULL,
+  `nama_poli` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `poli`
+--
+
+INSERT INTO `poli` (`id_poli`, `nama_poli`) VALUES
+(1, 'Poli Umum'),
+(2, 'Poli Gigi'),
+(3, 'Poli KIA (Kesehatan Ibu dan Anak)'),
+(4, 'Poli MTBS (Manajemen Terpadu Balita Sakit)'),
+(5, 'Laboratorium'),
+(6, 'Fisioterapi'),
+(7, 'Radiologi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating`
+--
+
+CREATE TABLE `rating` (
+  `id_rating` int(11) NOT NULL,
+  `rating` int(2) NOT NULL,
+  `feedback` text NOT NULL,
+  `id_konsultasi` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`id_rating`, `rating`, `feedback`, `id_konsultasi`) VALUES
+(1, 5, 'Testa', 'KST-017'),
+(2, 5, 'A', 'KST-019'),
+(3, 4, 'nice', 'KST-020');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rekam_medis`
 --
 
 CREATE TABLE `rekam_medis` (
@@ -302,27 +394,29 @@ CREATE TABLE `rekam_medis` (
   `tanggal` date DEFAULT NULL,
   `jam` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `diagnosa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `foto_pemeriksaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto_pemeriksaan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_dokter` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_pasien` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_konsultasi` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `rekam_medis`
+-- Dumping data for table `rekam_medis`
 --
 
 INSERT INTO `rekam_medis` (`no_record`, `no_rekam_medis`, `tanggal`, `jam`, `diagnosa`, `foto_pemeriksaan`, `id_dokter`, `id_pasien`, `id_konsultasi`) VALUES
-('RC-001', 124411241, '2021-07-23', '12:00', 'Sakit bagian mata menyebabkan bengkak, hindari panas matahari', 'Presentasi_Sederhana_Tebal_Oranye_Tua_dan_Putih.png', 'DR-001', 'PSN-001', 'KST-002'),
-('RC-002', NULL, NULL, NULL, NULL, NULL, 'DR-001', 'PSN-001', 'KST-004'),
+('RC-001', 1, '2022-03-14', '20:33', '123345', 'Square-Polaroid-Frame-PNG3.png', 'DR-001', 'PSN-001', 'KST-002'),
 ('RC-003', 1134125173, '2021-07-26', '12:00', 'Konsultasi Selesai', 'Screenshot_(166).jpg', 'DR-001', 'PSN-003', 'KST-006'),
 ('RC-004', 123213132, '2021-07-27', '12:00', 'Kurang menjaga kebersihan wajah', 'foto_jerawat.jpg', 'DR-001', 'PSN-004', 'KST-007'),
-('RC-005', 2147483647, '2021-07-31', '12:00', 'sdfsdf', 'sacai3_1.png', 'DR-001', 'PSN-007', 'KST-011');
+('RC-005', 123, '2022-03-15', '22:34', 'A', 'undraw_Teaching_re_g7e36.png', 'DR-001', 'PSN-007', 'KST-011'),
+('RC-006', 123, '2022-03-20', '14:35', 'AX', 'Alur_Aplikasi_SITASI.jpg', 'DR-001', 'PSN-014', 'KST-017'),
+('RC-007', 123, '2022-03-20', '16:59', 'AVC', 'Branding_Its2.png', 'DR-001', 'PSN-014', 'KST-019'),
+('RC-008', 1234, '2022-03-27', '23:06', 'CDE', '7469017cd7e45ea2f16e0b9b0d92417d.png', 'DR-001', 'PSN-014', 'KST-020');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `reschedule`
+-- Table structure for table `reschedule`
 --
 
 CREATE TABLE `reschedule` (
@@ -333,7 +427,7 @@ CREATE TABLE `reschedule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `reschedule`
+-- Dumping data for table `reschedule`
 --
 
 INSERT INTO `reschedule` (`id_reschedule`, `jam_reschedule`, `tgl_reschedule`, `id_konsultasi`) VALUES
@@ -345,7 +439,7 @@ INSERT INTO `reschedule` (`id_reschedule`, `jam_reschedule`, `tgl_reschedule`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `resep`
+-- Table structure for table `resep`
 --
 
 CREATE TABLE `resep` (
@@ -358,34 +452,38 @@ CREATE TABLE `resep` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `resep`
+-- Dumping data for table `resep`
 --
 
 INSERT INTO `resep` (`id_resep`, `jam_centang`, `tgl_centang`, `validasi_pasien`, `id_konsultasi`, `id_admin_apotek`) VALUES
-('RSP-001', '09:58:42', '2021-07-25', 'Ditebus', 'KST-002', 'ADMP-001'),
 ('RSP-002', NULL, NULL, 'Belum ditebus', 'KST-004', NULL),
-('RSP-003', NULL, NULL, 'Ditebus', 'KST-006', 'ADMP-001'),
 ('RSP-004', NULL, NULL, 'Ditebus', 'KST-007', NULL),
-('RSP-005', NULL, NULL, 'Ditebus', 'KST-011', NULL);
+('RSP-005', NULL, NULL, 'Ditebus', 'KST-011', NULL),
+('RSP-006', NULL, NULL, 'Belum ditebus', 'KST-003', NULL),
+('RSP-007', NULL, NULL, 'Belum ditebus', 'KST-017', NULL),
+('RSP-008', NULL, NULL, 'Belum ditebus', 'KST-019', NULL),
+('RSP-009', NULL, NULL, 'Belum ditebus', 'KST-020', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `apoteker`
+-- Indexes for table `antrian`
 --
-ALTER TABLE `apoteker`
-  ADD PRIMARY KEY (`id_admin_apotek`);
+ALTER TABLE `antrian`
+  ADD PRIMARY KEY (`id_antrian`),
+  ADD KEY `id_pasien` (`id_pasien`),
+  ADD KEY `id_poli` (`id_poli`);
 
 --
--- Indeks untuk tabel `detail_resep`
+-- Indexes for table `detail_resep`
 --
 ALTER TABLE `detail_resep`
   ADD PRIMARY KEY (`id_detail_resep`),
@@ -395,32 +493,39 @@ ALTER TABLE `detail_resep`
   ADD KEY `detail_pasien_id_pasien_foreign` (`id_pasien`);
 
 --
--- Indeks untuk tabel `dokter`
+-- Indexes for table `dokter`
 --
 ALTER TABLE `dokter`
   ADD PRIMARY KEY (`id_dokter`);
 
 --
--- Indeks untuk tabel `jadwal`
+-- Indexes for table `feed`
+--
+ALTER TABLE `feed`
+  ADD PRIMARY KEY (`id_feed`),
+  ADD KEY `id_admin` (`id_admin`);
+
+--
+-- Indexes for table `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id_jadwal`),
   ADD KEY `jadwal_id_dokter_foreign` (`id_dokter`);
 
 --
--- Indeks untuk tabel `obat`
+-- Indexes for table `obat`
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`id_obat`);
 
 --
--- Indeks untuk tabel `pasien`
+-- Indexes for table `pasien`
 --
 ALTER TABLE `pasien`
   ADD PRIMARY KEY (`id_pasien`);
 
 --
--- Indeks untuk tabel `pembayaran`
+-- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`),
@@ -428,7 +533,7 @@ ALTER TABLE `pembayaran`
   ADD KEY `pembayaran_id_konsultasi_foreign` (`id_konsultasi`);
 
 --
--- Indeks untuk tabel `pendaftaran_konsultasi`
+-- Indexes for table `pendaftaran_konsultasi`
 --
 ALTER TABLE `pendaftaran_konsultasi`
   ADD PRIMARY KEY (`id_konsultasi`),
@@ -436,7 +541,20 @@ ALTER TABLE `pendaftaran_konsultasi`
   ADD KEY `pendaftaran_konsultasi_id_dokter_foreign` (`id_dokter`);
 
 --
--- Indeks untuk tabel `rekam_medis`
+-- Indexes for table `poli`
+--
+ALTER TABLE `poli`
+  ADD PRIMARY KEY (`id_poli`);
+
+--
+-- Indexes for table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id_rating`),
+  ADD KEY `id_konsultasi` (`id_konsultasi`);
+
+--
+-- Indexes for table `rekam_medis`
 --
 ALTER TABLE `rekam_medis`
   ADD PRIMARY KEY (`no_record`),
@@ -445,14 +563,14 @@ ALTER TABLE `rekam_medis`
   ADD KEY `rekam_medis_id_konsultasi_foreign` (`id_konsultasi`);
 
 --
--- Indeks untuk tabel `reschedule`
+-- Indexes for table `reschedule`
 --
 ALTER TABLE `reschedule`
   ADD PRIMARY KEY (`id_reschedule`),
   ADD KEY `reschedule_id_konsultasi_foreign` (`id_konsultasi`);
 
 --
--- Indeks untuk tabel `resep`
+-- Indexes for table `resep`
 --
 ALTER TABLE `resep`
   ADD PRIMARY KEY (`id_resep`),
@@ -460,21 +578,46 @@ ALTER TABLE `resep`
   ADD KEY `resep_id_konsultasi_kosnsultasi_foreign` (`id_konsultasi`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `detail_resep`
+-- AUTO_INCREMENT for table `detail_resep`
 --
 ALTER TABLE `detail_resep`
-  MODIFY `id_detail_resep` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_detail_resep` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT for table `feed`
+--
+ALTER TABLE `feed`
+  MODIFY `id_feed` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `poli`
+--
+ALTER TABLE `poli`
+  MODIFY `id_poli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id_rating` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `detail_resep`
+-- Constraints for table `antrian`
+--
+ALTER TABLE `antrian`
+  ADD CONSTRAINT `antrian_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `pasien` (`id_pasien`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `antrian_ibfk_2` FOREIGN KEY (`id_poli`) REFERENCES `poli` (`id_poli`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `detail_resep`
 --
 ALTER TABLE `detail_resep`
   ADD CONSTRAINT `detail_pasien_id_pasien_foreign` FOREIGN KEY (`id_pasien`) REFERENCES `pasien` (`id_pasien`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -483,27 +626,39 @@ ALTER TABLE `detail_resep`
   ADD CONSTRAINT `detail_resep_id_resep_foreign` FOREIGN KEY (`id_resep`) REFERENCES `resep` (`id_resep`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `jadwal`
+-- Constraints for table `feed`
+--
+ALTER TABLE `feed`
+  ADD CONSTRAINT `feed_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_id_dokter_foreign` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pembayaran`
+-- Constraints for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `pembayaran_id_admin_foreign` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pembayaran_id_konsultasi_foreign` FOREIGN KEY (`id_konsultasi`) REFERENCES `pendaftaran_konsultasi` (`id_konsultasi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pendaftaran_konsultasi`
+-- Constraints for table `pendaftaran_konsultasi`
 --
 ALTER TABLE `pendaftaran_konsultasi`
   ADD CONSTRAINT `pendaftaran_konsultasi_id_dokter_foreign` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pendaftaran_konsultasi_id_pasien_foreign` FOREIGN KEY (`id_pasien`) REFERENCES `pasien` (`id_pasien`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rekam_medis`
+-- Constraints for table `rating`
+--
+ALTER TABLE `rating`
+  ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`id_konsultasi`) REFERENCES `pendaftaran_konsultasi` (`id_konsultasi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `rekam_medis`
 --
 ALTER TABLE `rekam_medis`
   ADD CONSTRAINT `rekam_medis_id_dokter_foreign` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -511,13 +666,13 @@ ALTER TABLE `rekam_medis`
   ADD CONSTRAINT `rekam_medis_id_pasien_foreign` FOREIGN KEY (`id_pasien`) REFERENCES `pasien` (`id_pasien`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `reschedule`
+-- Constraints for table `reschedule`
 --
 ALTER TABLE `reschedule`
   ADD CONSTRAINT `reschedule_id_konsultasi_foreign` FOREIGN KEY (`id_konsultasi`) REFERENCES `pendaftaran_konsultasi` (`id_konsultasi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `resep`
+-- Constraints for table `resep`
 --
 ALTER TABLE `resep`
   ADD CONSTRAINT `resep_id_admin_apotek_foreign` FOREIGN KEY (`id_admin_apotek`) REFERENCES `apoteker` (`id_admin_apotek`) ON DELETE CASCADE ON UPDATE CASCADE,
