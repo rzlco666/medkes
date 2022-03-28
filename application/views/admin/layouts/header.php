@@ -228,6 +228,15 @@
 							</a>
 						</li>
 
+						<li class="menu-title mt-2">Antrian</li>
+
+						<li>
+							<a href="<?= base_url('admin/kelola/antrian') ?>">
+								<i data-feather="grid"></i>
+								<span> Kelola Antrian </span>
+							</a>
+						</li>
+
 						<li class="menu-title mt-2">Dokter</li>
 
 						<li>

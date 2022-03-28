@@ -70,7 +70,8 @@
 								<td class="product-quantity">
 									<?php switch ($data->status):
 										case "Menunggu": ?>
-											<span class="btn btn-warning btn-sm disabled text-white">Menunggu</span>
+											<a href="<?= base_url('pasien/antrian/cetak_nomor/' . $data->id_antrian) ?>"
+											   target="_blank" class="text-info">Cetak No Antrian</a>
 											<?php break;
 										case "Disetujui": ?>
 											<a href="<?= base_url('pasien/antrian/cetak_nomor/' . $data->id_antrian) ?>"
