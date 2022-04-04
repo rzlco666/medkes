@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 03:15 AM
+-- Generation Time: Apr 04, 2022 at 05:14 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.0
 
@@ -123,8 +123,8 @@ CREATE TABLE `dokter` (
 
 INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `email`, `username`, `password`, `alamat`, `no_telp`, `STR`, `keahlian`, `foto`, `pengalaman_kerja`, `harga`, `status`) VALUES
 ('DR-001', 'Dr Elmuru Megan', 'elmuru@mail.com', 'elmuru', '$2y$10$aeV0udwteoQoQHOp7jaHF.VwozfrR8Zp8VyrOL4M43Mynze33m9OS', NULL, '081233127318', '2121423', 'Spesialis Mata', 'example.jpg', '13 Tahun pengalaman', NULL, 'Aktif'),
-('DR-002', 'Hanif', NULL, 'hanif', '$2y$10$rrTv0G0S17sV8dj3zYVdgOnlxeEb8dLjk7TVMfis6.R/pJqDkXQMS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tidak aktif'),
-('DR-003', 'Rizal', NULL, 'rizal', '$2y$10$uGE4vzEHtIdSo4o2jSDjbuCHNVWCwiHQiC3Vm/H4/JNb9fEUtgDDO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif'),
+('DR-002', 'Rafly', NULL, 'rafly', '$2y$10$rrTv0G0S17sV8dj3zYVdgOnlxeEb8dLjk7TVMfis6.R/pJqDkXQMS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tidak aktif'),
+('DR-003', 'Rijat', NULL, 'rijat', '$2y$10$uGE4vzEHtIdSo4o2jSDjbuCHNVWCwiHQiC3Vm/H4/JNb9fEUtgDDO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif'),
 ('DR-004', 'Testing', 'tesdokter@gmail.com', 'testdokter', '$2y$10$aeV0udwteoQoQHOp7jaHF.VwozfrR8Zp8VyrOL4M43Mynze33m9OS', NULL, '0812342134', '123333435', 'Spesialis Jantung', '01.jpg', '12 Tahun Pengalaman Kerja', NULL, 'Aktif'),
 ('DR-005', 'Test Dokter 2', NULL, 'testdokter2', '$2y$10$SMIVjdFORPrUHUJaG.99.eJPmPB/VJLhPWbtFwbADwzhsavNO/1/O', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Aktif');
 
@@ -243,11 +243,11 @@ INSERT INTO `pasien` (`id_pasien`, `nama_pasien`, `email`, `username`, `password
 ('PSN-007', 'hadi', 'hadi@gmail.com', 'hadi', '$2y$10$8ba8XRRkcvtK2nydDWgqkO5QMxjiw261Wdt0zl9m3QNKBHeLz5gdq', 'Laki-laki', 'hgfjhsdgfjhs', '264876458345', 'sacai3_1.png', '234624234234', '18834624234', '2021-07-14', '2022-01-03'),
 ('PSN-008', 'sayoko', 'sayoko@gmail.com', 'sayoko', '$2y$10$EYj9iAh8CjUmVMjk3gYYW.mjPHMrCaDJ6/olMrNoXATm3yKdKso6q', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-03'),
 ('PSN-009', 'dimasd', 'dimas@gmail.com', 'dimas', '$2y$10$lxuZ68Vz/lTan2kXB5xx5OwQnJWifa6mTs5UyQegAgLrdyzbujsIG', 'Laki-laki', 'tegal rejo, rt 02/01\r\nkuwiran', '1234567890123456', 'Haga_Ibnu_Hakim_2_3_Form_dan_BA_Revisi-2.png', '082118638580', '-', '2021-08-03', '2022-01-03'),
-('PSN-010', 'Rizal', 'syahrizalhanif@gmail.com', 'rizal', '$2y$10$FjSmdFOTDOr/PbEvhIy0tePptAjFkuoaesC7qmVQ0wmb00tyvAqbu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-03'),
-('PSN-011', 'Syahrizal Hanif', 'rzlco20@gmail.com', 'rzlco', '$2y$10$R9Xh.bdeuGOgX7pxnxreeeAQMGSVT5ghmrBpNxWrD8vxcd4340UDu', 'Laki-laki', 'Perum Griya Pertiwi Indah B6 Widorosari RT.4 RW.7 Pucangan Kartasura', '1234567891012131', '1.jpg', '08123834718', '-', '2000-03-14', '2022-01-13'),
+('PSN-010', 'Danang', 'danang@gmail.com', 'danangg', '$2y$10$FjSmdFOTDOr/PbEvhIy0tePptAjFkuoaesC7qmVQ0wmb00tyvAqbu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-01-03'),
+('PSN-011', 'Darto', 'dartoo@gmail.com', 'dartoo', '$2y$10$R9Xh.bdeuGOgX7pxnxreeeAQMGSVT5ghmrBpNxWrD8vxcd4340UDu', 'Laki-laki', 'Jakarta', '1234567891012131', '1.jpg', '08123834718', '-', '2000-03-14', '2022-01-13'),
 ('PSN-012', 'Testing', 'test@mail.com', 'testing', '$2y$10$XmFr4Oyca9KuQ60i.twWdOLAF8dFsWK9cgLBOgLBGPCjJpxqNrAxW', 'Laki-laki', 'ABCDFDFDFDFDFW', '1234567891012131', '5.jpg', '0812321412412', '-', '1999-04-20', '2022-01-15'),
 ('PSN-013', 'Test Pasienn', 'test@mail.comm', 'testpasien', '$2y$10$JYJ9RHKB4bMSeh6fYT7YPOVYNG56AurT46Mx/raYwH70Jl68GdBke', 'Laki-laki', 'ABCD', '1234567891012131', '3.jpg', '08123834718', '-', '2000-04-20', '2022-01-15'),
-('PSN-014', 'Syahrizal Hanif', 'syahrizalhanif@gmail.com', 'rzlco666', '$2y$10$m.2rV9tsdNegAm4h2FbzyuuTt59Xoi468OohkYurgVr.fEABaiwfe', 'Laki-laki', 'Blitar', '1234567891011121', '20048676-99047303161_2-s5-v1_(1).png', '08817819040', '-', '2000-04-20', '2022-03-16');
+('PSN-014', 'Dama', 'damaa@gmail.com', 'damaa', '$2y$10$m.2rV9tsdNegAm4h2FbzyuuTt59Xoi468OohkYurgVr.fEABaiwfe', 'Laki-laki', 'Blitar', '1234567891011121', '20048676-99047303161_2-s5-v1_(1).png', '08817819040', '-', '2000-04-20', '2022-03-16');
 
 -- --------------------------------------------------------
 
@@ -291,7 +291,8 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `kode_bayar`, `nominal`, `foto_pembay
 ('PMB-016', '888826840913', 0, 'cta-bg.png', 'Terbayar', '2022-03-16', '2022-03-16', '09:40', 'ADM-001', 'KST-017'),
 ('PMB-017', '888857839104', 0, NULL, 'Belum dibayar', NULL, NULL, NULL, NULL, 'KST-018'),
 ('PMB-018', '888868351420', 0, 'Branding_Its.png', 'Terbayar', '2022-03-20', '2022-03-20', '04:50', 'ADM-001', 'KST-019'),
-('PMB-019', '888890385417', 0, '83ee787d8ff8aea6c4b2fe11aea7c7e4.png', 'Terbayar', '2022-03-27', '2022-03-27', '11:04', 'ADM-001', 'KST-020');
+('PMB-019', '888890385417', 0, '83ee787d8ff8aea6c4b2fe11aea7c7e4.png', 'Terbayar', '2022-03-27', '2022-03-27', '11:04', 'ADM-001', 'KST-020'),
+('PMB-020', '888842813790', 0, '83ee787d8ff8aea6c4b2fe11aea7c7e41.png', 'Terbayar', '2022-03-29', '2022-03-29', '09:14', 'ADM-001', 'KST-021');
 
 -- --------------------------------------------------------
 
@@ -334,7 +335,8 @@ INSERT INTO `pendaftaran_konsultasi` (`id_konsultasi`, `tanggal`, `jam`, `keluha
 ('KST-017', '2022-05-03', '14:45', 'AC', 'phone2_-_Copy2.png', 'https://meet.google.com/uso-stuy-gye', 'Selesai', 'PSN-014', 'DR-001'),
 ('KST-018', '2022-05-03', '16:43', 'X', 'Alur_Aplikasi_SITASI.jpg', 'https://meet.google.com/kpj-pbgo-bof', 'Dibatalkan', 'PSN-014', 'DR-001'),
 ('KST-019', '2022-08-03', '20:45', 'Cek', 'Alur_Aplikasi_SITASI_2.jpg', 'Test 123', 'Selesai', 'PSN-014', 'DR-001'),
-('KST-020', '2022-05-03', '12:45', 'ABC', '2d406c101084519_5f170c2bc293d.png', 'https://meet.google.com/cds-moxj-shy', 'Selesai', 'PSN-014', 'DR-001');
+('KST-020', '2022-05-03', '12:45', 'ABC', '2d406c101084519_5f170c2bc293d.png', 'https://meet.google.com/cds-moxj-shy', 'Selesai', 'PSN-014', 'DR-001'),
+('KST-021', '2022-09-03', '15:45', 'DEF', '2d406c101084519_5f170c2bc293d1.png', '', 'Selesai', 'PSN-014', 'DR-001');
 
 -- --------------------------------------------------------
 
@@ -411,7 +413,8 @@ INSERT INTO `rekam_medis` (`no_record`, `no_rekam_medis`, `tanggal`, `jam`, `dia
 ('RC-005', 123, '2022-03-15', '22:34', 'A', 'undraw_Teaching_re_g7e36.png', 'DR-001', 'PSN-007', 'KST-011'),
 ('RC-006', 123, '2022-03-20', '14:35', 'AX', 'Alur_Aplikasi_SITASI.jpg', 'DR-001', 'PSN-014', 'KST-017'),
 ('RC-007', 123, '2022-03-20', '16:59', 'AVC', 'Branding_Its2.png', 'DR-001', 'PSN-014', 'KST-019'),
-('RC-008', 1234, '2022-03-27', '23:06', 'CDE', '7469017cd7e45ea2f16e0b9b0d92417d.png', 'DR-001', 'PSN-014', 'KST-020');
+('RC-008', 1234, '2022-03-27', '23:06', 'CDE', '7469017cd7e45ea2f16e0b9b0d92417d.png', 'DR-001', 'PSN-014', 'KST-020'),
+('RC-009', NULL, NULL, NULL, NULL, NULL, 'DR-001', 'PSN-014', 'KST-021');
 
 -- --------------------------------------------------------
 
@@ -462,7 +465,8 @@ INSERT INTO `resep` (`id_resep`, `jam_centang`, `tgl_centang`, `validasi_pasien`
 ('RSP-006', NULL, NULL, 'Belum ditebus', 'KST-003', NULL),
 ('RSP-007', NULL, NULL, 'Belum ditebus', 'KST-017', NULL),
 ('RSP-008', NULL, NULL, 'Belum ditebus', 'KST-019', NULL),
-('RSP-009', NULL, NULL, 'Belum ditebus', 'KST-020', NULL);
+('RSP-009', NULL, NULL, 'Belum ditebus', 'KST-020', NULL),
+('RSP-010', NULL, NULL, 'Belum ditebus', 'KST-021', NULL);
 
 --
 -- Indexes for dumped tables
