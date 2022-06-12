@@ -430,31 +430,31 @@
 																								echo 'selected="selected"';
 																							} ?> value="1"
 																								 name="rating">
-																								1
+																								★
 																							</option>
 																							<option <?php if ($check2[0]->rating === '2') {
 																								echo 'selected="selected"';
 																							} ?> value="2"
 																								 name="rating">
-																								2
+																								★★
 																							</option>
 																							<option <?php if ($check2[0]->rating === '3') {
 																								echo 'selected="selected"';
 																							} ?> value="3"
 																								 name="rating">
-																								3
+																								★★★
 																							</option>
 																							<option <?php if ($check2[0]->rating === '4') {
 																								echo 'selected="selected"';
 																							} ?> value="4"
 																								 name="rating">
-																								4
+																								★★★★
 																							</option>
 																							<option <?php if ($check2[0]->rating === '5') {
 																								echo 'selected="selected"';
 																							} ?> value="5"
 																								 name="rating">
-																								5
+																								★★★★★
 																							</option>
 																						</select>
 																						<input type="hidden"
@@ -529,19 +529,19 @@
 																				<div class="col-8">
 																					<select name="rating">
 																						<option value="1" name="rating">
-																							1
+																							★
 																						</option>
 																						<option value="2" name="rating">
-																							2
+																							★★
 																						</option>
 																						<option value="3" name="rating">
-																							3
+																							★★★
 																						</option>
 																						<option value="4" name="rating">
-																							4
+																							★★★★
 																						</option>
 																						<option value="5" name="rating">
-																							5
+																							★★★★★
 																						</option>
 																					</select>
 																					<input type="hidden"
