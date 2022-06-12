@@ -89,10 +89,25 @@
 															<div class="col-md-12 mx-auto">
 																<h6>Keterangan keluhan :</h6>
 																<p><?= $data->keluhan ?></p>
-																<h6>Foto keluhan :</h6>
-																<img class="img-thumbnail"
-																	 src="<?= base_url('uploads/keluhan/' . $data->foto_keluhan) ?>"
-																	 alt="">
+																<h6>Foto/Video keluhan :</h6>
+																<?php
+																if (strpos($data->foto_keluhan, '.jpg') !== false || strpos($data->foto_keluhan, '.jpeg') !== false || strpos($data->foto_keluhan, '.png') !== false) {
+																	?>
+																	<img class="img-thumbnail"
+																		 src="<?= base_url('uploads/keluhan/' . $data->foto_keluhan) ?>"
+																		 alt="">
+																	<?php
+																} else {
+																	?>
+																	<video class="img-thumbnail" controls>
+																		<source
+																				src="<?= base_url('uploads/keluhan/' . $data->foto_keluhan) ?>"
+																				type="video/mp4">
+																		Your browser does not support the video tag.
+																	</video>
+																	<?php
+																}
+																?>
 															</div>
 														</div>
 													</div>

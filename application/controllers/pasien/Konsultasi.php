@@ -69,8 +69,8 @@ class Konsultasi extends CI_Controller
 			$meet 		   = 'https://meet.google.com/' . $string_acak1 . '-' . $string_acak2 . '-' . $string_acak3;
 
 			$config['upload_path']   = './uploads/keluhan/';
-			$config['allowed_types'] = 'pdf|jpeg|jpg|png';
-			$config['max_size']      = 4000;
+			$config['allowed_types'] = 'pdf|jpeg|jpg|png|mp4|mov|avi|flv|wmv|mkv|mp3|wav|ogg|ogv|webm|wma|flac|aac|m4a|m4v|3gp|3g2|mpg|mpeg|m2v|mov|m4v';
+			$config['max_size']      = 40000;
 			$this->load->library('upload', $config);
 
 			if (!$this->upload->do_upload('foto_keluhan')) {

@@ -4,7 +4,7 @@
 
 <!-- END GLOBAL MANDATORY STYLES -->
 
-<link href="<?= base_url('assets/admin/') ?>assets/css/components/custom-modal.css" rel="stylesheet" type="text/css" />
+<link href="<?= base_url('assets/admin/') ?>assets/css/components/custom-modal.css" rel="stylesheet" type="text/css"/>
 <link href="<?= base_url('assets/admin/') ?>plugins/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
 <link href="<?= base_url('assets/admin/') ?>plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
 
@@ -46,114 +46,131 @@
 
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
 								<thead>
-									<tr>
-										<th>ID Konsultasi</th>
-										<th>Nama Pasien</th>
-										<th>Tanggal</th>
-										<th>Jam</th>
-										<th>Keluhan</th>
-										<th>Status</th>
-										<th>Aksi</th>
-									</tr>
+								<tr>
+									<th>ID Konsultasi</th>
+									<th>Nama Pasien</th>
+									<th>Tanggal</th>
+									<th>Jam</th>
+									<th>Keluhan</th>
+									<th>Status</th>
+									<th>Aksi</th>
+								</tr>
 								</thead>
 
 
 								<tbody>
-									<?php foreach ($konsultasi as $data) { ?>
-										<tr>
-											<td><?= $data->id_konsultasi ?></td>
-											<td><?= $data->nama_pasien ?></td>
-											<td><?= longdate_indo($data->tanggal) ?></td>
-											<td><?= $data->jam ?> WIB</td>
-											<td class="text-center">
-												<button type="button"
-														class="btn btn-sm btn-outline-info waves-effect waves-light"
-														data-bs-toggle="modal"
-														data-bs-target="#fotoKeluhan<?= $data->id_konsultasi ?>"><i
-															class="mdi mdi-eye"></i></button>
-											</td>
-											<!-- Modal -->
-											<div id="fotoKeluhan<?= $data->id_konsultasi ?>" class="modal fade"
-												 tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel"
-												 aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h4 class="modal-title" id="standard-modalLabel">Detail
-																Keluhan</h4>
-															<button type="button" class="btn-close"
-																	data-bs-dismiss="modal" aria-label="Close"></button>
-														</div>
-														<div class="modal-body">
-															<div class="row">
-																<div class="col-md-12 mx-auto">
-																	<h6>Keterangan keluhan :</h6>
-																	<p><?= $data->keluhan ?></p>
-																	<h6>Foto keluhan :</h6>
+								<?php foreach ($konsultasi as $data) { ?>
+									<tr>
+										<td><?= $data->id_konsultasi ?></td>
+										<td><?= $data->nama_pasien ?></td>
+										<td><?= longdate_indo($data->tanggal) ?></td>
+										<td><?= $data->jam ?> WIB</td>
+										<td class="text-center">
+											<button type="button"
+													class="btn btn-sm btn-outline-info waves-effect waves-light"
+													data-bs-toggle="modal"
+													data-bs-target="#fotoKeluhan<?= $data->id_konsultasi ?>"><i
+														class="mdi mdi-eye"></i></button>
+										</td>
+										<!-- Modal -->
+										<div id="fotoKeluhan<?= $data->id_konsultasi ?>" class="modal fade"
+											 tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel"
+											 aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" id="standard-modalLabel">Detail
+															Keluhan</h4>
+														<button type="button" class="btn-close"
+																data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														<div class="row">
+															<div class="col-md-12 mx-auto">
+																<h6>Keterangan keluhan :</h6>
+																<p><?= $data->keluhan ?></p>
+																<h6>Foto/Video keluhan :</h6>
+																<?php
+																if (strpos($data->foto_keluhan, '.jpg') !== false || strpos($data->foto_keluhan, '.jpeg') !== false || strpos($data->foto_keluhan, '.png') !== false) {
+																	?>
 																	<img class="img-thumbnail"
 																		 src="<?= base_url('uploads/keluhan/' . $data->foto_keluhan) ?>"
 																		 alt="">
-																</div>
+																	<?php
+																} else {
+																	?>
+																	<video class="img-thumbnail" controls>
+																		<source
+																				src="<?= base_url('uploads/keluhan/' . $data->foto_keluhan) ?>"
+																				type="video/mp4">
+																		Your browser does not support the video tag.
+																	</video>
+																	<?php
+																}
+																?>
 															</div>
 														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-light"
-																	data-bs-dismiss="modal">Close
-															</button>
-														</div>
-													</div><!-- /.modal-content -->
-												</div><!-- /.modal-dialog -->
-											</div><!-- /.modal -->
-											<td>
-												<?php switch ($data->status):
-													case "Disetujui": ?>
-														<span class="badge bg-primary text-white"> <?= $data->status ?> </span>
-														<?php break;
-													case "Ubah jadwal": ?>
-														<span class="badge bg-warning text-white"> <?= $data->status ?> </span>
-														<?php break;
-													case "Dibatalkan": ?>
-														<span class="badge bg-danger text-white"> <?= $data->status ?> </span>
-														<?php break;
-													case "Selesai": ?>
-														<span class="badge bg-success text-white"> <?= $data->status ?> </span>
-														<?php break;
-												endswitch; ?>
-											</td>
-											<td class="text-center">
-												<?php switch ($data->status):
-													case "Disetujui": ?>
-														<button style="cursor: not-allowed !important;" type="button"
-																class="btn btn-xs width-xs btn-primary waves-effect waves-light text-white">
-														<span class="btn-label"><i
-																	class="mdi mdi-check-circle-outline"></i></span>Menunggu Selesai
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-light"
+																data-bs-dismiss="modal">Close
 														</button>
+													</div>
+												</div><!-- /.modal-content -->
+											</div><!-- /.modal-dialog -->
+										</div><!-- /.modal -->
+										<td>
+											<?php switch ($data->status):
+												case "Disetujui": ?>
+													<span class="badge bg-primary text-white"> <?= $data->status ?> </span>
 													<?php break;
-													case "Ubah jadwal": ?>
-														<button style="cursor: not-allowed !important;" type="button"
-																class="btn btn-xs width-xs btn-warning waves-effect waves-light text-white">
+												case "Ubah jadwal": ?>
+													<span class="badge bg-warning text-white"> <?= $data->status ?> </span>
+													<?php break;
+												case "Dibatalkan": ?>
+													<span class="badge bg-danger text-white"> <?= $data->status ?> </span>
+													<?php break;
+												case "Selesai": ?>
+													<span class="badge bg-success text-white"> <?= $data->status ?> </span>
+													<?php break;
+											endswitch; ?>
+										</td>
+										<td class="text-center">
+											<?php switch ($data->status):
+												case "Disetujui": ?>
+													<button style="cursor: not-allowed !important;" type="button"
+															class="btn btn-xs width-xs btn-primary waves-effect waves-light text-white">
 														<span class="btn-label"><i
-																	class="mdi mdi-clock-outline"></i></span>Dalam Persetujuan
-														</button>
+																	class="mdi mdi-check-circle-outline"></i></span>Menunggu
+														Selesai
+													</button>
 													<?php break;
-													case "Dibatalkan": ?>
-														<button style="cursor: not-allowed !important;" type="button"
-																class="btn btn-xs width-xs btn-danger waves-effect waves-light text-white">
+												case "Ubah jadwal": ?>
+													<button style="cursor: not-allowed !important;" type="button"
+															class="btn btn-xs width-xs btn-warning waves-effect waves-light text-white">
+														<span class="btn-label"><i
+																	class="mdi mdi-clock-outline"></i></span>Dalam
+														Persetujuan
+													</button>
+													<?php break;
+												case "Dibatalkan": ?>
+													<button style="cursor: not-allowed !important;" type="button"
+															class="btn btn-xs width-xs btn-danger waves-effect waves-light text-white">
 														<span class="btn-label"><i
 																	class="mdi mdi-close-circle-outline"></i></span>Dibatalkan
-														</button>
+													</button>
 													<?php break;
-													case "Selesai": ?>
-														<button style="cursor: not-allowed !important;" type="button"
-																class="btn btn-xs width-xs btn-success waves-effect waves-light">
+												case "Selesai": ?>
+													<button style="cursor: not-allowed !important;" type="button"
+															class="btn btn-xs width-xs btn-success waves-effect waves-light">
 														<span class="btn-label"><i
 																	class="mdi mdi-check-circle-outline"></i></span>Selesai
-														</button>
-												<?php break;
-												endswitch; ?>
-											</td>
-										</tr>
-									<?php	} ?>
+													</button>
+													<?php break;
+											endswitch; ?>
+										</td>
+									</tr>
+								<?php } ?>
 								</tbody>
 							</table>
 
@@ -200,21 +217,21 @@
 <script src="<?= base_url('assets/admin/') ?>plugins/flatpickr/flatpickr.js"></script>
 <script src="<?= base_url('assets/admin/') ?>plugins/flatpickr/custom-flatpickr.js"></script>
 <script>
-		var f4 = flatpickr(document.getElementById('timeFlatpickr'), {
-			enableTime: true,
-			noCalendar: true,
-			dateFormat: "H:i",
-			defaultDate: "09:45"
-		});
-	</script>
-	<script>
-		var f4 = flatpickr(document.getElementById('timeFlatpickr2'), {
-			enableTime: true,
-			noCalendar: true,
-			dateFormat: "H:i",
-			defaultDate: "16:45"
-		});
-	</script>
+	var f4 = flatpickr(document.getElementById('timeFlatpickr'), {
+		enableTime: true,
+		noCalendar: true,
+		dateFormat: "H:i",
+		defaultDate: "09:45"
+	});
+</script>
+<script>
+	var f4 = flatpickr(document.getElementById('timeFlatpickr2'), {
+		enableTime: true,
+		noCalendar: true,
+		dateFormat: "H:i",
+		defaultDate: "16:45"
+	});
+</script>
 
 <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
 <script src="<?= base_url('assets/admin/') ?>assets/js/libs/jquery-3.1.1.min.js"></script>
@@ -241,7 +258,7 @@
 		"stripeClasses": [],
 		"lengthMenu": [10, 20, 50],
 		"pageLength": 10,
-		drawCallback: function() {
+		drawCallback: function () {
 			$('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered');
 		}
 	});

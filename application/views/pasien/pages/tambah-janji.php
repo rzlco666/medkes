@@ -95,7 +95,7 @@
 							</div>
 							<div class="col-md-12">
 								<div class="checkout-form-list">
-									<label>Foto Keluhan</label>
+									<label>Foto/Video Keluhan</label>
 									<input type="file" name="foto_keluhan" class="dropify">
 									<span class="form-text text-danger"><?= form_error('foto_keluhan'); ?></span>
 								</div>
