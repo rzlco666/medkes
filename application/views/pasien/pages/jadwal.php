@@ -83,16 +83,65 @@
 								<td class="product-quantity">
 									<?php switch ($data->status):
 										case "Menunggu": ?>
-											<a href="javascript:void(0)" data-toggle="modal"
-											   data-target="#exampleModalCenter<?= $data->kode_bayar ?>">
-												<h6 class="text-warning">Bayar Sekarang</h6>
-											</a>
 											<?php if ($data->foto_pembayaran == NULL) { ?>
+												<a href="javascript:void(0)" data-toggle="modal"
+												   data-target="#pilihMetode<?= $data->kode_bayar ?>">
+													<h6 class="text-warning">Bayar Sekarang</h6>
+												</a>
 												<a href="javascript:void(0)" data-toggle="modal"
 												   data-target="#cancel<?= $data->id_konsultasi ?>">
 													<h6 class="text-danger">Batalkan</h6>
 												</a>
-											<?php } ?>
+											<?php } else { ?>
+												<a href="javascript:void(0)" data-toggle="modal"
+												   data-target="#exampleModalCenter<?= $data->kode_bayar ?>">
+													<h6 class="text-warning">Bayar Sekarang</h6>
+												</a>
+												<?php
+											}
+											?>
+											<!-- Modal Pilih Metode-->
+											<div class="modal fade" id="pilihMetode<?= $data->kode_bayar ?>"
+												 tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+												 aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<input type="hidden" name="id_pembayaran"
+															   value="<?= $data->id_pembayaran ?>">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLongTitle">Detail
+																Pembayaran</h5>
+															<button type="button" class="close" data-dismiss="modal"
+																	aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<div class="form-group text-left">
+																<label>Metode Pembayaran</label>
+																<br>
+																<select>
+																	<option disabled>Pilih Metode Pembayaran</option>
+																	<option>Bank Transfer</option>
+																	<option>Dana</option>
+																	<option>OVO</option>
+																</select>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">Tutup
+															</button>
+															<a href="javascript:void(0)" class="btn btn-primary"
+															   data-toggle="modal"
+															   data-target="#exampleModalCenter<?= $data->kode_bayar ?>">
+																Bayar Sekarang
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END Modal Pilih Metode-->
 											<!-- Modal Bayar Sekarang-->
 											<div class="modal fade" id="exampleModalCenter<?= $data->kode_bayar ?>"
 												 tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -347,13 +396,15 @@
 													<h6 class="text-primary">Lihat Rating</h6>
 												</a>
 												<!-- Modal Update Rating -->
-												<div class="modal fade" id="uprating<?= $data->id_konsultasi ?>" tabindex="-1"
+												<div class="modal fade" id="uprating<?= $data->id_konsultasi ?>"
+													 tabindex="-1"
 													 role="dialog" aria-labelledby="exampleModalCenterTitle"
 													 aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
-																<h5 class="modal-title" id="exampleModalLongTitle">Update Rating
+																<h5 class="modal-title" id="exampleModalLongTitle">
+																	Update Rating
 																	Konsultasi</h5>
 																<button type="button" class="close" data-dismiss="modal"
 																		aria-label="Close">
@@ -367,7 +418,7 @@
 																			<?php
 																			$check2 = $this->db->query("SELECT * FROM rating WHERE id_konsultasi = $temp")->result();
 																			?>
-																			<form action="<?= base_url('pasien/konsultasi/update_rating/'.$check2[0]->id_rating) ?>"
+																			<form action="<?= base_url('pasien/konsultasi/update_rating/' . $check2[0]->id_rating) ?>"
 																				  method="POST">
 																				<div class="row">
 																					<div class="col-4 ">
@@ -375,19 +426,34 @@
 																					</div>
 																					<div class="col-8">
 																						<select name="rating">
-																							<option <?php if($check2[0]->rating === '1'){ echo 'selected="selected"'; } ?> value="1" name="rating">
+																							<option <?php if ($check2[0]->rating === '1') {
+																								echo 'selected="selected"';
+																							} ?> value="1"
+																								 name="rating">
 																								1
 																							</option>
-																							<option <?php if($check2[0]->rating === '2'){ echo 'selected="selected"'; } ?> value="2" name="rating">
+																							<option <?php if ($check2[0]->rating === '2') {
+																								echo 'selected="selected"';
+																							} ?> value="2"
+																								 name="rating">
 																								2
 																							</option>
-																							<option <?php if($check2[0]->rating === '3'){ echo 'selected="selected"'; } ?> value="3" name="rating">
+																							<option <?php if ($check2[0]->rating === '3') {
+																								echo 'selected="selected"';
+																							} ?> value="3"
+																								 name="rating">
 																								3
 																							</option>
-																							<option <?php if($check2[0]->rating === '4'){ echo 'selected="selected"'; } ?> value="4" name="rating">
+																							<option <?php if ($check2[0]->rating === '4') {
+																								echo 'selected="selected"';
+																							} ?> value="4"
+																								 name="rating">
 																								4
 																							</option>
-																							<option <?php if($check2[0]->rating === '5'){ echo 'selected="selected"'; } ?> value="5" name="rating">
+																							<option <?php if ($check2[0]->rating === '5') {
+																								echo 'selected="selected"';
+																							} ?> value="5"
+																								 name="rating">
 																								5
 																							</option>
 																						</select>
@@ -418,7 +484,8 @@
 																<button class="btn btn-cancel" data-dismiss="modal"><i
 																			class="flaticon-cancel-12"></i> Close
 																</button>
-																<button type="submit" class="btn btn-primary">Update</button>
+																<button type="submit" class="btn btn-primary">Update
+																</button>
 															</div>
 															</form>
 														</div>

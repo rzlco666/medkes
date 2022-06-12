@@ -51,6 +51,7 @@
 									<th>Nominal</th>
 									<th>Tanggal Bayar</th>
 									<th>Bukti Bayar</th>
+									<th>Metode Bayar</th>
 									<th>Status</th>
 									<th>Aksi</th>
 								</tr>
@@ -91,6 +92,7 @@
 											</div><!-- /.modal -->
 											<!-- End Modal -->
 										</td>
+										<td><i class="mdi mdi-bank "></i> Transfer Bank</td>
 
 										<?php if ($data->status_bayar == "Belum dibayar") { ?>
 											<?php if ($data->foto_pembayaran) { ?>
