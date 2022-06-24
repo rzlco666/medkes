@@ -186,6 +186,7 @@ class Konsultasi extends CI_Controller
 	public function cetak_resep($id_konsultasi)
 	{
 		$data['resep'] = $this->KonsultasiModel->get_resep_konsultasi($id_konsultasi)->result();
+		$data['resepp'] = $this->KonsultasiModel->get_resep_konsultasi($id_konsultasi)->row();
 		$this->load->view('pasien/pages/daftar-resep', $data);
 	}
 

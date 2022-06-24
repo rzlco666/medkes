@@ -3,6 +3,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class JadwalModel extends CI_Model
 {
+	public function id_jadwal()
+	{
+		$jadwal = "JDW-";
+		$q     = "SELECT MAX(TRIM(REPLACE(id_jadwal,'JDW-', ''))) as nama
+             FROM jadwal WHERE id_jadwal LIKE '$jadwal%'";
+		$baris = $this->db->query($q);
+		$akhir = $baris->row()->nama;
+		$akhir++;
+		$id    = str_pad($akhir, 3, "0", STR_PAD_LEFT);
+		$id    = "JDW-" . $id;
+		return $id;
+	}
+
+	public function id_reschedule()
+	{
+		$reschedule = "RSC-";
+		$q     = "SELECT MAX(TRIM(REPLACE(id_reschedule,'RSC-', ''))) as nama
+             FROM reschedule WHERE id_reschedule LIKE '$reschedule%'";
+		$baris = $this->db->query($q);
+		$akhir = $baris->row()->nama;
+		$akhir++;
+		$id    = str_pad($akhir, 3, "0", STR_PAD_LEFT);
+		$id    = "RSC-" . $id;
+		return $id;
+	}
+
+	public function tambah_jadwal($data)
+	{
+		return $this->db->insert('jadwal', $data);
+	}
 
 	public function get_jadwal()
 	{

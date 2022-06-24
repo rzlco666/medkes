@@ -15,6 +15,57 @@
 	}
 </style>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<form action="<?= base_url('admin/jadwal/proses_tambah_jadwal') ?>" method="POST">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Tambah Jadwal Dokter</h5>
+					<button type="button" class="btn-close"
+							data-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12 mx-auto">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="nama">Dokter</label>
+										<select name="id_dokter" id="id_dokter" class="form-control id_dokter">
+											<option value="">Pilih Dokter</option>
+											<?php foreach ($dokter as $d) : ?>
+												<option name="id_dokter" value="<?= $d->id_dokter ?>"><?= $d->nama_dokter ?></option>
+											<?php endforeach; ?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="email">Tanggal</label>
+										<input name="tanggal" value="<?= date("Y-m-d") ?>" class="basicFlatpickr form-control flatpickr flatpickr-input active text-black" type="text" placeholder="Select Date..">
+									</div>
+										<div class="form-group">
+											<label for="website1">Jam Mulai</label>
+											<input name="jam_mulai" class="timeFlatpickr form-control flatpickr flatpickr-input active text-black" type="text" placeholder="Select Date..">
+										</div>
+										<div class="form-group">
+											<label for="website2">Jam Berakhir</label>
+											<input name="jam_berakhir" class="timeFlatpickr2 form-control flatpickr flatpickr-input active text-black" type="text" placeholder="Select Date..">
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Close</button>
+					<button type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--End Modal -->
+
 <div class="content-page">
 	<div class="content">
 
@@ -42,7 +93,11 @@
 					<div class="card">
 						<div class="card-body">
 
-							<h4 class="header-title mb-2">Jadwal</h4>
+							<h4 class="header-title">Jadwal</h4>
+							<button type="button" class="btn btn-xs width-xs btn-primary waves-effect waves-light mb-2" data-toggle="modal"
+									data-target="#exampleModal">
+								<span class="btn-label"><i class="mdi mdi-plus-circle-outline"></i></span>Tambah Jadwal Dokter
+							</button>
 
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
 								<thead>
@@ -209,5 +264,12 @@
 		drawCallback: function() {
 			$('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered');
 		}
+	});
+</script>
+//script init selectize
+<script>
+	$(document).ready(function() {
+		$('.id_dokter').selectize({
+		});
 	});
 </script>

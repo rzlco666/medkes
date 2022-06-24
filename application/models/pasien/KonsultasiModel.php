@@ -70,10 +70,14 @@ class KonsultasiModel extends CI_Model
 
 	public function get_resep_konsultasi($id_konsultasi)
 	{
-		$this->db->select('detail_resep.*, obat.*, resep.*');
+		$this->db->select('detail_resep.*, obat.*, resep.*, pendaftaran_konsultasi.*, rekam_medis.*, dokter.*, pasien.*, pasien.jenis_kelamin pasjnskel, pasien.alamat pasalm');
 		$this->db->from('detail_resep');
 		$this->db->join('obat', 'obat.id_obat = detail_resep.id_obat');
 		$this->db->join('resep', 'resep.id_resep = detail_resep.id_resep');
+		$this->db->join('pendaftaran_konsultasi', 'pendaftaran_konsultasi.id_konsultasi = resep.id_konsultasi');
+		$this->db->join('rekam_medis', 'rekam_medis.id_konsultasi = pendaftaran_konsultasi.id_konsultasi');
+		$this->db->join('dokter', 'dokter.id_dokter = rekam_medis.id_dokter');
+		$this->db->join('pasien', 'pasien.id_pasien = rekam_medis.id_pasien');
 		$this->db->where('detail_resep.id_konsultasi', $id_konsultasi);
 		$query = $this->db->get();
 		return $query;

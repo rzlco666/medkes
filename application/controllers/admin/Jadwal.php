@@ -13,11 +13,13 @@ class Jadwal extends CI_Controller
 		}
 		date_default_timezone_set('Asia/Jakarta');
 		$this->load->helper('tgl_indo');
+		$this->load->model('admin/KelolaModel', 'KelolaModel');
 		$this->load->model('admin/JadwalModel', 'JadwalModel');
 	}
 
 	public function index()
 	{
+		$data['dokter'] = $this->KelolaModel->get_dokter()->result();
 		$data['jadwal'] = $this->JadwalModel->get_jadwal()->result();
 		$this->load->view('admin/layouts/header');
 		$this->load->view('admin/pages/jadwal/jadwal', $data);
@@ -86,6 +88,25 @@ class Jadwal extends CI_Controller
 			'jam_berakhir'	=> $jam_berakhir,
 		];
 		$this->JadwalModel->update_jadwal($id_jadwal, $data);
+		redirect(base_url('admin/jadwal'));
+	}
+
+	public function proses_tambah_jadwal()
+	{
+		$id_jadwal 	  = $this->JadwalModel->id_jadwal();
+		$id_dokter    = $this->input->post('id_dokter');
+		$tanggal      = $this->input->post('tanggal');
+		$jam_mulai 	  = $this->input->post('jam_mulai');
+		$jam_berakhir = $this->input->post('jam_berakhir');
+
+		$data = [
+			'id_jadwal' 	=> $id_jadwal,
+			'id_dokter' 	=> $id_dokter,
+			'tanggal' 		=> $tanggal,
+			'jam_mulai'		=> $jam_mulai,
+			'jam_berakhir'	=> $jam_berakhir,
+		];
+		$this->JadwalModel->tambah_jadwal($data);
 		redirect(base_url('admin/jadwal'));
 	}
 }

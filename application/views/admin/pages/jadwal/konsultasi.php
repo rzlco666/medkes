@@ -52,8 +52,8 @@
 									<th>Tanggal</th>
 									<th>Jam</th>
 									<th>Keluhan</th>
-									<th>Status</th>
 									<th>Aksi</th>
+									<th>Status</th>
 								</tr>
 								</thead>
 
@@ -119,22 +119,6 @@
 												</div><!-- /.modal-content -->
 											</div><!-- /.modal-dialog -->
 										</div><!-- /.modal -->
-										<td>
-											<?php switch ($data->status):
-												case "Disetujui": ?>
-													<span class="badge bg-primary text-white"> <?= $data->status ?> </span>
-													<?php break;
-												case "Ubah jadwal": ?>
-													<span class="badge bg-warning text-white"> <?= $data->status ?> </span>
-													<?php break;
-												case "Dibatalkan": ?>
-													<span class="badge bg-danger text-white"> <?= $data->status ?> </span>
-													<?php break;
-												case "Selesai": ?>
-													<span class="badge bg-success text-white"> <?= $data->status ?> </span>
-													<?php break;
-											endswitch; ?>
-										</td>
 										<td class="text-center">
 											<?php switch ($data->status):
 												case "Disetujui": ?>
@@ -166,6 +150,42 @@
 														<span class="btn-label"><i
 																	class="mdi mdi-check-circle-outline"></i></span>Selesai
 													</button>
+													<?php break;
+											endswitch; ?>
+										</td>
+										<td>
+											<?php switch ($data->status):
+												case "Disetujui": ?>
+													<span class="badge bg-primary text-white"> <?= $data->status ?> </span>
+													<?php break;
+												case "Ubah jadwal": ?>
+													<span class="badge bg-warning text-white"> <?= $data->status ?> </span>
+													<br>
+													<?php
+													$temp = "'$data->id_konsultasi'";
+													$check = $this->db->query("SELECT * FROM reschedule WHERE id_konsultasi = $temp");
+													if ($check->num_rows() > 0) {
+														echo '<span>Dokter berhalangan, telah direschedule</span>';
+													}else{
+														echo '<span>Dibatalkan oleh pasien</span>';
+													}
+													?>
+													<?php break;
+												case "Dibatalkan": ?>
+													<span class="badge bg-danger text-white"> <?= $data->status ?> </span>
+													<br>
+													<?php
+													$temp = "'$data->id_konsultasi'";
+													$check = $this->db->query("SELECT * FROM reschedule WHERE id_konsultasi = $temp");
+													if ($check->num_rows() > 0) {
+														echo '<span>Dokter berhalangan, reschedule tidak disetujui</span>';
+													}else{
+														echo '<span>Dibatalkan oleh pasien</span>';
+													}
+													?>
+													<?php break;
+												case "Selesai": ?>
+													<span class="badge bg-success text-white"> <?= $data->status ?> </span>
 													<?php break;
 											endswitch; ?>
 										</td>
