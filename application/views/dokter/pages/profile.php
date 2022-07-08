@@ -129,6 +129,14 @@
 													</div>
 												</div>
 											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<label for="profession">Harga Konsultasi</label>
+														<input type="number" min="0" name="harga" class="form-control mb-4" placeholder="Harga" value="<?= $profile->harga ?>">
+													</div>
+												</div>
+											</div>
 											<button class="btn btn-primary mb-2">Update</button>
 										</div>
 									</div>

@@ -58,7 +58,7 @@ class JadwalModel extends CI_Model
 		$this->db->from('jadwal');
 		$this->db->where('id_dokter', $id_dokter);
 		$this->db->group_by('tanggal');
-		$this->db->order_by("tanggal", "DESC");
+		$this->db->order_by("tanggal", "ASC");
 		$query = $this->db->get();
 		return $query;
 	}

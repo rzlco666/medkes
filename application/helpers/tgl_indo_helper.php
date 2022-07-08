@@ -237,3 +237,34 @@ if (!function_exists('longdate_indo')) {
 		return $nama_hari . ', ' . $tgl . ' ' . $bulan . ' ' . $thn;
 	}
 }
+
+if (!function_exists('shortdate_indo')) {
+	function shortdate_indo($tanggal)
+	{
+		$ubah = gmdate($tanggal, time() + 60 * 60 * 8);
+		$pecah = explode("-", $ubah);
+		$tgl = $pecah[2];
+		$bln = $pecah[1];
+		$thn = $pecah[0];
+		$bulan = bulan($pecah[1]);
+
+		$nama = date("l", mktime(0, 0, 0, $bln, $tgl, $thn));
+		$nama_hari = "";
+		if ($nama == "Sunday") {
+			$nama_hari = "Minggu";
+		} else if ($nama == "Monday") {
+			$nama_hari = "Senin";
+		} else if ($nama == "Tuesday") {
+			$nama_hari = "Selasa";
+		} else if ($nama == "Wednesday") {
+			$nama_hari = "Rabu";
+		} else if ($nama == "Thursday") {
+			$nama_hari = "Kamis";
+		} else if ($nama == "Friday") {
+			$nama_hari = "Jumat";
+		} else if ($nama == "Saturday") {
+			$nama_hari = "Sabtu";
+		}
+		return $nama_hari;
+	}
+}
